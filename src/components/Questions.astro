@@ -1,0 +1,25 @@
+---
+import { questions } from '../content';
+---
+
+<section class="questions-section container" aria-labelledby="questions-title">
+  <div>
+    <span class="section-number">A FEW GOOD QUESTIONS</span>
+    <h2 id="questions-title">
+      Before we
+      <br />
+      {' roll.'}
+    </h2>
+  </div>
+  <div class="questions">
+    {questions.map((item) => (
+      <details>
+        <summary>
+          {item.question}
+          <span aria-hidden="true">+</span>
+        </summary>
+        <p>{item.answer}</p>
+      </details>
+    ))}
+  </div>
+</section>

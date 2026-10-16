@@ -1,0 +1,4 @@
+allowBuilds:
+  '@astrojs/compiler-rs': true
+  esbuild: true
+  sharp: true

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <rect width="1200" height="630" fill="#10130f"/>
+  <g fill="none" stroke="#30362c"><path d="M64 120h1072M64 540h1072M840 160v330M900 160v330M960 160v330M1020 160v330M1080 160v330M810 190h300M810 250h300M810 310h300M810 370h300M810 430h300"/></g>
+  <g stroke="#d3f5a5" stroke-width="5" fill="none"><path d="M83 55H65v18m36-18h18v18m0 18v18h-18m-18 0H65V91"/></g>
+  <path d="m84 70 20 12-20 12Z" fill="#d3f5a5"/>
+  <g font-family="Arial, sans-serif"><text x="138" y="96" font-size="42" font-weight="700" fill="#f2f3e9" letter-spacing="-2">labcast<tspan fill="#d3f5a5">.</tspan></text>
+  <text x="64" y="292" font-size="93" font-weight="600" letter-spacing="-5" fill="#f2f3e9">Every angle.</text>
+  <text x="64" y="396" font-size="93" font-weight="600" letter-spacing="-5" fill="#d3f5a5">One great show.</text>
+  <text x="68" y="478" font-size="25" fill="#a4ad9d">Your people. Their phones. One shared broadcast.</text>
+  <text x="68" y="582" font-size="18" fill="#a4ad9d" letter-spacing="3">LABCAST.AI</text>
+  <text x="1134" y="582" text-anchor="end" font-size="15" fill="#d3f5a5" letter-spacing="2">IN DEVELOPMENT</text></g>
+  <g transform="translate(872 228)" stroke="#d3f5a5" stroke-width="6" fill="#10130f"><rect width="160" height="160" rx="8" transform="rotate(8 80 80)"/><path d="m67 48 52 32-52 32V48Z" fill="#d3f5a5" stroke="none"/></g>
+</svg>

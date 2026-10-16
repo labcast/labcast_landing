@@ -1,0 +1,17 @@
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+    groups:
+      dependencies:
+        patterns: ['*']
+    # Astro's current checker explicitly rejects TypeScript 7.
+    ignore:
+      - dependency-name: typescript
+        versions: ['>=7.0.0']
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly

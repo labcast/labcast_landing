@@ -1,0 +1,21 @@
+---
+import { events } from '../content';
+---
+
+<div class="event-strip">
+  <div class="container event-strip-inner">
+    <span class="tiny-label">BIG MOMENTS. EVERYWHERE.</span>
+    <div>
+      {events.map((event, index) => (
+        <>
+          {index > 0 && (
+            <span class="strip-star" aria-hidden="true">
+              ✳
+            </span>
+          )}
+          <span>{event}</span>
+        </>
+      ))}
+    </div>
+  </div>
+</div>

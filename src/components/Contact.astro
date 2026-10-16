@@ -1,0 +1,101 @@
+---
+import { contact } from '../content';
+---
+
+<section class="contact-section" id="contact" aria-labelledby="contact-title">
+  <div class="container contact-grid">
+    <div class="contact-copy">
+      <p class="eyebrow">
+        <span class="status-dot"></span> {contact.eyebrow}
+      </p>
+      <h2 id="contact-title">
+        {contact.headline[0]}
+        <br />
+        {contact.headline[1]}
+        <span class="lime-text">.</span>
+      </h2>
+      <p>
+        {contact.lead}
+        <br />
+        {contact.invitation}
+      </p>
+      <span class="contact-footnote">{contact.note}</span>
+    </div>
+    <div class="form-panel">
+      <p id="form-success" class="form-success" role="status" hidden>
+        {contact.success}
+      </p>
+      <form
+        name="pilot"
+        method="POST"
+        action="/?submitted=true#contact"
+        data-netlify="true"
+        netlify-honeypot="website"
+        id="pilot-form"
+      >
+        <input type="hidden" name="form-name" value="pilot" />
+        <p class="honeypot" aria-hidden="true">
+          <label>
+            Leave this field empty{' '}
+            <input name="website" tabindex="-1" autocomplete="off" />
+          </label>
+        </p>
+        <div class="form-row">
+          <div class="field">
+            <label for="name">Your name</label>
+            <input
+              id="name"
+              name="name"
+              autocomplete="name"
+              required
+              maxlength="120"
+              placeholder="Alex Morgan"
+            />
+          </div>
+          <div class="field">
+            <label for="email">Email address</label>
+            <input
+              id="email"
+              name="email"
+              type="email"
+              autocomplete="email"
+              required
+              maxlength="254"
+              placeholder="alex@example.com"
+            />
+          </div>
+        </div>
+        <div class="field">
+          <label for="event">What’s the occasion?</label>
+          <select id="event" name="event" required>
+            <option value="" disabled selected>
+              Select an event type
+            </option>
+            {contact.events.map((event) => (
+              <option>{event}</option>
+            ))}
+          </select>
+        </div>
+        <div class="field">
+          <label for="message">
+            Tell us a little about it <span>(optional)</span>
+          </label>
+          <textarea
+            id="message"
+            name="message"
+            rows="3"
+            maxlength="3000"
+            placeholder="The event, the place, and what you’d love to capture…"
+          ></textarea>
+        </div>
+        <button class="button button-lime" type="submit">
+          {contact.action} <span aria-hidden="true">↗</span>
+        </button>
+        <p class="form-note">{contact.privacy}</p>
+      </form>
+    </div>
+  </div>
+</section>
+<script>
+  import '../scripts/contact';
+</script>

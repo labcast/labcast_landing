@@ -1,0 +1,77 @@
+---
+import Stage from './Stage.astro';
+import '../styles/studio.css';
+const angles = [
+  { id: 'wide', name: 'The whole room', number: '01', label: 'Wide' },
+  { id: 'stage', name: 'Closer to the action', number: '02', label: 'Stage' },
+  { id: 'crowd', name: 'Part of the crowd', number: '03', label: 'Crowd' },
+] as const;
+---
+
+<figure class="studio" aria-labelledby="studio-caption">
+  <div class="studio-bar">
+    <span>
+      <i class="status-dot"></i> PRODUCTION DESK
+    </span>
+    <span class="demo-label">CONCEPT PREVIEW</span>
+  </div>
+  <div
+    class="program"
+    role="group"
+    aria-label="Illustrated event camera preview"
+  >
+    {angles.map((angle, index) => (
+      <div class="program-view" data-view={angle.id} hidden={index !== 0}>
+        <Stage id={`program-${angle.id}`} angle={angle.id} />
+      </div>
+    ))}
+    <div class="program-top">
+      <span class="program-badge">PROGRAM</span>
+      <span>LABCAST / 001</span>
+    </div>
+    <div class="program-title">
+      <span class="tiny-label">COMMUNITY. CENTER STAGE.</span>
+      <strong data-camera-title>The whole room</strong>
+    </div>
+    <div class="frame-corner top-left"></div>
+    <div class="frame-corner bottom-right"></div>
+  </div>
+  <div
+    class="camera-strip"
+    role="group"
+    aria-label="Choose an illustrated camera angle"
+  >
+    {angles.map((angle, index) => (
+      <button
+        type="button"
+        class="camera"
+        data-camera={angle.id}
+        data-title={angle.name}
+        aria-pressed={index === 0}
+      >
+        <span class="camera-image">
+          <Stage id={`camera-${angle.id}`} angle={angle.id} />
+          <span class="camera-number">{angle.number}</span>
+        </span>
+        <span class="camera-info">
+          <span>{angle.label}</span>
+          <span class="camera-state">
+            {index === 0 ? 'Selected' : 'Preview'}
+          </span>
+        </span>
+      </button>
+    ))}
+  </div>
+  <figcaption id="studio-caption">
+    <span class="signal-icon" aria-hidden="true">
+      ▂▄▆
+    </span>
+    <span>Different perspectives. One shared moment.</span>
+    <span class="studio-plus" aria-hidden="true">
+      +
+    </span>
+  </figcaption>
+</figure>
+<script>
+  import '../scripts/studio';
+</script>

@@ -1,0 +1,142 @@
+---
+interface Props {
+  id: string;
+  angle?: 'wide' | 'stage' | 'crowd';
+}
+const { id, angle = 'wide' } = Astro.props;
+const views = {
+  wide: '0 0 720 440',
+  stage: '150 30 420 257',
+  crowd: '0 200 720 440',
+};
+const people = Array.from({ length: 31 }, (_, i) => ({
+  x: 12 + i * 24,
+  y: 354 + (i % 4) * 16,
+  scale: 0.8 + (i % 3) * 0.14,
+}));
+---
+
+<svg
+  viewBox={views[angle]}
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+  aria-hidden="true"
+  preserveAspectRatio="xMidYMid slice"
+>
+  <defs>
+    <linearGradient
+      id={`${id}-sky`}
+      x1="360"
+      y1="0"
+      x2="360"
+      y2="440"
+      gradientUnits="userSpaceOnUse"
+    >
+      <stop stop-color="#30392c" />
+      <stop offset=".5" stop-color="#17251f" />
+      <stop offset="1" stop-color="#09130f" />
+    </linearGradient>
+    <linearGradient id={`${id}-beam`} x1="0" y1="0" x2="0" y2="1">
+      <stop stop-color="#dcf8b3" stop-opacity=".42" />
+      <stop offset="1" stop-color="#cdf996" stop-opacity="0" />
+    </linearGradient>
+    <radialGradient id={`${id}-glow`}>
+      <stop stop-color="#d6ec9a" stop-opacity=".34" />
+      <stop offset="1" stop-color="#d6ec9a" stop-opacity="0" />
+    </radialGradient>
+    <pattern
+      id={`${id}-grain`}
+      width="7"
+      height="7"
+      patternUnits="userSpaceOnUse"
+    >
+      <circle cx="1" cy="1" r=".5" fill="#fff" opacity=".06" />
+      <circle cx="5" cy="4" r=".5" fill="#fff" opacity=".04" />
+    </pattern>
+  </defs>
+  <path fill={`url(#${id}-sky)`} d="M0 0h720v640H0z" />
+  <ellipse cx="360" cy="190" rx="330" ry="220" fill={`url(#${id}-glow)`} />
+  <g stroke="#c2d4ba" stroke-opacity=".15">
+    <path d="M0 45h720M0 70h720M60 45l25 25 25-25 25 25 25-25 25 25 25-25 25 25 25-25 25 25 25-25 25 25 25-25 25 25 25-25 25 25 25-25 25 25 25-25 25 25 25-25 25 25 25-25 25 25" />
+    <path d="M80 45v310M640 45v310M83 95l20 20-20 20 20 20-20 20 20 20-20 20 20 20-20 20 20 20-20 20M637 95l-20 20 20 20-20 20 20 20-20 20 20 20-20 20 20 20-20 20 20 20" />
+  </g>
+  <g fill={`url(#${id}-beam)`}>
+    <path d="m135 70 160 278H10L135 70Z" />
+    <path d="m585 70 125 278H425L585 70Z" />
+    <path d="m290 70 235 278H175L290 70Z" opacity=".5" />
+    <path d="m430 70 115 278H195L430 70Z" opacity=".5" />
+  </g>
+  <g fill="#d9f8a8">
+    <rect x="124" y="65" width="24" height="8" rx="2" />
+    <rect x="278" y="65" width="24" height="8" rx="2" />
+    <rect x="418" y="65" width="24" height="8" rx="2" />
+    <rect x="573" y="65" width="24" height="8" rx="2" />
+  </g>
+  <rect
+    x="154"
+    y="110"
+    width="412"
+    height="192"
+    fill="#10251b"
+    stroke="#c9edaa"
+    stroke-opacity=".22"
+  />
+  <g stroke="#bee986" stroke-opacity=".45" stroke-width="2">
+    <path d="M170 124h80v80h-80zM470 206h80v80h-80zM170 266h36v20h-36zM514 124h36v20h-36z" />
+    <circle cx="360" cy="205" r="72" />
+    <circle cx="360" cy="205" r="55" stroke-dasharray="2 9" />
+    <path d="m344 177 44 28-44 28v-56Z" fill="#bee986" stroke="none" />
+    <path d="M248 205h-56M528 205h-56M360 128v-6M360 288v-6" />
+  </g>
+  <g fill="#121a16" stroke="#91a18c" stroke-opacity=".3">
+    <rect x="112" y="195" width="27" height="101" rx="3" />
+    <rect x="581" y="195" width="27" height="101" rx="3" />
+    <circle cx="125.5" cy="225" r="8" />
+    <circle cx="125.5" cy="265" r="9" />
+    <circle cx="594.5" cy="225" r="8" />
+    <circle cx="594.5" cy="265" r="9" />
+    <path d="M90 302h540l50 32H40l50-32Z" fill="#3c4934" />
+    <path d="M40 334h640v22H40z" />
+  </g>
+  <g fill="#0b1610">
+    <circle cx="360" cy="250" r="10" />
+    <path d="M344 267q16-12 32 0l8 39h-48l8-39Z" />
+    <path d="m346 273-27-10-3 7 29 16m30-11 25-19 5 5-27 26" />
+  </g>
+  <g stroke="#dbf1b7" stroke-opacity=".4">
+    <path d="M362 273v38M349 312h27M359 271l8-4" />
+  </g>
+  {people.map(({ x, y, scale }) => (
+    <g
+      transform={`translate(${x} ${y}) scale(${scale})`}
+      fill="#0a100d"
+      stroke="#73806c"
+      stroke-opacity=".28"
+    >
+      <circle cy="-13" r="9" />
+      <path d="M-16 9q0-14 16-14T16 9v60h-32V9Z" />
+    </g>
+  ))}
+  <g stroke="#182d20" stroke-width="10" stroke-linecap="round">
+    <path d="m98 412-15-54-21-22m514 76 16-46 27-27m-409 70-5-37-20-26" />
+  </g>
+  <g fill="#0c1810" stroke="#adc99c" stroke-opacity=".65">
+    <rect
+      x="50"
+      y="314"
+      width="14"
+      height="25"
+      rx="3"
+      transform="rotate(-15 50 314)"
+    />
+    <rect
+      x="617"
+      y="317"
+      width="14"
+      height="25"
+      rx="3"
+      transform="rotate(17 617 317)"
+    />
+  </g>
+  <path fill={`url(#${id}-grain)`} d="M0 0h720v640H0z" />
+</svg>

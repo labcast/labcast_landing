@@ -1,0 +1,15 @@
+---
+import Mark from './Mark.astro';
+import { site } from '../content';
+---
+
+<footer class="footer container">
+  <a class="wordmark" href="#top" aria-label="Labcast, back to top">
+    <Mark />
+    <span>
+      labcast<span class="wordmark-dot">.</span>
+    </span>
+  </a>
+  <p>{site.tagline}</p>
+  <span class="tiny-label">© {new Date().getFullYear()} LABCAST</span>
+</footer>

@@ -1,0 +1,35 @@
+---
+import Mark from './Mark.astro';
+import { navigation } from '../content';
+---
+
+<header class="header">
+  <div class="container header-inner">
+    <a class="wordmark" href="#top" aria-label="Labcast home">
+      <Mark />
+      <span>
+        labcast<span class="wordmark-dot">.</span>
+      </span>
+    </a>
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-expanded="false"
+      aria-controls="navigation"
+    >
+      <span>Menu</span>
+      <span class="menu-lines" aria-hidden="true"></span>
+    </button>
+    <nav id="navigation" class="navigation" aria-label="Main navigation">
+      {navigation.map((link) => (
+        <a href={link.href}>{link.label}</a>
+      ))}
+      <a href="#contact" class="nav-cta">
+        Let’s talk <span aria-hidden="true">↗</span>
+      </a>
+    </nav>
+  </div>
+</header>
+<script>
+  import '../scripts/navigation';
+</script>
