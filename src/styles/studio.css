@@ -6,6 +6,7 @@
     transform: rotate(1.5deg);
     box-shadow: 0 24px 90px #0004;
   }
+
   .studio-bar {
     display: flex;
     justify-content: space-between;
@@ -14,18 +15,22 @@
     font: 0.54rem/1.5 var(--mono);
     letter-spacing: 0.08em;
   }
+
   .studio-bar > span:first-child {
     display: flex;
     align-items: center;
     gap: 8px;
   }
+
   .studio-bar .status-dot {
     width: 4px;
     height: 4px;
   }
+
   .demo-label {
     color: #a5af9a;
   }
+
   .program {
     position: relative;
     aspect-ratio: 1.63;
@@ -33,14 +38,17 @@
     overflow: hidden;
     border: 1px solid #3f4b34;
   }
+
   .program-view {
     position: absolute;
     inset: 0;
   }
+
   .program-view > svg {
     width: 100%;
     height: 100%;
   }
+
   .program::after {
     content: '';
     position: absolute;
@@ -48,6 +56,7 @@
     background: linear-gradient(transparent 45%, #030b07bf);
     pointer-events: none;
   }
+
   .program-top {
     position: absolute;
     z-index: 1;
@@ -59,11 +68,13 @@
     letter-spacing: 0.07em;
     color: #e2ebd6;
   }
+
   .program-badge {
     color: #253318;
     background: var(--lime);
     padding: 4px 7px;
   }
+
   .program-title {
     position: absolute;
     z-index: 1;
@@ -72,39 +83,46 @@
     display: grid;
     gap: 4px;
   }
+
   .program-title .tiny-label {
     font-size: 0.49rem;
     color: #d6e2c5;
   }
+
   .program-title strong {
     font-size: 1.43rem;
     font-weight: 500;
     letter-spacing: -0.04em;
   }
+
   .frame-corner {
     position: absolute;
     z-index: 1;
     width: 10px;
     height: 10px;
   }
+
   .top-left {
     left: 8px;
     top: 8px;
     border-top: 1px solid #d0e2bd;
     border-left: 1px solid #d0e2bd;
   }
+
   .bottom-right {
     right: 8px;
     bottom: 8px;
     border-bottom: 1px solid #d0e2bd;
     border-right: 1px solid #d0e2bd;
   }
+
   .camera-strip {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 8px;
     padding-block: 10px;
   }
+
   .camera {
     min-width: 0;
     padding: 0;
@@ -113,23 +131,28 @@
     color: var(--text);
     text-align: left;
   }
+
   .camera:hover {
     border-color: #a1b88b;
   }
+
   .camera[aria-pressed='true'] {
     border-color: var(--lime);
     background: #29361e;
   }
+
   .camera-image {
     position: relative;
     display: block;
     aspect-ratio: 1.7;
     overflow: hidden;
   }
+
   .camera-image > svg {
     width: 100%;
     height: 100%;
   }
+
   .camera-number {
     position: absolute;
     top: 6px;
@@ -138,6 +161,7 @@
     padding: 2px 4px;
     font: 0.46rem var(--mono);
   }
+
   .camera-info {
     display: flex;
     align-items: center;
@@ -146,13 +170,16 @@
     padding: 8px 7px;
     font: 0.51rem var(--mono);
   }
+
   .camera-state {
     color: #a7b699;
     font-size: 0.44rem;
   }
+
   .camera[aria-pressed='true'] .camera-state {
     color: var(--lime);
   }
+
   .studio figcaption {
     display: flex;
     align-items: center;
@@ -161,14 +188,104 @@
     font: 0.5rem/1.5 var(--mono);
     color: #c6d0b9;
   }
+
   .signal-icon {
     color: var(--lime);
     letter-spacing: -1px;
   }
+
   .studio-plus {
     margin-left: auto;
     color: var(--lime);
     font-size: 1rem;
     line-height: 0.8;
+  }
+}
+
+@layer responsive {
+  @media (max-width: 1100px) {
+    .camera-info {
+      font-size: 0.47rem;
+      padding: 7px 5px;
+    }
+
+    .camera-state {
+      font-size: 0.4rem;
+    }
+  }
+
+  @media (max-width: 850px) {
+    .studio {
+      transform: rotate(0.8deg);
+    }
+
+    .camera-info {
+      font-size: 0.62rem;
+      padding: 10px;
+    }
+
+    .camera-state {
+      font-size: 0.5rem;
+    }
+
+    .studio-bar,
+    .studio figcaption {
+      font-size: 0.6rem;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .studio {
+      padding: 7px;
+    }
+
+    .studio-bar {
+      font-size: 0.45rem;
+      padding-top: 6px;
+      padding-bottom: 11px;
+    }
+
+    .program-title {
+      left: 14px;
+      bottom: 16px;
+    }
+
+    .program-title strong {
+      font-size: 1.1rem;
+    }
+
+    .program-top {
+      inset: 10px 10px auto;
+      font-size: 0.43rem;
+    }
+
+    .program-title .tiny-label {
+      font-size: 0.43rem;
+    }
+
+    .camera-strip {
+      gap: 6px;
+      padding-block: 8px;
+    }
+
+    .camera-info {
+      padding: 8px 5px;
+      font-size: 0.48rem;
+    }
+
+    .camera-state {
+      font-size: 0.4rem;
+    }
+
+    .studio figcaption {
+      font-size: 0.43rem;
+      gap: 6px;
+    }
+  }
+
+  @media (forced-colors: active) {
+    .camera[aria-pressed='true'] {
+      outline: 2px solid Highlight;
+    }
   }
 }

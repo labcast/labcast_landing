@@ -27,7 +27,8 @@ pnpm preview
 - `src/components`: one component per section, plus the illustrated production preview.
 - `src/layouts/Page.astro`: shared HTML, metadata, and local font imports.
 - `src/styles/global.css`: colors, typography, reset, and shared base rules.
-- `src/styles/page.css`: section layouts and responsive rules.
+- `src/styles/page.css`: shared layout primitives and common responsive rules.
+- `src/styles/<section>.css`: each section's own styles and breakpoints, imported by its component.
 - `src/styles/studio.css`: production preview styles.
 - `src/scripts`: menu, camera selection, and form confirmation behavior.
 - `public`: favicon, social preview, and robots file.

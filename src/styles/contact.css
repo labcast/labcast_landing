@@ -1,0 +1,174 @@
+@layer layout {
+  .contact-section {
+    background: #20271a;
+    border-block: 1px solid #455136;
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 100px;
+    padding-block: 88px;
+  }
+
+  .contact-copy h2 {
+    margin-top: 24px;
+    font-size: clamp(2.6rem, 4.5vw, 4rem);
+  }
+
+  .contact-copy > p:not(.eyebrow) {
+    color: #b9c2ad;
+    margin-top: 24px;
+    font-size: 0.9rem;
+  }
+
+  .contact-footnote {
+    display: block;
+    max-width: 330px;
+    margin-top: 48px;
+    color: #9eaa8f;
+    font: 0.62rem/1.9 var(--mono);
+  }
+
+  .form-panel {
+    min-width: 0;
+    padding-top: 8px;
+  }
+
+  form {
+    display: grid;
+    gap: 22px;
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+  }
+
+  .field {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    gap: 9px;
+  }
+
+  label {
+    font-size: 0.75rem;
+    font-weight: 550;
+  }
+
+  label span {
+    color: #a8b499;
+    font-weight: 400;
+  }
+
+  input,
+  textarea,
+  select {
+    width: 100%;
+    min-width: 0;
+    color: var(--text);
+    background: #1a2115;
+    border: 1px solid #556149;
+    border-radius: 0;
+    padding: 12px 13px;
+    font-size: 0.8rem;
+    min-height: 46px;
+  }
+
+  input::placeholder,
+  textarea::placeholder {
+    color: #a7b298;
+    opacity: 1;
+  }
+
+  textarea {
+    resize: vertical;
+    min-height: 106px;
+  }
+
+  select {
+    color: var(--text);
+    padding-right: 30px;
+  }
+
+  select:has(option[value='']:checked) {
+    color: #a7b298;
+  }
+
+  input:hover,
+  textarea:hover,
+  select:hover {
+    border-color: #8c9d77;
+  }
+
+  .form-panel .button {
+    width: 100%;
+  }
+
+  .form-note {
+    font: 0.59rem/1.7 var(--mono);
+    color: #abb79b;
+    margin-top: -10px;
+  }
+
+  .honeypot {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+  }
+
+  .form-success {
+    border: 1px solid var(--lime);
+    background: #293b1c;
+    color: var(--lime);
+    padding: 28px;
+    font-size: 1.1rem;
+  }
+}
+
+@layer responsive {
+  @media (max-width: 850px) {
+    .contact-grid {
+      gap: 40px;
+      padding-block: 64px;
+    }
+
+    .contact-copy h2 {
+      font-size: 2.7rem;
+    }
+
+    .form-row {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .contact-grid {
+      padding-block: 52px;
+      gap: 36px;
+    }
+
+    .contact-copy h2 {
+      font-size: 2.75rem;
+    }
+
+    .contact-footnote {
+      margin-top: 20px;
+    }
+
+    .form-row {
+      grid-template-columns: 1fr;
+    }
+
+    input,
+    select,
+    textarea {
+      font-size: 1rem;
+    }
+  }
+}

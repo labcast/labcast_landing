@@ -1,0 +1,77 @@
+@layer layout {
+  .pilot-grid {
+    display: grid;
+    grid-template-columns: 1.05fr 1fr;
+    gap: 80px;
+  }
+
+  .pilot-tag {
+    display: inline-block;
+    border: 1px solid #49543e;
+    border-radius: 30px;
+    padding: 6px 12px;
+    font: 0.59rem/1.6 var(--mono);
+    color: var(--lime);
+    letter-spacing: 0.08em;
+    margin-bottom: 25px;
+  }
+
+  .pilot-grid h2 {
+    font-size: clamp(2.8rem, 5vw, 4.5rem);
+  }
+
+  .serif-word {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-weight: 400;
+    font-style: italic;
+    letter-spacing: -0.055em;
+    color: var(--lime);
+  }
+
+  .pilot-copy {
+    padding-top: 60px;
+  }
+
+  .pilot-list {
+    margin: 26px 0 16px;
+    padding: 0;
+    list-style: none;
+    border-top: 1px solid var(--line);
+  }
+
+  .pilot-list li {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 17px 0;
+    border-bottom: 1px solid var(--line);
+    font-size: 0.79rem;
+  }
+
+  .pilot-list li span {
+    color: #919e84;
+    font: 0.65rem var(--mono);
+  }
+}
+
+@layer responsive {
+  @media (max-width: 850px) {
+    .pilot-copy {
+      padding-top: 0;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .pilot-grid h2 {
+      font-size: 3.15rem;
+    }
+
+    .pilot-tag {
+      margin-bottom: 20px;
+    }
+
+    .pilot-list li {
+      font-size: 0.8rem;
+    }
+  }
+}
