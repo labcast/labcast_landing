@@ -124,3 +124,9 @@ Added a browser-mode web manifest, 192px app icon, application name, Apple home-
 Validation: Astro/TypeScript/build and formatting pass; the browser suite passes 17 checks, nine widths without overflow, and six axe scans without violations. Seven chapter checks pass, including persistent artwork alignment, native wheel movement, and a native phone gesture. WebKit menu checks pass for ink color, unchanged header height, open/close, Escape focus, outside click, manifest and icon responses, and tall-window spacing. No page errors.
 
 The shared head copy now explains the product in four plain-language sentences, with a descriptive browser title. The same description feeds search metadata, Open Graph, Twitter cards, and the homepage structured data.
+
+### Fixed phone header with native scrolling — October 16, 2026
+
+The physical iPhone screenshot after the scrolling restoration shows page text in the status-bar area above the sticky header. Phone layouts now fix the header to the viewport and reserve its height with body padding. The existing header pseudo-element explicitly covers the top safe area at the viewport edge. The document still scrolls natively; there is no nested scroller, body scroll lock, GSAP scroller override, or scene motion change. No-JavaScript pages retain their expanded navigation in normal flow with the sticky header. Physical Safari chrome still requires device confirmation.
+
+Validation: build/type checks pass; WebKit passes all chapters, forward/reverse fit, header position, menu anchors, reduced motion, and no-JavaScript checks at 430×739, 699, 659 (simulated 59px safe area), and 580. The 17-check browser suite, nine responsive widths, and six axe scans pass without violations or page errors. These engine checks do not verify Safari's native status-bar tint.

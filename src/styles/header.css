@@ -63,6 +63,19 @@
 }
 @layer responsive {
   @media (max-width: 760px) {
+    body {
+      padding-top: var(--header-height);
+    }
+    .header {
+      position: fixed;
+      inset-inline: 0;
+    }
+    .header::before {
+      position: fixed;
+      top: 0;
+      bottom: auto;
+      height: env(safe-area-inset-top, 0px);
+    }
     .header-inner {
       position: relative;
       min-height: 72px;

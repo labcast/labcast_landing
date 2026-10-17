@@ -65,7 +65,7 @@ The existing GitHub check workflow runs repository verification. The original te
 
 ### Mobile Safari checks
 
-Portrait phones keep the seven animated chapters even below 700px browser height. All devices use native document scrolling and the original sticky header. Reduced motion, no JavaScript, and short landscape layouts retain every scene.
+Portrait phones keep the seven animated chapters even below 700px browser height. All devices use native document scrolling. Phones use a fixed header with reserved page space; larger screens use the sticky header. Reduced motion, no JavaScript, and short landscape layouts retain every scene.
 
 `docs/qa/safari.cjs` checks the iPhone 15 Pro Max profile in WebKit, including expanded-toolbar heights, scene fit, menu anchors, reduced motion, and no-JavaScript fallback. Run it with Playwright/WebKit available in `NODE_PATH` and optional `LABCAST_BASE_URL`. The 659px case substitutes a 59px top safe area in served CSS; these engine checks do not reproduce Safari's native status bar UI.
 
