@@ -100,6 +100,17 @@ const schema =
     )}
     <noscript>
       <style is:inline>
+        html,
+        body {
+          height: auto !important;
+          overflow: visible !important;
+        }
+        .page-scroll {
+          display: contents !important;
+        }
+        .header {
+          position: sticky !important;
+        }
         .menu-toggle {
           display: none !important;
         }
@@ -113,6 +124,9 @@ const schema =
     <a href="#main" class="skip-link">
       Skip to content
     </a>
-    <slot />
+    <slot name="header" />
+    <div class="page-scroll" data-scroll-root>
+      <slot />
+    </div>
   </body>
 </html>

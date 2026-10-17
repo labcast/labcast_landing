@@ -1,6 +1,6 @@
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-gsap.registerPlugin(ScrollTrigger);
+import './scroll';
 const story = document.querySelector<HTMLElement>('[data-story]');
 if (story) {
   const preload = new IntersectionObserver(([entry]) => {
@@ -14,7 +14,7 @@ if (story) {
   const media = gsap.matchMedia();
   const scenes = [...story.querySelectorAll<HTMLElement>('[data-scene]')];
   media.add(
-    '(prefers-reduced-motion: no-preference) and (min-height: 700px)',
+    '(prefers-reduced-motion: no-preference) and (min-height: 700px), (prefers-reduced-motion: no-preference) and (max-width: 700px) and (orientation: portrait)',
     () => {
       story.classList.add('is-enhanced');
       const sticky = story.querySelector<HTMLElement>('.story-sticky')!;

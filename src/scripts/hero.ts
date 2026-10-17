@@ -1,6 +1,5 @@
 import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-gsap.registerPlugin(ScrollTrigger);
+import './scroll';
 
 const hero = document.querySelector<HTMLElement>('.hero');
 if (hero) {
