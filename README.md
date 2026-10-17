@@ -68,3 +68,7 @@ The existing GitHub check workflow runs repository verification. The original te
 Portrait phones keep the seven animated chapters even below 700px browser height. All devices use native document scrolling and the original sticky header. Reduced motion, no JavaScript, and short landscape layouts retain every scene.
 
 `docs/qa/safari.cjs` checks the iPhone 15 Pro Max profile in WebKit, including expanded-toolbar heights, scene fit, menu anchors, reduced motion, and no-JavaScript fallback. Run it with Playwright/WebKit available in `NODE_PATH` and optional `LABCAST_BASE_URL`. The 659px case substitutes a 59px top safe area in served CSS; these engine checks do not reproduce Safari's native status bar UI.
+
+### Browser appearance
+
+The shared head supplies the paper theme color, light color scheme, app name, Apple home-screen title, touch icon, and `site.webmanifest`. The manifest uses normal browser display with 192px and 512px icons. This does not add offline caching, a service worker, standalone mode, or an install prompt. Browser toolbar tinting remains browser-controlled.

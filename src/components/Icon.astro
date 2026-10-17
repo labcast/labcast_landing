@@ -1,0 +1,34 @@
+---
+interface Props {
+  name?: 'arrow' | 'back' | 'check' | 'plus' | 'copy' | 'menu' | 'replay';
+  class?: string;
+}
+const { name = 'arrow', class: className } = Astro.props;
+const paths = {
+  arrow: ['M6 18 18 6M6 6h12v12'],
+  back: ['M19 12H5m7-7-7 7 7 7'],
+  check: ['m5 12 4 4L19 6'],
+  plus: ['M12 5v14M5 12h14'],
+  copy: ['M8 8h12v12H8z', 'M16 8V4H4v12h4'],
+  replay: ['M4 10a8 8 0 1 1 2.3 8', 'M4 4v6h6'],
+  menu: ['M4 8h16', 'M4 16h16'],
+};
+---
+
+<svg
+  class:list={['icon', `icon-${name}`, className]}
+  width="20"
+  height="20"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2.2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  aria-hidden="true"
+  focusable="false"
+>
+  {paths[name].map((d) => (
+    <path d={d} />
+  ))}
+</svg>

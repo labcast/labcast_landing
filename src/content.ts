@@ -3,9 +3,9 @@ export const site = {
   name: 'Labcast',
   domain: 'https://labcast.ai',
   email: 'hello@labcast.ai',
-  title: 'Labcast — Live broadcasting from your phones',
+  title: 'Labcast — Professional live broadcasts from your phones',
   description:
-    'Turn phone cameras into a live broadcast. Labcast handles switching, replays, graphics, and commentary for creators, events, and sports. Join the waitlist.',
+    'Turn your phone cameras into a professional-looking live show. Labcast handles camera switching, replays, commentary, and graphics for you. Made for streamers, local events, and club sports. Join the waitlist for early-access updates.',
   image: {
     path: '/social.png',
     width: 1200,
