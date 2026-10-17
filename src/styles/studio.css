@@ -267,8 +267,8 @@
   }
   .replay-loop {
     position: absolute;
-    bottom: -5%;
-    right: -1%;
+    bottom: 2%;
+    right: 4%;
     display: grid;
     place-items: center;
     width: 22%;
