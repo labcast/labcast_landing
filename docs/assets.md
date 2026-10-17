@@ -44,4 +44,4 @@ Local SVG path data in `src/platforms.ts`, rendered by `Platform.astro`. Twitch,
 
 ## Interface icons
 
-`src/components/Icon.astro` contains original 24px SVG paths for actions, back navigation, checks, disclosure, copying, and the mobile menu. They use one stroke width and inherit the text color. The brand platform icons remain separately sourced as documented above. `public/icon-192.png` is a direct 192px render of the existing SVG favicon for the browser manifest.
+`src/components/Icon.astro` contains original 24px SVG paths for actions, back navigation, checks, disclosure, copying, replay, and the mobile menu. They use one stroke width and inherit the text color. The brand platform icons remain separately sourced as documented above. `public/icon-192.png` is a direct 192px render of the existing SVG favicon for the browser manifest.

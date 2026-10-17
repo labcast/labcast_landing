@@ -167,7 +167,11 @@ const scenes = [
                   <span></span> ON AIR
                 </span>
               )}
-              {i === 3 && <span class="replay-badge">↶ REPLAY</span>}
+              {i === 3 && (
+                <span class="replay-badge">
+                  <Icon name="replay" /> REPLAY
+                </span>
+              )}
               {i === 4 && (
                 <>
                   <div class="score">
@@ -254,7 +258,7 @@ const scenes = [
             )}
             {i === 3 && (
               <span class="replay-loop" aria-hidden="true">
-                ↶
+                <Icon name="replay" />
               </span>
             )}
             {i === 4 && (

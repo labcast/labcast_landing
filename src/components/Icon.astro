@@ -1,6 +1,6 @@
 ---
 interface Props {
-  name?: 'arrow' | 'back' | 'check' | 'plus' | 'copy' | 'menu';
+  name?: 'arrow' | 'back' | 'check' | 'plus' | 'copy' | 'menu' | 'replay';
   class?: string;
 }
 const { name = 'arrow', class: className } = Astro.props;
@@ -10,6 +10,7 @@ const paths = {
   check: ['m5 12 4 4L19 6'],
   plus: ['M12 5v14M5 12h14'],
   copy: ['M8 8h12v12H8z', 'M16 8V4H4v12h4'],
+  replay: ['M4 10a8 8 0 1 1 2.3 8', 'M4 4v6h6'],
   menu: ['M4 8h16', 'M4 16h16'],
 };
 ---

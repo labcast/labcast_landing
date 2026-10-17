@@ -48,7 +48,7 @@
     --mono: 'IBM Plex Mono', monospace;
     font-family: 'Manrope Variable', sans-serif;
     font-synthesis: none;
-    background: var(--paper);
+    background: var(--ink);
     color: var(--ink);
     scroll-padding-top: calc(var(--header-height) + 12px);
   }
@@ -59,6 +59,8 @@
   }
   body {
     min-width: 320px;
+    min-height: 100svh;
+    background: var(--paper);
     -webkit-font-smoothing: antialiased;
   }
   /* A small repeating ink screen keeps the paper texture crisp at every size.
