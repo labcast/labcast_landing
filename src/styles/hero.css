@@ -1,7 +1,7 @@
 @layer components {
   .hero {
     position: relative;
-    min-height: max(760px, calc(100svh - 89px));
+    min-height: max(760px, calc(100svh - var(--header-height)));
     isolation: isolate;
     overflow: hidden;
     display: flex;
@@ -161,7 +161,7 @@
   }
   @media (max-width: 700px) {
     .hero {
-      min-height: calc(100svh - 75px);
+      min-height: calc(100svh - var(--header-height));
     }
     .hero-copy {
       margin-block: 0;

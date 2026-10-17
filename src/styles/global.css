@@ -38,6 +38,7 @@
   :root {
     color-scheme: light;
     --paper: #f5f3eb;
+    --header-height: calc(89px + env(safe-area-inset-top, 0px));
     --ink: #191b17;
     --orange: #ff623b;
     --lime: #dfff7f;
@@ -48,7 +49,12 @@
     font-synthesis: none;
     background: var(--paper);
     color: var(--ink);
-    scroll-padding-top: 100px;
+    scroll-padding-top: calc(var(--header-height) + 12px);
+  }
+  @media (max-width: 760px) {
+    :root {
+      --header-height: calc(75px + env(safe-area-inset-top, 0px));
+    }
   }
   body {
     min-width: 320px;

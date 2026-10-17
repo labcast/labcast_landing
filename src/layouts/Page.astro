@@ -15,36 +15,89 @@ const {
   noindex = false,
 } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site ?? site.domain).href;
-const social = new URL('/social.png', Astro.site ?? site.domain).href;
+const social = new URL(site.image.path, Astro.site ?? site.domain).href;
+const home = new URL('/', Astro.site ?? site.domain).href;
+const schema =
+  Astro.url.pathname === '/' && !noindex
+    ? {
+        '@context': 'https://schema.org',
+        '@graph': [
+          {
+            '@type': 'Organization',
+            '@id': `${home}#organization`,
+            name: site.name,
+            url: home,
+            description: site.description,
+            email: site.email,
+            logo: {
+              '@type': 'ImageObject',
+              url: new URL('/logo.png', home).href,
+              width: 512,
+              height: 512,
+            },
+          },
+          {
+            '@type': 'WebSite',
+            '@id': `${home}#website`,
+            name: site.name,
+            alternateName: 'Labcast.ai',
+            url: home,
+            description: site.description,
+            inLanguage: 'en',
+            publisher: { '@id': `${home}#organization` },
+          },
+        ],
+      }
+    : undefined;
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
     <title>{title}</title>
     <meta name="description" content={description} />
     <meta name="theme-color" content="#f5f3eb" />
-    {noindex && <meta name="robots" content="noindex, follow" />}
+    <meta
+      name="robots"
+      content={
+        noindex ? 'noindex, follow' : 'index, follow, max-image-preview:large'
+      }
+    />
     <link rel="canonical" href={canonical} />
+    <meta name="author" content={site.name} />
     <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en_US" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:site_name" content="Labcast" />
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={social} />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-    <meta
-      property="og:image:alt"
-      content="Labcast. Your phones. One big show. In development. Join the waitlist."
-    />
+    <meta property="og:image:secure_url" content={social} />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content={String(site.image.width)} />
+    <meta property="og:image:height" content={String(site.image.height)} />
+    <meta property="og:image:alt" content={site.image.alt} />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={social} />
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta name="twitter:image:alt" content={site.image.alt} />
+    <link rel="icon" href="/favicon-48.png" type="image/png" sizes="48x48" />
+    <link rel="icon" href="/favicon-96.png" type="image/png" sizes="96x96" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" sizes="any" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
+    <link rel="sitemap" href="/sitemap.xml" type="application/xml" />
+    {schema && (
+      <script
+        type="application/ld+json"
+        set:html={JSON.stringify(schema).replace(/</g, '\\u003c')}
+      />
+    )}
     <noscript>
       <style is:inline>
         .menu-toggle {

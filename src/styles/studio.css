@@ -14,7 +14,7 @@
   .story-section {
     background: #f4e8d5;
     border-block: 3px solid var(--ink);
-    scroll-margin-top: 86px;
+    scroll-margin-top: var(--header-height);
   }
   .story-sticky {
     padding-top: 16px;
@@ -396,7 +396,7 @@
     color: var(--muted);
   }
   .story-section.is-enhanced .story-sticky {
-    height: calc(100svh - 86px);
+    height: calc(100svh - var(--header-height));
     min-height: 580px;
     display: flex;
     flex-direction: column;
@@ -437,7 +437,7 @@
   }
   @media (max-width: 700px) {
     .story-section {
-      scroll-margin-top: 72px;
+      scroll-margin-top: var(--header-height);
     }
     .story-heading .tiny-label {
       font-size: 0.48rem;
@@ -479,7 +479,7 @@
       margin-top: 8px;
     }
     .story-section.is-enhanced .story-sticky {
-      height: calc(100svh - 72px);
+      height: calc(100svh - var(--header-height));
       min-height: 590px;
       padding-top: 4px;
     }
