@@ -37,7 +37,7 @@ const results = { checks: [], errors: [] };
         await page
           .locator('.header')
           .evaluate((e) => getComputedStyle(e).position),
-        'sticky',
+        'fixed',
       );
       const geometry = await page.locator('[data-story]').evaluate((el) => {
         const header = document
@@ -121,7 +121,7 @@ const results = { checks: [], errors: [] };
       assert.ok((await page.evaluate(() => scrollY)) > 0);
       await page.screenshot({ path: `/tmp/labcast-safari-${height}.png` });
       results.checks.push(
-        `430x${height}: all scenes forward/reverse, no overlap/cutoff, sticky header, native document scroll, menu anchors`,
+        `430x${height}: all scenes forward/reverse, no overlap/cutoff, fixed header, native document scroll, menu anchors`,
       );
       await page.emulateMedia({ reducedMotion: 'reduce' });
       await page.waitForTimeout(200);
