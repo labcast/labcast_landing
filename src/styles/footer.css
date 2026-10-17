@@ -111,3 +111,23 @@
     }
   }
 }
+
+@layer components {
+  .footer {
+    padding-bottom: calc(24px + env(safe-area-inset-bottom, 0px));
+  }
+  .footer-links a {
+    text-decoration: underline;
+    text-decoration-color: transparent;
+  }
+  .footer-links a:is(:hover, :focus-visible) {
+    text-decoration-color: currentColor;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .footer-links a {
+      transition:
+        color 180ms,
+        text-decoration-color 180ms;
+    }
+  }
+}

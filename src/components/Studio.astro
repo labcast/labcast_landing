@@ -1,4 +1,5 @@
 ---
+import Icon from './Icon.astro';
 import { Image } from 'astro:assets';
 import crew from '../assets/crew.png';
 import action from '../assets/action.png';
@@ -82,7 +83,7 @@ const scenes = [
     <div class="story-heading container">
       <span class="tiny-label">FROM YOUR CREW TO THEIR SCREEN</span>
       <a href="#people" class="story-skip">
-        Meet your next show <span aria-hidden="true">↗</span>
+        Meet your next show <Icon />
       </a>
     </div>
     <div class="story-scenes container">
@@ -133,7 +134,7 @@ const scenes = [
             )}
             {i === 6 && (
               <a class="text-link" href="#waitlist">
-                Be part of it <span aria-hidden="true">↗</span>
+                Be part of it <Icon />
               </a>
             )}
           </div>
@@ -194,7 +195,11 @@ const scenes = [
               <div class="crew-tag" aria-hidden="true">
                 <Mark />
                 <span>YOUR CREW IS IN.</span>
-                <b>✓ ✓ ✓</b>
+                <b class="crew-checks">
+                  <Icon name="check" />
+                  <Icon name="check" />
+                  <Icon name="check" />
+                </b>
               </div>
             )}
             {i === 1 && (
@@ -203,7 +208,9 @@ const scenes = [
                   <Mark /> LABCAST
                 </span>
                 <strong>Broadcast, handled.</strong>
-                <small>✓ Following the action.</small>
+                <small>
+                  <Icon name="check" /> Following the action.
+                </small>
               </div>
             )}
             {(i === 2 || i === 5) && (
@@ -266,7 +273,10 @@ const scenes = [
               <div class="director-choice" aria-hidden="true">
                 <span>Labcast</span>
                 <span class="selected">
-                  You <b>✓</b>
+                  You{' '}
+                  <b>
+                    <Icon name="check" />
+                  </b>
                 </span>
               </div>
             )}

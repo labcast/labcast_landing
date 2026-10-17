@@ -1,4 +1,5 @@
 ---
+import Icon from '../components/Icon.astro';
 import Page from '../layouts/Page.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
@@ -95,12 +96,12 @@ import '../styles/thanks.css';
         </div>
         <label class="reply-choice">
           <input type="checkbox" name="access-contact" value="yes" />
-          You can contact me about a early access.
+          You can contact me about early access.
         </label>
         <div class="details-actions">
           <button type="submit" class="button">
             <span data-submit-label>Save my details</span>
-            <span aria-hidden="true">↗</span>
+            <Icon />
           </button>
           <a href="/" class="text-link">
             Skip for now
@@ -109,7 +110,7 @@ import '../styles/thanks.css';
         <p id="details-error" class="form-message" role="alert"></p>
       </form>
       <p data-details-success hidden tabindex="-1" class="details-success">
-        ✓ Thanks. Your details have been received. We’ll get in touch if a early
+        Thanks. Your details have been received. We’ll get in touch if a early
         access is available.
       </p>
     </div>
@@ -117,7 +118,7 @@ import '../styles/thanks.css';
       <h2>Know who would run this for your crew?</h2>
       <p>Send them Labcast. Good shows start with good people.</p>
       <button type="button" class="button button-lime" data-share>
-        Copy Labcast link <span aria-hidden="true">↗</span>
+        Copy Labcast link <Icon name="copy" />
       </button>
       <p class="form-note" data-share-status role="status"></p>
       <p class="share-fallback">

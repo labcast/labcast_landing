@@ -73,3 +73,36 @@
     }
   }
 }
+
+@layer components {
+  .questions .question-toggle {
+    display: grid;
+    place-items: center;
+    flex: none;
+  }
+  .question-toggle .icon {
+    width: 18px;
+    height: 18px;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .questions summary,
+    .questions .question-toggle {
+      transition:
+        background-color 180ms,
+        transform 220ms cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .questions details[open] > p {
+      animation: answer-in 220ms ease-out;
+    }
+    @keyframes answer-in {
+      from {
+        opacity: 0;
+        transform: translateY(-4px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  }
+}

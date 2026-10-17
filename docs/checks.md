@@ -112,3 +112,13 @@ Supersedes the inner scroller above. The founder reported severe scene vibration
 The production WebKit check also exposed intermittent first-entry pin positioning with the inner scroller and simulated safe-area CSS. Preview checks had passed; those results did not establish physical-device smoothness.
 
 After restoring document scrolling, `qa/safari.cjs` passed all seven chapters forward/reverse at 430×739, 699, 659 (simulated 59px inset), and 580, plus menu anchors, reduced motion, no JavaScript, and no page errors. `pnpm verify` passes.
+
+### Consistent controls and browser appearance — October 16, 2026
+
+Replaced action arrows, checkmarks, and FAQ/menu symbols with one original SVG icon component. The mobile menu has a 44px ink/lime toggle that transitions to a close icon and a separate, numbered navigation panel. Opening it does not resize the sticky header or change story geometry. Escape returns focus; selecting a link, clicking outside, moving focus outside, and resizing to desktop close the panel. Safari button colors are explicit. Primary controls, links, FAQ disclosure, fields, and selected options have short press/focus/hover transitions; reduced motion disables them.
+
+Mobile scene rows share caption/artwork tracks with CSS subgrid, replacing the stretched first row. The persistent broadcast remains aligned through feature scenes. WebKit checks at 550×1000 and 430×932 measured a 20px caption-to-art gap in the streaming chapter. All seven chapters pass forward/reverse and fit checks at the four shorter iPhone sizes, including simulated safe-area padding.
+
+Added a browser-mode web manifest, 192px app icon, application name, Apple home-screen title, and explicit light color scheme. The existing theme color and touch icon remain. No service worker, offline cache, standalone mode, or install prompt was added. Safari toolbar sampling is controlled by the browser; physical toolbar color cannot be established by WebKit automation. See [the WebKit explanation](https://bugs.webkit.org/show_bug.cgi?id=301756#c2). The footer includes the bottom safe area.
+
+Validation: Astro/TypeScript/build and formatting pass; the browser suite passes 17 checks, nine widths without overflow, and six axe scans without violations. Seven chapter checks pass, including persistent artwork alignment, native wheel movement, and a native phone gesture. WebKit menu checks pass for ink color, unchanged header height, open/close, Escape focus, outside click, manifest and icon responses, and tall-window spacing. No page errors.

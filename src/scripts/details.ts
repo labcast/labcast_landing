@@ -71,8 +71,8 @@ if (form) {
       )!;
       // Early-access invitations only follow explicit permission.
       success.textContent = requestedContact
-        ? '✓ Thanks. Your details have been received. We’ll get in touch if a early access is available.'
-        : '✓ Thanks. Your details have been received. They’ll help us understand what people want to broadcast.';
+        ? 'Thanks. Your details have been received. We’ll get in touch if early access is available.'
+        : 'Thanks. Your details have been received. They’ll help us understand what people want to broadcast.';
       success.hidden = false;
       success.focus({ preventScroll: true });
     } catch {

@@ -1,4 +1,5 @@
 ---
+import Icon from './Icon.astro';
 import '../styles/header.css';
 import Mark from './Mark.astro';
 import { navigation } from '../content';
@@ -15,16 +16,22 @@ import { navigation } from '../content';
       type="button"
       aria-expanded="false"
       aria-controls="navigation"
+      aria-label="Open menu"
     >
-      <span>Menu</span>
-      <span aria-hidden="true">+</span>
+      <Icon name="menu" />
     </button>
     <nav id="navigation" class="navigation" aria-label="Main navigation">
-      {navigation.map((link) => (
-        <a href={link.href}>{link.label}</a>
+      {navigation.map((link, index) => (
+        <a href={link.href} class="nav-link">
+          <span class="nav-index" aria-hidden="true">
+            0{index + 1}
+          </span>
+          <span>{link.label}</span>
+          <Icon />
+        </a>
       ))}
       <a href="/#waitlist" class="nav-cta">
-        Join the waitlist <span aria-hidden="true">↗</span>
+        Join the waitlist <Icon />
       </a>
     </nav>
   </div>

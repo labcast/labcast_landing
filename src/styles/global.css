@@ -20,6 +20,7 @@
     font: inherit;
   }
   button {
+    color: inherit;
     cursor: pointer;
   }
   a {
@@ -87,7 +88,7 @@
     color: var(--ink);
   }
   :focus-visible {
-    outline: 3px solid #3153ce;
+    outline: 3px solid var(--ink);
     outline-offset: 5px;
   }
   h1,

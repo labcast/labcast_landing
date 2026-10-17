@@ -747,10 +747,53 @@
   }
   @media (max-width: 700px) and (max-height: 600px) and (orientation: portrait) {
     .story-section.is-enhanced {
-      --story-copy-room: 240px;
+      --story-copy-room: 260px;
     }
     .story-section.is-enhanced .scene-description {
       display: none;
+    }
+  }
+}
+
+@layer components {
+  .crew-checks,
+  .production-card small {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .crew-checks .icon,
+  .production-card small .icon,
+  .angle-view b .icon {
+    width: 1em;
+    height: 1em;
+  }
+}
+
+@layer responsive {
+  @media (max-width: 700px) {
+    /* Shared rows keep the broadcast aligned without stretching the space
+       between the caption and artwork on narrow, tall windows. */
+    .story-section.is-enhanced .story-scenes {
+      grid-template-columns: 1fr;
+      grid-template-rows: max-content auto;
+      align-content: center;
+      row-gap: 20px;
+      padding-block: 16px 8px;
+    }
+    .story-section.is-enhanced .story-scene,
+    .story-section.is-enhanced .story-backdrop {
+      grid-area: 1 / 1 / 3 / 2;
+      grid-template-rows: subgrid;
+      align-content: normal;
+      row-gap: inherit;
+      padding-block: 0;
+    }
+  }
+  @media (max-width: 700px) and (max-height: 760px) and (orientation: portrait) {
+    .story-section.is-enhanced .story-scenes {
+      row-gap: 12px;
+      padding-block: 10px 0;
     }
   }
 }
