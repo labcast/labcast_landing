@@ -1,6 +1,6 @@
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import './scroll';
+gsap.registerPlugin(ScrollTrigger);
 const story = document.querySelector<HTMLElement>('[data-story]');
 if (story) {
   const preload = new IntersectionObserver(([entry]) => {

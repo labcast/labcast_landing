@@ -104,3 +104,11 @@ On touch devices, the header now lives outside a native page scroller. The outer
 `qa/safari.cjs` passed all chapters forward/reverse, no copy/art overlap or clipping, header position, and menu anchors at 430×739, 699, 659, and 580. The 659px repeat also passed with a simulated 59px top inset. Reduced motion and no-JavaScript checks passed. `qa/chapters.cjs` passed all seven checks, including a real Chromium touch gesture inside the new scroller; the standard browser suite passed 17 checks and six axe scans without violations. These are WebKit/Chromium and simulated-inset checks, not physical iPhone Safari chrome verification.
 
 The prior PNG export fault was corrected in PR #2 by rendering directly from SVG with Sharp. Production bytes for the 96px icon, Apple icon, and 512px logo matched the corrected local files. Production HTTPS, metadata, absence of the Netlify badge, and processed form definitions were verified; no live form submissions were sent.
+
+### Restore native document scrolling — October 16, 2026
+
+Supersedes the inner scroller above. The founder reported severe scene vibration on the physical iPhone after that change and requested the original scrolling behavior with no further motion changes. Removed the page scroller, stationary outer document, and GSAP scroller override; restored native document scrolling and the original sticky header. Kept the portrait height correction and compact scene sizing, so short portrait phones still receive the animated story. The fade timelines and persistent broadcast artwork are unchanged.
+
+The production WebKit check also exposed intermittent first-entry pin positioning with the inner scroller and simulated safe-area CSS. Preview checks had passed; those results did not establish physical-device smoothness.
+
+After restoring document scrolling, `qa/safari.cjs` passed all seven chapters forward/reverse at 430×739, 699, 659 (simulated 59px inset), and 580, plus menu anchors, reduced motion, no JavaScript, and no page errors. `pnpm verify` passes.
