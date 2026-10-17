@@ -1,45 +1,106 @@
 ---
 import '../styles/hero.css';
-import Studio from './Studio.astro';
-import { hero } from '../content';
+import { Image } from 'astro:assets';
+import crew from '../assets/crew.png';
+import { site } from '../content';
+import Showcase from './Showcase.astro';
 ---
 
-<section class="hero container" id="top" aria-labelledby="hero-title">
-  <div class="hero-copy">
+<section class="hero" id="top" aria-labelledby="hero-title">
+  <div class="hero-art" aria-hidden="true">
+    <Image
+      src={crew}
+      alt=""
+      widths={[800, 1200, 1536]}
+      sizes="100vw"
+      format="webp"
+      quality={80}
+      loading="eager"
+      fetchpriority="high"
+    />
+  </div>
+  <div class="hero-copy container">
     <p class="eyebrow">
-      <span class="status-dot"></span> {hero.eyebrow}
+      <span class="status-dot"></span> SMALL CREW. BIG POSSIBILITIES.
     </p>
     <h1 id="hero-title">
-      {hero.headline[0]}
-      <br />
-      <span>{hero.headline[1]}</span>
+      <span class="hero-line">Your phones.</span>
+      <span class="hero-highlight">
+        One big show<span class="hero-period">.</span>
+      </span>
     </h1>
-    <p class="hero-description">{hero.lead}</p>
-    <p class="hero-detail">{hero.description}</p>
-    <div class="hero-actions">
-      <a class="button button-lime" href="#contact">
-        {hero.action} <span aria-hidden="true">↗</span>
-      </a>
-      <a class="text-link" href="#workflow">
-        See how it works <span aria-hidden="true">↓</span>
-      </a>
-    </div>
-    <div class="development-note">
-      <span class="small-cross" aria-hidden="true">
-        +
-      </span>
-      <span>{hero.note}</span>
-    </div>
-  </div>
-  <div class="hero-visual">
-    <Studio />
-    <div class="visual-note">
-      <span class="note-line"></span>
-      <span>
-        THE PEOPLE ARE ALREADY THERE.
-        <br />
-        THE CAMERAS ARE, TOO.
-      </span>
+    <p class="hero-description">
+      You bring the cameras. Labcast handles the broadcast—from switching views
+      to replays, commentary, and graphics.
+    </p>
+    <div class="waitlist" id="waitlist">
+      <p class="waitlist-stage">
+        <span class="status-dot"></span> In development · Get early-access
+        updates
+      </p>
+      <form
+        name="waitlist"
+        method="POST"
+        action="/thanks/"
+        data-netlify="true"
+        netlify-honeypot="website"
+        data-form="waitlist"
+      >
+        <input type="hidden" name="form-name" value="waitlist" />
+        <input type="hidden" name="signup-version" value={site.signupVersion} />
+        <input type="hidden" name="source" value="website" />
+        <input type="hidden" name="campaign" value="" />
+        <input type="hidden" name="audience" value="" />
+        <p class="honeypot" aria-hidden="true">
+          <label>
+            Leave empty
+            <input name="website" tabindex="-1" autocomplete="off" />
+          </label>
+        </p>
+        <label for="waitlist-email" class="email-label">
+          Email address
+        </label>
+        <div class="signup-row">
+          <input
+            id="waitlist-email"
+            name="email"
+            type="email"
+            required
+            autocomplete="email"
+            maxlength="254"
+            placeholder="you@example.com"
+            aria-describedby="signup-note signup-error"
+          />
+          <button class="button" type="submit">
+            <span data-submit-label>Join the waitlist</span>
+            <span aria-hidden="true">↗</span>
+          </button>
+        </div>
+        <p id="signup-error" class="form-message" role="alert"></p>
+        <p id="signup-note" class="form-note">
+          Free to join. Occasional updates. Leave anytime.
+          <br />
+          By joining, you agree to receive Labcast updates.{' '}
+          <a href="/privacy/">Privacy</a>
+        </p>
+      </form>
+      <div class="signup-success" data-signup-success hidden tabindex="-1">
+        <span class="success-icon" aria-hidden="true">
+          ✓
+        </span>
+        <div>
+          <strong>You’re on the list.</strong>
+          <p>We’ll be in touch with updates.</p>
+          <a href="/thanks/" class="text-link">
+            What would you broadcast? <span aria-hidden="true">↗</span>
+          </a>
+        </div>
+      </div>
     </div>
   </div>
 </section>
+<Showcase />
+<script>
+  import '../scripts/contact';
+  import '../scripts/hero';
+</script>

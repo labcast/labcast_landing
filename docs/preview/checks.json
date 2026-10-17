@@ -1,0 +1,105 @@
+{
+  "date": "2026-10-16T21:15:40.321Z",
+  "checks": [
+    "Metadata, static Netlify form definition, and attribution",
+    "Unprocessed local preview refuses false signup success",
+    "Invalid email has an accessible error and recovers on input",
+    "Seven-feature scroll story is initialized without player controls",
+    "Public homepage omits development history and repeated concept labels",
+    "FAQ disclosure",
+    "No horizontal overflow at nine widths from 320 to 1920",
+    "Mobile menu opens, closes on navigation, and restores focus on Escape",
+    "HTTP failure preserves email and permits retry",
+    "Accepted response, duplicate-submit protection, correct encoded fields, private email handoff",
+    "Optional details associate by email, preserve input on failure, and respect access-contact opt-in",
+    "Direct or refreshed thanks page does not fabricate signup confirmation",
+    "Sharing offers a usable fallback when clipboard access fails",
+    "Reduced motion retains all seven illustrated feature scenes without pinning",
+    "No-JavaScript navigation, native POST form, and static broadcast remain available",
+    "All public pages render with one main heading and loaded images",
+    "No JavaScript errors or third-party browser requests"
+  ],
+  "layouts": [
+    {
+      "width": 320,
+      "viewport": 320,
+      "document": 320
+    },
+    {
+      "width": 375,
+      "viewport": 375,
+      "document": 375
+    },
+    {
+      "width": 390,
+      "viewport": 390,
+      "document": 390
+    },
+    {
+      "width": 600,
+      "viewport": 600,
+      "document": 600
+    },
+    {
+      "width": 768,
+      "viewport": 768,
+      "document": 768
+    },
+    {
+      "width": 850,
+      "viewport": 850,
+      "document": 850
+    },
+    {
+      "width": 1024,
+      "viewport": 1024,
+      "document": 1024
+    },
+    {
+      "width": 1440,
+      "viewport": 1440,
+      "document": 1440
+    },
+    {
+      "width": 1920,
+      "viewport": 1920,
+      "document": 1920
+    }
+  ],
+  "accessibility": [
+    {
+      "route": "/",
+      "width": 1440,
+      "violations": []
+    },
+    {
+      "route": "/",
+      "width": 390,
+      "violations": []
+    },
+    {
+      "route": "/thanks/",
+      "width": 390,
+      "violations": []
+    },
+    {
+      "route": "/privacy/",
+      "width": 390,
+      "violations": []
+    },
+    {
+      "route": "/credits/",
+      "width": 1440,
+      "violations": []
+    },
+    {
+      "route": "/404.html",
+      "width": 390,
+      "violations": []
+    }
+  ],
+  "errors": [],
+  "failures": [],
+  "complete": true,
+  "externalRequests": []
+}

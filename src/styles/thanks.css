@@ -1,0 +1,98 @@
+@layer components {
+  .thanks-page {
+    max-width: 760px;
+  }
+  .details-panel {
+    border: 2px solid var(--ink);
+    padding: 30px;
+    margin-block: 32px;
+    background: #fffdf6;
+    box-shadow: 6px 6px 0 var(--lime);
+  }
+  .details-panel h2 {
+    margin: 0 0 8px;
+  }
+  .details-panel form {
+    margin-top: 26px;
+    display: grid;
+    gap: 24px;
+  }
+  .details-panel fieldset {
+    padding: 0;
+    border: 0;
+    margin: 0;
+    min-width: 0;
+  }
+  .details-panel legend {
+    font-size: 0.85rem;
+    font-weight: 750;
+    margin-bottom: 12px;
+  }
+  .role-choices {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  .role-choices label {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    border: 1px solid var(--ink);
+    padding: 12px;
+    font-size: 0.8rem;
+    cursor: pointer;
+  }
+  .role-choices label:has(:checked) {
+    background: var(--lime);
+  }
+  .role-choices input,
+  .reply-choice input {
+    width: 17px;
+    height: 17px;
+    accent-color: var(--ink);
+    flex: none;
+  }
+  .reply-choice {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 0.78rem;
+  }
+  .details-actions {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .details-actions .button {
+    margin-top: 0;
+  }
+  .details-success {
+    background: var(--lime);
+    padding: 20px;
+    margin-top: 20px;
+  }
+  .share-panel {
+    padding-bottom: 28px;
+    border-bottom: 1px solid var(--line);
+    margin-bottom: 24px;
+  }
+  .share-panel h2 {
+    font-size: 1.8rem;
+    line-height: 1.15;
+  }
+  .share-fallback {
+    font-size: 0.8rem;
+    margin-top: 14px;
+  }
+}
+@layer responsive {
+  @media (max-width: 500px) {
+    .details-panel {
+      padding: 22px;
+    }
+    .role-choices {
+      grid-template-columns: 1fr;
+    }
+  }
+}

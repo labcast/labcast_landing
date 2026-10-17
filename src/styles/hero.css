@@ -1,196 +1,220 @@
-@layer layout {
+@layer components {
   .hero {
-    display: grid;
-    grid-template-columns: 1.05fr 1fr;
-    align-items: center;
-    gap: 64px;
-    padding-block: 100px 88px;
+    position: relative;
+    min-height: max(760px, calc(100svh - 89px));
+    isolation: isolate;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
   }
-
-  .hero-copy,
-  .hero-visual {
-    min-width: 0;
+  .hero-art {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
   }
-
-  h1 {
-    margin-top: 26px;
-    font-size: clamp(3rem, 5.55vw, 5.2rem);
-    line-height: 1.07;
-    letter-spacing: -0.07em;
+  .hero-art img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 48%;
   }
-
-  h1 > span {
-    color: var(--lime);
-    white-space: nowrap;
+  .hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background:
+      linear-gradient(
+        90deg,
+        #f5f3ebfa 0%,
+        #f5f3ebed 27%,
+        #f5f3ebaa 43%,
+        #f5f3eb00 69%
+      ),
+      linear-gradient(0deg, #f5f3ebcc, transparent 30%);
   }
-
+  .hero-copy {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-block: auto;
+    padding-block: 48px 56px;
+  }
+  .hero-copy > .eyebrow {
+    margin-bottom: 20px;
+    padding: 7px 11px;
+    background: var(--paper);
+    border: 2px solid var(--ink);
+    box-shadow: 3px 3px 0 var(--ink);
+  }
+  .hero h1 {
+    font-size: clamp(4rem, 8vw, 8rem);
+    letter-spacing: -0.075em;
+    line-height: 1;
+    max-width: 900px;
+  }
+  .hero-line {
+    display: block;
+    margin-bottom: 12px;
+  }
+  .hero-highlight {
+    display: inline-block;
+    background: var(--lime);
+    border: 3px solid var(--ink);
+    padding: 0 16px 10px 10px;
+    box-shadow: 7px 7px 0 var(--ink);
+    transform: rotate(-1deg);
+  }
+  .hero-period {
+    color: var(--orange);
+  }
   .hero-description {
-    margin-top: 27px;
-    font-size: 1.13rem;
+    font-weight: 700;
+    font-size: 1.06rem;
+    line-height: 1.5;
+    margin-top: 23px;
+    max-width: 475px;
     letter-spacing: -0.02em;
   }
-
-  .hero-detail {
-    max-width: 440px;
-    margin-top: 10px;
-    font-size: 0.91rem;
-    color: var(--muted);
+  .waitlist {
+    margin-top: 22px;
+    width: min(100%, 530px);
+    scroll-margin-top: 110px;
   }
-
-  .hero-actions {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 24px;
-    margin-top: 30px;
+  .hero-story-link {
+    margin-top: 18px;
+    font-size: 0.76rem;
   }
-
-  .development-note {
-    margin-top: 46px;
+  .waitlist-stage {
     display: flex;
     align-items: center;
-    gap: 12px;
-    color: #a3ad99;
-    font: 0.62rem/1.7 var(--mono);
+    gap: 8px;
+    font-size: 0.69rem;
+    font-weight: 650;
+    margin-bottom: 12px;
   }
-
-  .development-note .small-cross {
-    font-size: 1rem;
+  .waitlist-stage .status-dot {
+    color: #4b6733;
+    width: 5px;
+    height: 5px;
   }
-
-  .visual-note {
+  .email-label {
+    font-size: 0.75rem;
+    display: block;
+    margin-bottom: 6px;
+  }
+  .signup-row {
     display: flex;
-    align-items: flex-start;
-    gap: 14px;
-    justify-content: flex-end;
-    margin-top: 19px;
-    color: #929c88;
-    font: 0.58rem/1.7 var(--mono);
-    letter-spacing: 0.08em;
+    max-width: 510px;
+    box-shadow: 6px 6px 0 var(--ink);
   }
-
-  .note-line {
-    height: 1px;
-    width: 35px;
-    background: #6b795e;
-    margin-top: 7px;
+  .signup-row input {
+    flex: 1;
+    width: 0;
+    min-height: 54px;
+    border-width: 3px;
+    border-right: 0;
+    font-size: 0.85rem;
+  }
+  .signup-row .button {
+    flex: none;
+    gap: 16px;
+    padding-inline: 16px;
+    background: var(--orange);
+    color: var(--ink);
+    border-width: 3px;
+  }
+  .signup-row .button:hover {
+    transform: none;
+    box-shadow: none;
+    background: var(--lime);
+  }
+  .waitlist .form-note {
+    margin-top: 13px;
+    font-size: 0.67rem;
+  }
+  .signup-success {
+    display: flex;
+    gap: 16px;
+    border: 2px solid var(--ink);
+    background: var(--lime);
+    padding: 20px;
+    box-shadow: 4px 4px 0 var(--ink);
+  }
+  .signup-success p {
+    font-size: 0.8rem;
+  }
+  .success-icon {
+    font-size: 1.6rem;
   }
 }
-
 @layer responsive {
-  @media (min-width: 1600px) {
-    .hero {
-      padding-block: 125px;
-    }
-  }
-
   @media (max-width: 1100px) {
-    .hero {
-      gap: 36px;
-      padding-block: 72px;
+    .hero h1 {
+      font-size: 7.8vw;
     }
-
-    h1 {
-      font-size: clamp(2.8rem, 5.5vw, 4.7rem);
-    }
-
-    .hero-description {
-      font-size: 1rem;
-    }
-
-    .hero-detail {
-      font-size: 0.85rem;
-    }
-
-    .hero-actions {
-      gap: 16px;
-    }
-
-    .hero-actions .text-link {
-      font-size: 0.73rem;
-      gap: 8px;
+    .hero::after {
+      background:
+        linear-gradient(90deg, #f5f3ebfa 0%, #f5f3ebdd 35%, #f5f3eb00 86%),
+        linear-gradient(0deg, #f5f3ebdf, transparent 45%);
     }
   }
-
-  @media (max-width: 850px) {
+  @media (max-width: 700px) {
     .hero {
-      grid-template-columns: 1fr;
-      gap: 56px;
-      padding-block: 64px 46px;
+      min-height: calc(100svh - 75px);
     }
-
     .hero-copy {
-      max-width: 640px;
+      margin-block: 0;
+      padding-block: 26px 28px;
     }
-
-    h1 {
-      font-size: clamp(3rem, 8.8vw, 5.2rem);
+    .hero h1 {
+      font-size: 13.1vw;
+      max-width: 100%;
     }
-
-    .hero-detail {
-      max-width: 510px;
-      font-size: 0.95rem;
+    .hero-highlight {
+      padding: 2px 9px 8px 6px;
+      box-shadow: 5px 5px 0 var(--ink);
     }
-
+    .hero-line {
+      margin-bottom: 10px;
+    }
+    .hero-copy > .eyebrow {
+      font-size: 0.51rem;
+      margin-bottom: 18px;
+    }
     .hero-description {
-      font-size: 1.2rem;
+      font-size: 0.9rem;
+      max-width: 340px;
+      margin-top: 18px;
     }
-
-    .hero-visual {
-      width: min(100% - 12px, 600px);
-      margin-inline: auto;
+    .hero-art {
+      inset: 220px 0 0;
     }
-
-    .development-note {
-      margin-top: 28px;
+    .hero-art img {
+      object-position: 62% center;
+    }
+    .hero::after {
+      background: linear-gradient(
+        180deg,
+        var(--paper) 0%,
+        #f5f3ebf5 38%,
+        #f5f3ebbb 54%,
+        #f5f3eb00 70%,
+        #f5f3ebdd 100%
+      );
+    }
+    .waitlist {
+      margin-top: 20px;
+    }
+    .hero-story-link {
+      margin-top: 8px;
     }
   }
-
-  @media (max-width: 600px) {
-    .hero {
-      padding-top: 48px;
-      gap: 40px;
-    }
-
-    h1 {
-      font-size: clamp(2.5rem, 10.3vw, 3.9rem);
-      margin-top: 22px;
-    }
-
-    .hero-description {
-      font-size: 1rem;
-      max-width: 290px;
-      margin-top: 22px;
-    }
-
-    .hero-detail {
-      font-size: 0.86rem;
-      margin-top: 12px;
-    }
-
-    .hero-actions {
-      gap: 18px;
-      margin-top: 26px;
-    }
-
-    .hero-actions .text-link {
-      font-size: 0.75rem;
-    }
-
-    .hero-actions .button {
-      font-size: 0.75rem;
-      gap: 18px;
-      padding-inline: 15px;
-    }
-
-    .development-note {
-      font-size: 0.55rem;
+  @media (max-width: 420px) {
+    .signup-row .button {
+      padding-inline: 12px;
+      font-size: 0.74rem;
       gap: 8px;
-    }
-
-    .visual-note {
-      margin-top: 15px;
-      font-size: 0.5rem;
     }
   }
 }

@@ -1,114 +1,94 @@
-// Public copy and shared site settings. Section components own presentation.
+// Shared public copy. Capabilities describe the product in development.
 export const site = {
   name: 'Labcast',
   domain: 'https://labcast.ai',
-  title: 'Labcast — Every angle. One great show.',
+  email: 'hello@labcast.ai',
+  title: 'Labcast — Your phones. One big show.',
   description:
-    'Labcast is building a simpler way to broadcast live events, bringing volunteer phone cameras, guided coverage, and production into one show.',
-  tagline: 'A shared moment. A better broadcast.',
+    'You bring the cameras. Labcast handles the live broadcast—shot selection, replays, commentary, and graphics. Join the waitlist.',
+  signupVersion: '2026-10-16',
 };
-
 export const navigation = [
-  { href: '#idea', label: 'The idea' },
-  { href: '#workflow', label: 'How it works' },
-  { href: '#pilot', label: 'The pilot' },
+  { href: '/#workflow', label: 'How it works' },
+  { href: '/#people', label: 'Made for you' },
+  { href: '/#questions', label: 'Questions' },
 ];
-
-export const hero = {
-  eyebrow: 'A NEW WAY TO GO LIVE',
-  headline: ['Every angle.', 'One great show.'],
-  lead: 'The best view isn’t always behind one camera.',
-  description:
-    'We’re building a way to turn the phones around your event into a coordinated crew—and bring it all together as one broadcast.',
-  action: 'Let’s plan a pilot',
-  note: 'In development. Made for moments worth sharing.',
-};
-
-export const events = ['Community events', 'Live talks', 'Local performances'];
-
-export const idea = {
-  headline: ['The room is full', 'of perspectives.', 'Let’s use them.'],
-  lead: 'A great event deserves more than a phone propped up at the back.',
-  paragraphs: [
-    'The speaker. The reaction. The moment everyone leans in. There’s a story happening across the room, and people are already close to it.',
-    'Labcast brings those perspectives into a shared production workflow: a clear plan for the crew, useful camera angles, and a show that people can follow from anywhere.',
-  ],
-};
-
-export const workflow = {
-  headline: ['Your people.', 'Working in concert.'],
-  description:
-    'A production workflow built around the event, the crew, and the audience.',
-};
-
-export const pilot = {
-  headline: ['Let’s make', 'something', 'worth watching.'],
-  lead: 'We’re starting with one focused broadcast, together with an organizer who wants a better way to capture their event.',
-  description:
-    'We’ll agree on the venue, crew, connections, and production support before going live. The goal is simple: a show you’d want to make again.',
-  needs: [
-    'A real event with a clear story',
-    'People willing to join the camera crew',
-    'Time to test the setup together',
-  ],
-};
-
-export const contact = {
-  eyebrow: 'THE NEXT ANGLE COULD BE YOURS',
-  headline: ['Tell us what', 'you’re planning'],
-  lead: 'An upcoming event, an idea, a question.',
-  invitation: 'We’d like to hear about it.',
-  note: 'Labcast is in development. This is a conversation about a pilot, not a booking.',
-  success: 'Thanks for reaching out. Your enquiry has been sent to Labcast.',
-  action: 'Start a conversation',
-  privacy: 'We’ll use these details to respond to your enquiry.',
-  events: [
-    'Community event',
-    'Talk or conference',
-    'Live performance',
-    'Something else',
-  ],
-};
-
-export const steps = [
+export const audiences = [
   {
-    number: '01',
-    title: 'Bring your event.',
-    text: 'Start with the venue, the moments that matter, and the views you want to capture.',
-    tag: 'THE PLAN',
+    id: 'streamer',
+    label: 'For streamers',
+    title: 'More angles.\nMore of your show.',
+    image: 'streamer',
+    alt: 'A creator records at his desk with a phone and microphone.',
+    text: 'Interviews, demos, IRL adventures. Bring more of your world into the frame, with your personality at the center.',
+    action: 'Join as a streamer',
+    note: 'Your voice. Your show.',
   },
   {
-    number: '02',
-    title: 'Build your crew.',
-    text: 'Invite people to join with their phones. Give each camera a useful view and clear guidance.',
-    tag: 'THE PEOPLE',
+    id: 'organizer',
+    label: 'For event organizers',
+    title: 'The room is only\nthe beginning.',
+    image: 'audience',
+    alt: 'A small audience listens to a speaker at a creative workshop.',
+    text: 'You bring people together. We’re building a way to bring the moment to the people who can’t be in the room.',
+    action: 'Join as an organizer',
+    note: 'Small event. Bigger possibilities.',
   },
   {
-    number: '03',
-    title: 'Make it a show.',
-    text: 'Bring the angles together with replays, commentary, and graphics. Send the finished broadcast to your audience.',
-    tag: 'THE BROADCAST',
+    id: 'club',
+    label: 'For sports clubs',
+    title: 'Bring them\nto the sideline.',
+    image: 'game',
+    alt: 'A young batter swings during a baseball game while a catcher waits.',
+    text: 'For the families and fans who can’t make game day. We’re exploring coordinated phone broadcasts for local clubs.',
+    action: 'Join for my club',
+    note: 'For the fans who can’t be there.',
   },
 ];
 export const questions = [
   {
-    question: 'Can we use phones we already have?',
+    question: 'Can I use Labcast right now?',
     answer:
-      'That is the idea. Labcast is being designed around volunteer phone cameras. A pilot will help us check the devices, connections, and coverage needed for your venue.',
+      'Labcast is in development. Join the waitlist for updates and to hear when early access opens. There isn’t a public launch date yet.',
   },
   {
-    question: 'Is Labcast available today?',
+    question: 'What would I need?',
     answer:
-      'Labcast is in development. We are looking to work with event organizers on a focused first pilot, with the scope, costs, and human support agreed in advance.',
+      'The plan is to work with phone cameras, people willing to film, and suitable internet at the venue. Audio, power, and camera positions also matter.',
   },
   {
-    question: 'Where would the broadcast go?',
+    question: 'Does everyone at the event have to film?',
     answer:
-      'Our planned workflow sends a produced show to streaming destinations such as YouTube and Twitch. We will confirm the destination and connection requirements as part of each pilot.',
+      'No. Labcast is being built for willing volunteers or your chosen camera crew. Attending and filming are separate choices.',
   },
   {
-    question: 'What if a camera drops out?',
+    question: 'Do we have to follow camera directions?',
     answer:
-      'The system is being designed to make gaps visible, guide available replacements, and keep the remaining show going. An operator will be able to take control.',
+      'No. Labcast is being built to work with the views your crew provides. Camera tips are optional. You can let Labcast handle the production without directing the people filming.',
+  },
+  {
+    question: 'Can I stay in control?',
+    answer:
+      'Yes. We’re building in the ability to steer the show and take over whenever you want.',
+  },
+  {
+    question: 'Does this replace my current streaming tools?',
+    answer:
+      'Labcast is focused on producing a live show from phone cameras. Supported workflows and connections will be confirmed before early access.',
+  },
+  {
+    question: 'Where will viewers watch?',
+    answer:
+      'We’re building direct streaming to Twitch, YouTube, TikTok, and Instagram. Platform support, simultaneous streaming, and account eligibility will be confirmed before early access.',
+  },
+  {
+    question: 'Will it work for our sport?',
+    answer:
+      'We’re exploring youth and community sports and will validate specific formats first. Tell us your sport after joining so we can understand what your club needs.',
+  },
+  {
+    question: 'What will it cost?',
+    answer:
+      'The waitlist is free to join. Product pricing is still being worked out. We’ll share pricing before you commit to anything.',
   },
 ];

@@ -1,77 +1,282 @@
 ---
-import Stage from './Stage.astro';
+import { Image } from 'astro:assets';
+import crew from '../assets/crew.png';
+import action from '../assets/action.png';
+import viewers from '../assets/viewers.png';
+import reaction from '../assets/reaction.png';
+import Mark from './Mark.astro';
+import Platform from './Platform.astro';
+import { platforms } from '../platforms';
 import '../styles/studio.css';
-const angles = [
-  { id: 'wide', name: 'The whole room', number: '01', label: 'Wide' },
-  { id: 'stage', name: 'Closer to the action', number: '02', label: 'Stage' },
-  { id: 'crowd', name: 'Part of the crowd', number: '03', label: 'Crowd' },
-] as const;
+const scenes = [
+  {
+    label: 'YOUR EVENT. YOUR CREW.',
+    title: 'Good people.\nGreat angles.',
+    text: 'Set up your event. Invite your crew. Their phones become your cameras.',
+    image: crew,
+    alt: 'Cartoon friends film a community basketball game from different positions.',
+  },
+  {
+    label: 'BROADCASTING, HANDLED',
+    title: 'You film.\nLabcast broadcasts.',
+    text: 'Labcast works with your live camera feeds and takes care of the production.',
+    image: action,
+    alt: 'Labcast follows the action in a camera feed and prepares it for the broadcast.',
+  },
+  {
+    label: 'SHOT SELECTION',
+    title: 'The right angle.\nAt the right time.',
+    text: 'Labcast follows the action and switches between your available views to keep the show moving.',
+    image: action,
+    alt: 'Three illustrated camera views feed one broadcast, with the action view selected.',
+  },
+  {
+    label: 'REPLAYS',
+    title: 'That moment.\nOne more time.',
+    text: 'Labcast spots replay-worthy moments and brings them back into the show.',
+    image: action,
+    alt: 'The basketball moment returns in a replay with overlapping illustrated frames.',
+  },
+  {
+    label: 'COMMENTARY + GRAPHICS',
+    title: 'Give the moment\nthe full treatment.',
+    text: 'Labcast adds titles, graphics, and commentary to help your audience follow along.',
+    image: action,
+    alt: 'The illustrated broadcast gains a title, score graphic, and commentary.',
+  },
+  {
+    label: 'CONTROL WHEN YOU WANT IT',
+    title: 'Your show.\nStill your call.',
+    text: 'Let Labcast run things, or take over. Camera tips are there if your crew wants them.',
+    image: reaction,
+    alt: 'Direction switches from Labcast to a person, with a camera view chosen by the crew.',
+  },
+  {
+    label: 'DIRECT TO YOUR AUDIENCE',
+    title: 'One broadcast.\nYour whole audience.',
+    text: 'Stream directly to the places people already watch you. Bring everyone into the moment.',
+    image: viewers,
+    alt: 'A joyful older couple cheers while watching the same basketball game on a laptop.',
+  },
+];
 ---
 
-<figure class="studio" aria-labelledby="studio-caption">
-  <div class="studio-bar">
-    <span>
-      <i class="status-dot"></i> PRODUCTION DESK
-    </span>
-    <span class="demo-label">CONCEPT PREVIEW</span>
+<section
+  id="workflow"
+  class="story-section"
+  data-story
+  aria-label="How Labcast brings a live show together"
+>
+  <div class="story-transcript">
+    <h2>What Labcast handles for you</h2>
+    <ol>
+      {scenes.map((scene) => (
+        <li>
+          <strong>{scene.label}</strong>
+          <p>{scene.text}</p>
+        </li>
+      ))}
+    </ol>
   </div>
-  <div
-    class="program"
-    role="group"
-    aria-label="Illustrated event camera preview"
-  >
-    {angles.map((angle, index) => (
-      <div class="program-view" data-view={angle.id} hidden={index !== 0}>
-        <Stage id={`program-${angle.id}`} angle={angle.id} />
+  <div class="story-sticky">
+    <div class="story-heading container">
+      <span class="tiny-label">FROM YOUR CREW TO THEIR SCREEN</span>
+      <a href="#people" class="story-skip">
+        Meet your next show <span aria-hidden="true">↗</span>
+      </a>
+    </div>
+    <div class="story-scenes container">
+      <div class="story-backdrop" aria-hidden="true">
+        <div class="story-screen">
+          {[crew, action, reaction, viewers].map((image, index) => (
+            <Image
+              src={image}
+              data-broadcast={index}
+              alt=""
+              widths={[480, 800, 1200, 1536]}
+              sizes="(max-width: 700px) 95vw, (max-width: 1100px) 60vw, 800px"
+              format="webp"
+              quality={80}
+              loading="lazy"
+            />
+          ))}
+        </div>
       </div>
-    ))}
-    <div class="program-top">
-      <span class="program-badge">PROGRAM</span>
-      <span>LABCAST / 001</span>
+      {scenes.map((scene, i) => (
+        <article
+          class={`story-scene scene-${i}`}
+          data-scene={i}
+          aria-labelledby={`scene-title-${i}`}
+        >
+          <div class="scene-copy">
+            <p class="eyebrow">{scene.label}</p>
+            <h2 id={`scene-title-${i}`}>
+              {scene.title.split('\n').map((line) => (
+                <span>{line}</span>
+              ))}
+            </h2>
+            <p class="scene-description">{scene.text}</p>
+            {i === 6 && (
+              <div class="destinations">
+                <span>Planned destinations</span>
+                <ul>
+                  {(Object.keys(platforms) as (keyof typeof platforms)[]).map(
+                    (name) => (
+                      <li>
+                        <Platform name={name} />
+                        {name}
+                      </li>
+                    ),
+                  )}
+                </ul>
+              </div>
+            )}
+            {i === 6 && (
+              <a class="text-link" href="#waitlist">
+                Be part of it <span aria-hidden="true">↗</span>
+              </a>
+            )}
+          </div>
+          <div class="scene-art" role="img" aria-label={scene.alt}>
+            {i === 3 && (
+              <>
+                <div class="replay-sheet sheet-back"></div>
+                <div class="replay-sheet sheet-front"></div>
+              </>
+            )}
+            <div class="scene-picture" aria-hidden="true">
+              <Image
+                src={scene.image}
+                alt=""
+                widths={[480, 800, 1200, 1536]}
+                sizes="(max-width: 700px) 95vw, (max-width: 1100px) 60vw, 800px"
+                format="webp"
+                quality={80}
+                loading="lazy"
+                fetchpriority="low"
+              />
+              {i === 1 && (
+                <>
+                  <span class="phone-lens"></span>
+                  <span class="shot-guide"></span>
+                </>
+              )}
+              {i === 2 && (
+                <span class="on-air">
+                  <span></span> ON AIR
+                </span>
+              )}
+              {i === 3 && <span class="replay-badge">↶ REPLAY</span>}
+              {i === 4 && (
+                <>
+                  <div class="score">
+                    <span>
+                      HOME <b>24</b>
+                    </span>
+                    <span>
+                      AWAY <b>22</b>
+                    </span>
+                  </div>
+                  <div class="show-title">
+                    <span>THE NEIGHBORHOOD SHOWDOWN</span>
+                    <strong>Big moments. Close to home.</strong>
+                  </div>
+                </>
+              )}
+              {i === 5 && (
+                <div class="manual-badge">
+                  <Mark />
+                  <span>YOUR DIRECTION</span>
+                </div>
+              )}
+            </div>
+            {i === 0 && (
+              <div class="crew-tag" aria-hidden="true">
+                <Mark />
+                <span>YOUR CREW IS IN.</span>
+                <b>✓ ✓ ✓</b>
+              </div>
+            )}
+            {i === 1 && (
+              <div class="production-card" aria-hidden="true">
+                <span>
+                  <Mark /> LABCAST
+                </span>
+                <strong>Broadcast, handled.</strong>
+                <small>✓ Following the action.</small>
+              </div>
+            )}
+            {(i === 2 || i === 5) && (
+              <div class="angle-views" aria-hidden="true">
+                {[crew, action, reaction].map((img, j) => (
+                  <div
+                    class:list={[
+                      'angle-view',
+                      { chosen: j === (i === 2 ? 1 : 2) },
+                      `angle-${j}`,
+                    ]}
+                  >
+                    <div class="angle-photo">
+                      <Image
+                        src={img}
+                        alt=""
+                        width={320}
+                        format="webp"
+                        quality={75}
+                        loading="lazy"
+                        fetchpriority="low"
+                      />
+                    </div>
+                    <span>
+                      {['THE COURT', 'THE ACTION', 'THE REACTION'][j]}
+                    </span>
+                  </div>
+                ))}
+                {i === 5 && (
+                  <svg class="choice-cursor" viewBox="0 0 44 50" fill="none">
+                    <path
+                      d="M5 3v35l9-8 8 16 7-4-8-15 14-1L5 3Z"
+                      fill="var(--lime)"
+                      stroke="var(--ink)"
+                      stroke-width="3"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                )}
+              </div>
+            )}
+            {i === 3 && (
+              <span class="replay-loop" aria-hidden="true">
+                ↶
+              </span>
+            )}
+            {i === 4 && (
+              <div class="commentary" aria-hidden="true">
+                <div class="voice-wave">
+                  {Array.from({ length: 22 }, (_, j) => (
+                    <i
+                      style={`--bar:${[24, 48, 76, 35, 100, 62, 42, 88, 54, 30, 70][j % 11]}%`}
+                    ></i>
+                  ))}
+                </div>
+                <span>“What a moment.”</span>
+              </div>
+            )}
+            {i === 5 && (
+              <div class="director-choice" aria-hidden="true">
+                <span>Labcast</span>
+                <span class="selected">
+                  You <b>✓</b>
+                </span>
+              </div>
+            )}
+          </div>
+        </article>
+      ))}
     </div>
-    <div class="program-title">
-      <span class="tiny-label">COMMUNITY. CENTER STAGE.</span>
-      <strong data-camera-title>The whole room</strong>
-    </div>
-    <div class="frame-corner top-left"></div>
-    <div class="frame-corner bottom-right"></div>
+    <p class="story-caption">Illustrations of the product we’re building.</p>
   </div>
-  <div
-    class="camera-strip"
-    role="group"
-    aria-label="Choose an illustrated camera angle"
-  >
-    {angles.map((angle, index) => (
-      <button
-        type="button"
-        class="camera"
-        data-camera={angle.id}
-        data-title={angle.name}
-        aria-pressed={index === 0}
-      >
-        <span class="camera-image">
-          <Stage id={`camera-${angle.id}`} angle={angle.id} />
-          <span class="camera-number">{angle.number}</span>
-        </span>
-        <span class="camera-info">
-          <span>{angle.label}</span>
-          <span class="camera-state">
-            {index === 0 ? 'Selected' : 'Preview'}
-          </span>
-        </span>
-      </button>
-    ))}
-  </div>
-  <figcaption id="studio-caption">
-    <span class="signal-icon" aria-hidden="true">
-      ▂▄▆
-    </span>
-    <span>Different perspectives. One shared moment.</span>
-    <span class="studio-plus" aria-hidden="true">
-      +
-    </span>
-  </figcaption>
-</figure>
+</section>
 <script>
   import '../scripts/studio';
 </script>

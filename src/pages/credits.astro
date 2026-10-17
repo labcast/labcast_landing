@@ -1,0 +1,71 @@
+---
+import Page from '../layouts/Page.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+const photos = [
+  {
+    name: 'Creator at a desk',
+    creator: 'Angel Moranchel',
+    url: 'https://www.pexels.com/photo/man-recording-a-presentation-17196832/',
+  },
+  {
+    name: 'Community workshop',
+    creator: 'Matheus Bertelli',
+    url: 'https://www.pexels.com/photo/creative-workshop-with-engaged-audience-33714907/',
+  },
+  {
+    name: 'Youth baseball',
+    creator: 'Alex Khoury',
+    url: 'https://www.pexels.com/photo/youth-baseball-game-at-outdoor-park-33338372/',
+  },
+];
+---
+
+<Page
+  title="Credits — Labcast"
+  description="Photography and creative credits for the Labcast website."
+>
+  <Header />
+  <main id="main" class="container document">
+    <p class="eyebrow">THE PEOPLE BEHIND THE PICTURES</p>
+    <h1>A few good credits.</h1>
+    <p>
+      Photography gives our future audiences a face. These images illustrate
+      possible uses; the people and organizations pictured are not presented as
+      Labcast customers or endorsers.
+    </p>
+    <h2>Photography</h2>
+    {photos.map((photo) => (
+      <p>
+        {photo.name} — <a href={photo.url}>{photo.creator} on Pexels</a>.
+      </p>
+    ))}
+    <p>
+      Used under the{' '}
+      <a href="https://www.pexels.com/license/">Pexels License</a>.
+    </p>
+    <h2>Platform icons</h2>
+    <p>
+      Twitch, YouTube, TikTok, and Instagram icons are from{' '}
+      <a href="https://github.com/simple-icons/simple-icons/tree/16.0.0">
+        Simple Icons 16.0.0
+      </a>
+      , under <a href="/licenses/simple-icons.txt">CC0</a>. The marks belong to
+      their respective owners.
+    </p>
+    <h2>Type and illustrations</h2>
+    <p>
+      <a href="/licenses/manrope.txt">Manrope</a> and{' '}
+      <a href="/licenses/ibm-plex-mono.txt">IBM Plex Mono</a> are served locally
+      under the SIL Open Font License. The sports, gaming, music, and
+      home-viewing cartoons were created for Labcast with AI image generation.
+      They depict fictional people and illustrate the planned experience. Device
+      graphics and motion were created for this website; these scenes are not
+      actual product output.
+    </p>
+    <a href="/" class="button">
+      Back to Labcast <span aria-hidden="true">↗</span>
+    </a>
+  </main>
+  <Footer />
+</Page>

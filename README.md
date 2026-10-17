@@ -1,62 +1,64 @@
 # Labcast landing
 
-The single-page public website for [Labcast](https://labcast.ai), an event broadcasting product in development. Built with Astro and deployed as static files on Netlify.
+The public waitlist website for [Labcast](https://labcast.ai), a product in development that handles live broadcast production from phone cameras. Static Astro pages, prepared for Netlify hosting and Netlify Forms.
 
 ## Development
 
-Nix supplies Node.js 26, Corepack, the pinned pnpm, Git, and the GitHub CLI. Entering the shell automatically installs the locked project dependencies. Nothing needs to be installed globally.
+Nix supplies Node.js 26, Corepack, the pinned pnpm, Git, and the GitHub CLI. Entering the shell prepares locked dependencies. `direnv allow` can load the same shell through `.envrc`.
 
 ```sh
 nix develop
 pnpm dev
-```
-
-`direnv allow` can load the same shell through `.envrc`. The first startup downloads the tools and packages; later startups reuse the caches. CI uses this same flake. `.node-version` selects the Node major for both Nix and Netlify; `package.json` selects pnpm.
-
-```sh
 pnpm verify
 pnpm preview
 ```
 
-`verify` checks Astro and TypeScript, then builds the site into `dist/`. TypeScript 6 is the latest major supported by the current Astro checker; Astro explicitly rejects TypeScript 7.
+`verify` checks Astro/TypeScript and builds into `dist/`. Run `pnpm format` after editing and `pnpm format:check` for a formatting check. The supported TypeScript major remains 6. GSAP ScrollTrigger powers the scroll-controlled story; the Astro framework and existing package conventions are preserved.
 
-## Editing
+## Project structure
 
-- `src/content.ts`: public copy, questions, navigation, and the production domain.
-- `src/pages/index.astro`: the order of the sections; the only HTML page.
-- `src/components`: one component per section, plus the illustrated production preview.
-- `src/layouts/Page.astro`: shared HTML, metadata, and local font imports.
-- `src/styles/global.css`: colors, typography, reset, and shared base rules.
-- `src/styles/page.css`: shared layout primitives and common responsive rules.
-- `src/styles/<section>.css`: each section's own styles and breakpoints, imported by its component.
-- `src/styles/studio.css`: production preview styles.
-- `src/scripts`: menu, camera selection, and form confirmation behavior.
-- `public`: favicon, social preview, and robots file.
+- `src/content.ts`: shared copy, audience descriptions, FAQ, domain, contact email, and signup wording version.
+- `src/pages`: homepage, optional follow-up, privacy, credits, and 404.
+- `src/components`: page sections and the illustrated scroll story.
+- `src/layouts/Page.astro`: metadata, local fonts, and shared document layout.
+- `src/styles`: global foundations and section styles.
+- `src/scripts`: menu, scroll animation, form handling, and optional details.
+- `src/assets`: three prepared photos and eight original cartoon illustrations. Astro generates responsive WebP renditions.
+- `public`: brand artwork, discovery files, and font licenses.
+- `docs`: verification, asset provenance, and deployment handoff.
 
-Use `pnpm format` after editing. Keep product claims aligned with the actual development stage.
+The source research lives beside this repository at `../research/`: `website.md`, `graphics.md`, and `prompt.md`. The website clearly distinguishes planned capabilities and product visualizations from actual product evidence.
 
 ## Netlify
 
-Import this GitHub repository into Netlify. Use these repository settings:
+Use the existing repository settings:
 
 - Base directory: repository root.
 - Build command: `pnpm run verify`.
 - Publish directory: `dist`.
-- Node version: read from `.node-version`.
-- Package manager: read from `package.json`.
+- Node version: `.node-version`; package manager: `package.json`.
 
-Netlify installs dependencies automatically; `PNPM_FLAGS` requires the committed lockfile. The site uses static output and does not need the Netlify server adapter. Production metadata uses `https://labcast.ai`; set `SITE_URL` only when changing the primary domain. Set `labcast.ai` as the primary domain in Netlify and configure its DNS there.
+Netlify installs dependencies with the committed lockfile. Static output needs no server adapter. Production metadata uses `https://labcast.ai`; set `SITE_URL` only if changing the primary domain, and update the static sitemap/robots destination at the same time.
 
-The enquiry form uses Netlify Forms. Enable form detection in Netlify before deploying, verify the `pilot` form appears after deployment, and configure submission notifications for the team. The form returns to the same page after a successful submission. Local Astro servers do not process form submissions. Browser form checks do not verify Netlify delivery; send one real test enquiry after deployment.
+The website defines two forms: **waitlist** (email first) and **details** (optional follow-up). Enable Netlify form detection before deploying. There is no separate signup database or newsletter service.
 
-## GitHub
+The JavaScript checks that Netlify processed the form before accepting a successful HTTP response. Netlify removes `data-netlify` during registration; if the attribute remains, the page explains that this preview cannot save submissions. This prevents a static preview's HTTP 200 from becoming a false success. Without JavaScript, the forms retain native POST behavior and the follow-up page uses neutral wording.
 
-The `Check` workflow checks all supported Nix shells, then runs `nix develop --command pnpm verify` for pull requests and pushes to `main`. Dependabot checks npm packages and GitHub Actions weekly. Update Nix tools with `nix flake update`; update project packages with `pnpm update --latest`, retaining the TypeScript major supported by `@astrojs/check`.
+Local response simulations validate the browser behavior, not Netlify storage. Follow [the deployment checklist](docs/deployment.md) before promoting the public waitlist.
 
-## Content
+## Operations
 
-The site describes planned capabilities and clearly labels the production illustration as a concept preview. It does not claim a released product, customers, or live integrations. No visitor analytics or third-party scripts are included. Fonts are served locally.
+Public contact and list removal requests use **hello@labcast.ai**, supplied by the founder. Its mailbox delivery still needs to be checked before launch. No email messages are sent automatically by this website. Configure team notifications in Netlify separately; newsletters, double opt-in, and automated unsubscribes are not implemented.
 
-The original template's MIT license is retained in `LICENSE`.
+The only browser storage is a temporary, tab-scoped signup handoff to the optional details page. No advertising or analytics scripts are included. Source/campaign labels, when present, accompany form submissions. Use form exports and the documented process for deduplication and qualified-demand reporting.
 
-Validation results and the checks to complete after deployment are recorded in [docs/checks.md](docs/checks.md).
+## Verification and provenance
+
+- [Checks and evidence](docs/checks.md)
+- [Deployment and waitlist operations](docs/deployment.md)
+- [Storyboard and motion direction](docs/storyboard.md)
+- [Creative assets](docs/assets.md)
+- [Illustration prompts](docs/prompts.md)
+- [Selected image source manifest](docs/assets.json)
+
+The existing GitHub check workflow runs repository verification. The original template's MIT license is retained in `LICENSE`; font licenses accompany the served assets. Stock photography is credited separately.

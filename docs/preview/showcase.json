@@ -1,0 +1,20 @@
+{
+  "checks": [
+    "Compact signup and a separate full-width event section replacing the green audience strip",
+    "Marquee starts automatically with no playback controls",
+    "Hover and keyboard focus pause the event cards",
+    "All five event bubbles appear and the complete 35-second loop has no empty seam",
+    "Offscreen marquee stops animating",
+    "Reduced motion leaves five readable event cards in a native horizontal list",
+    "No-JavaScript event list and waitlist remain available"
+  ],
+  "errors": [],
+  "bubbles": [
+    " Your next game. ",
+    " Your next big idea. ",
+    " Your next build. ",
+    " Your next stream. ",
+    " Your next gig. "
+  ],
+  "complete": true
+}

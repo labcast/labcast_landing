@@ -1,0 +1,88 @@
+---
+import { Image } from 'astro:assets';
+import gaming from '../assets/gaming.png';
+import music from '../assets/music.png';
+import crew from '../assets/crew.png';
+import demo from '../assets/demo.png';
+import hackathon from '../assets/hackathon.png';
+import '../styles/showcase.css';
+const events = [
+  {
+    image: gaming,
+    name: 'Gaming streams',
+    bubble: 'Your next stream.',
+    color: '#dfff7f',
+  },
+  {
+    image: music,
+    name: 'Live music',
+    bubble: 'Your next gig.',
+    color: '#ffb79d',
+  },
+  {
+    image: crew,
+    name: 'Club sports',
+    bubble: 'Your next game.',
+    color: '#c5d1ff',
+  },
+  {
+    image: demo,
+    name: 'Product demos',
+    bubble: 'Your next big idea.',
+    color: '#ffe598',
+  },
+  {
+    image: hackathon,
+    name: 'Hackathons',
+    bubble: 'Your next build.',
+    color: '#e9c7fb',
+  },
+];
+---
+
+<section class="showcase" data-showcase aria-labelledby="showcase-title">
+  <div class="showcase-intro container">
+    <h2 id="showcase-title">Every kind of live.</h2>
+  </div>
+  <div
+    class="showcase-window"
+    tabindex="0"
+    role="region"
+    aria-label="Event examples"
+  >
+    <div class="showcase-track">
+      {[0, 1].map((copy) => (
+        <ul
+          class="showcase-group"
+          aria-hidden={copy === 1 ? 'true' : undefined}
+        >
+          {events.map((event) => (
+            <li class="event-card" style={`--event-color: ${event.color}`}>
+              <span class="event-bubble" aria-hidden="true">
+                {event.bubble}
+              </span>
+              <div class="event-frame">
+                <Image
+                  src={event.image}
+                  alt=""
+                  width={640}
+                  format="webp"
+                  quality={78}
+                  loading="eager"
+                  fetchpriority="low"
+                />
+                <span>
+                  {event.name}
+                  <i aria-hidden="true">↗</i>
+                </span>
+              </div>
+            </li>
+          ))}
+        </ul>
+      ))}
+    </div>
+  </div>
+</section>
+<script>
+  import '../scripts/showcase';
+</script>

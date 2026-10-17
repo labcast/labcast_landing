@@ -1,260 +1,235 @@
 @layer layout {
   .container {
-    width: min(100% - 96px, 1240px);
+    width: min(100% - 96px, 1320px);
     margin-inline: auto;
   }
-
   .section-space {
-    padding-block: 104px;
+    padding-block: 100px;
   }
-
-  .section-label {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 52px;
-    gap: 20px;
-  }
-
-  .section-number,
+  .eyebrow,
   .tiny-label,
-  .eyebrow {
-    font-family: var(--mono);
-    font-size: 0.67rem;
-    line-height: 1.6;
-    letter-spacing: 0.09em;
-  }
-
   .section-number {
-    color: var(--lime);
+    font: 0.69rem/1.5 var(--mono);
+    letter-spacing: 0.065em;
+    text-transform: uppercase;
   }
-
-  .tiny-label {
-    color: var(--muted);
-  }
-
-  .small-cross {
-    color: var(--lime);
-    font: 1.5rem/1 var(--mono);
-  }
-
-  .muted {
-    color: #858f7e;
-  }
-
-  .lime-text {
-    color: var(--lime);
-  }
-
-  .large-copy {
-    font-size: 1.37rem;
-    line-height: 1.55;
-    letter-spacing: -0.035em;
-    color: var(--text);
-  }
-
-  .skip-link {
-    position: absolute;
-    z-index: 20;
-    top: -70px;
-    left: 16px;
-    padding: 12px 20px;
-    background: var(--lime);
-    color: var(--bg);
-  }
-
-  .skip-link:focus {
-    top: 10px;
-  }
-
-  .wordmark {
-    display: inline-flex;
-    align-items: center;
-    gap: 11px;
-    font-size: 1.75rem;
-    line-height: 1;
-    letter-spacing: -0.07em;
-    font-weight: 750;
-  }
-
-  .wordmark svg,
-  .wordmark-dot {
-    color: var(--lime);
-  }
-
   .eyebrow {
     display: flex;
     align-items: center;
     gap: 10px;
-    color: var(--lime);
   }
-
+  .section-label {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    align-items: center;
+    margin-bottom: 36px;
+  }
+  .section-heading {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 40px;
+    margin-bottom: 48px;
+  }
+  .section-heading > p {
+    max-width: 330px;
+    color: var(--muted);
+    font-size: 0.95rem;
+  }
   .status-dot {
+    width: 7px;
+    height: 7px;
+    background: currentColor;
+    border-radius: 50%;
     display: inline-block;
     flex: none;
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: var(--lime);
-    box-shadow: 0 0 0 4px rgb(211 245 165 / 0.07);
   }
-
+  .wordmark {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 850;
+    font-size: 1.8rem;
+    letter-spacing: -0.075em;
+    line-height: 1;
+  }
+  .wordmark .mark-dot,
+  .footer-brand .mark-dot,
+  .closing-seal .mark-dot {
+    fill: var(--orange);
+  }
+  .wordmark svg {
+    flex: none;
+  }
   .button {
     display: inline-flex;
     align-items: center;
     justify-content: space-between;
-    gap: 30px;
-    min-height: 48px;
-    padding: 14px 20px;
-    font-size: 0.8rem;
-    font-weight: 700;
-    border: 1px solid transparent;
+    gap: 24px;
+    border: 2px solid var(--ink);
+    min-height: 50px;
+    padding: 13px 20px;
+    background: var(--ink);
+    color: var(--paper);
+    font-size: 0.82rem;
+    font-weight: 750;
   }
-
+  .button:hover {
+    background: #32362b;
+    transform: translate(-2px, -2px);
+    box-shadow: 3px 3px 0 var(--orange);
+  }
+  .button:active {
+    transform: translate(1px, 1px);
+    box-shadow: none;
+  }
   .button-lime {
     background: var(--lime);
-    color: #192111;
+    color: var(--ink);
   }
-
   .button-lime:hover {
-    background: #e2ffc0;
+    background: #edffb8;
   }
-
-  .button span,
-  .text-link span {
-    font-size: 1.2rem;
-    font-weight: 400;
-    line-height: 1;
-  }
-
   .text-link {
     display: inline-flex;
     align-items: center;
-    gap: 16px;
+    gap: 18px;
     min-height: 44px;
-    font-size: 0.8rem;
-    font-weight: 650;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-decoration: underline;
   }
-
   .text-link:hover {
-    color: var(--lime);
+    text-decoration-thickness: 2px;
   }
-
-  .idea-copy > p + p,
-  .pilot-copy > p + p {
-    margin-top: 20px;
+  .arrow {
+    font-size: 1.3rem;
+  }
+  .skip-link {
+    position: fixed;
+    top: -80px;
+    left: 16px;
+    padding: 14px;
+    z-index: 100;
+    background: var(--lime);
+    color: var(--ink);
+  }
+  .skip-link:focus {
+    top: 12px;
+  }
+  .sr-only,
+  .honeypot {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+  .field {
+    display: grid;
+    gap: 8px;
+  }
+  .field label {
+    font-size: 0.82rem;
+    font-weight: 700;
+  }
+  input,
+  select,
+  textarea {
+    border: 1.5px solid var(--ink);
+    border-radius: 0;
+    background: #fffefa;
+    padding: 13px 14px;
+    color: var(--ink);
+    width: 100%;
+    font-size: 1rem;
+  }
+  input[aria-invalid='true'] {
+    border-color: #a02719;
+  }
+  .form-note {
+    font-size: 0.72rem;
     color: var(--muted);
-    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+  .form-note a {
+    text-decoration: underline;
+  }
+  .form-message {
+    font-size: 0.85rem;
+    margin-top: 10px;
+    color: #9c2419;
+  }
+  .form-message:empty {
+    display: none;
+  }
+  .document {
+    max-width: 760px;
+    padding-block: 80px 100px;
+  }
+  .document h1 {
+    font-size: clamp(2.7rem, 6vw, 4.7rem);
+    letter-spacing: -0.06em;
+    line-height: 1.05;
+    margin: 20px 0 30px;
+  }
+  .document h2 {
+    font-size: 1.5rem;
+    letter-spacing: -0.035em;
+    margin: 32px 0 12px;
+  }
+  .document p + p {
+    margin-top: 16px;
+  }
+  .document a:not(.button) {
+    text-decoration: underline;
+  }
+  .document .button {
+    margin-top: 24px;
   }
 }
-
 @layer responsive {
   @media (max-width: 1100px) {
     .container {
       width: calc(100% - 64px);
     }
-
-    .button {
-      font-size: 0.76rem;
-      gap: 20px;
-    }
-
-    .idea-grid,
-    .pilot-grid,
-    .contact-grid,
-    .questions-section {
-      gap: 56px;
-    }
   }
-
-  @media (max-width: 850px) {
-    .section-space {
-      padding-block: 72px;
-    }
-
-    .idea-grid,
-    .pilot-grid {
-      gap: 38px;
-    }
-
-    .idea-copy .large-copy,
-    .pilot-copy .large-copy {
-      font-size: 1.15rem;
-    }
-
-    .idea-copy > p + p,
-    .pilot-copy > p + p {
-      font-size: 0.84rem;
-    }
-  }
-
-  @media (max-width: 600px) {
-    :root {
-      scroll-padding-top: 82px;
-    }
-
+  @media (max-width: 700px) {
     .container {
       width: calc(100% - 40px);
     }
-
-    .wordmark {
-      font-size: 1.5rem;
-    }
-
-    .wordmark svg {
-      width: 24px;
-      height: 24px;
-    }
-
-    .eyebrow {
-      font-size: 0.59rem;
-    }
-
     .section-space {
-      padding-block: 56px;
+      padding-block: 64px;
     }
-
-    .section-label {
-      margin-bottom: 34px;
+    .section-heading {
+      display: grid;
+      gap: 24px;
+      margin-bottom: 32px;
     }
-
-    .section-number {
-      font-size: 0.6rem;
+    .section-heading > p {
+      max-width: 100%;
     }
-
     .section-label > .tiny-label {
       display: none;
     }
-
+    .section-label {
+      margin-bottom: 28px;
+    }
+    .wordmark {
+      font-size: 1.55rem;
+    }
     h2 {
-      font-size: 2.6rem;
-    }
-
-    .idea-grid,
-    .pilot-grid,
-    .contact-grid,
-    .questions-section {
-      grid-template-columns: 1fr;
-      gap: 30px;
-    }
-
-    .idea-copy .large-copy,
-    .pilot-copy .large-copy {
-      font-size: 1.22rem;
-    }
-
-    .idea-copy > p + p,
-    .pilot-copy > p + p {
-      font-size: 0.88rem;
+      font-size: clamp(2.65rem, 10.5vw, 4.2rem);
     }
   }
-
   @media (forced-colors: active) {
     .button,
     input,
     select,
     textarea {
-      border: 1px solid ButtonText;
+      border: 2px solid ButtonText;
     }
   }
 }

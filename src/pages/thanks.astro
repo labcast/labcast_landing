@@ -1,0 +1,136 @@
+---
+import Page from '../layouts/Page.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { site } from '../content';
+import '../styles/thanks.css';
+---
+
+<Page title="Your next show — Labcast" noindex>
+  <Header />
+  <main id="main" class="container document thanks-page">
+    <p class="eyebrow">THE NEXT ANGLE COULD BE YOURS</p>
+    <h1 data-thanks-title>
+      What would
+      <br />
+      you broadcast?
+    </h1>
+    <p data-thanks-note>
+      If you just joined the waitlist, thanks for your interest. We’ll share
+      updates as Labcast develops. There’s no account to set up and no payment
+      to make.
+    </p>
+    <div class="details-panel">
+      <h2>Tell us about your show.</h2>
+      <p class="form-note">
+        Entirely optional. Skipping this won’t change your signup.
+      </p>
+      <form
+        name="details"
+        method="POST"
+        action="/thanks/"
+        data-netlify="true"
+        netlify-honeypot="website"
+        data-form="details"
+      >
+        <input type="hidden" name="form-name" value="details" />
+        <input type="hidden" name="signup-version" value={site.signupVersion} />
+        <p class="honeypot" aria-hidden="true">
+          <label>
+            Leave empty
+            <input name="website" tabindex="-1" autocomplete="off" />
+          </label>
+        </p>
+        <div class="field">
+          <label for="details-email">Your waitlist email</label>
+          <input
+            type="email"
+            name="email"
+            id="details-email"
+            required
+            autocomplete="email"
+            maxlength="254"
+            aria-describedby="details-note details-error"
+          />
+          <p id="details-note" class="form-note">
+            Use the same email so we can connect these details to your signup.
+          </p>
+        </div>
+        <fieldset>
+          <legend>I’d use Labcast for…</legend>
+          <div class="role-choices">
+            <label>
+              <input type="checkbox" name="role[]" value="streamer" />
+              My stream
+            </label>
+            <label>
+              <input type="checkbox" name="role[]" value="organizer" />
+              An event
+            </label>
+            <label>
+              <input type="checkbox" name="role[]" value="club" />
+              Our club’s games
+            </label>
+            <label>
+              <input type="checkbox" name="role[]" value="exploring" />
+              Just exploring
+            </label>
+          </div>
+        </fieldset>
+        <div class="field">
+          <label for="details-event">
+            Have something coming up? <span>(optional)</span>
+          </label>
+          <textarea
+            id="details-event"
+            name="event"
+            rows="3"
+            maxlength="1500"
+            placeholder="The kind of show, your sport, or roughly when it’s happening…"
+          ></textarea>
+          <p class="form-note">
+            Please leave out children’s names or private participant
+            information.
+          </p>
+        </div>
+        <label class="reply-choice">
+          <input type="checkbox" name="access-contact" value="yes" />
+          You can contact me about a early access.
+        </label>
+        <div class="details-actions">
+          <button type="submit" class="button">
+            <span data-submit-label>Save my details</span>
+            <span aria-hidden="true">↗</span>
+          </button>
+          <a href="/" class="text-link">
+            Skip for now
+          </a>
+        </div>
+        <p id="details-error" class="form-message" role="alert"></p>
+      </form>
+      <p data-details-success hidden tabindex="-1" class="details-success">
+        ✓ Thanks. Your details have been received. We’ll get in touch if a early
+        access is available.
+      </p>
+    </div>
+    <div class="share-panel">
+      <h2>Know who would run this for your crew?</h2>
+      <p>Send them Labcast. Good shows start with good people.</p>
+      <button type="button" class="button button-lime" data-share>
+        Copy Labcast link <span aria-hidden="true">↗</span>
+      </button>
+      <p class="form-note" data-share-status role="status"></p>
+      <p class="share-fallback">
+        Or share <a href="https://labcast.ai">labcast.ai</a>.
+      </p>
+    </div>
+    <p class="form-note">
+      Not on the list yet? <a href="/#waitlist">Join the waitlist</a>.
+      Questions? <a href={`mailto:${site.email}`}>{site.email}</a>.
+    </p>
+  </main>
+  <Footer />
+</Page>
+<script>
+  import '../scripts/details';
+</script>

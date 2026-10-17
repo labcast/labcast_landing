@@ -3,14 +3,23 @@ import '../styles/questions.css';
 import { questions } from '../content';
 ---
 
-<section class="questions-section container" aria-labelledby="questions-title">
+<section
+  class="questions-section container section-space"
+  id="questions"
+  aria-labelledby="questions-title"
+>
   <div>
-    <span class="section-number">A FEW GOOD QUESTIONS</span>
+    <p class="section-number">02 / GOOD QUESTIONS</p>
     <h2 id="questions-title">
-      Before we
+      Before
       <br />
-      {' roll.'}
+      we roll.
     </h2>
+    <p class="questions-note">
+      A few things you might
+      <br />
+      be wondering.
+    </p>
   </div>
   <div class="questions">
     {questions.map((item) => (

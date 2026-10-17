@@ -1,0 +1,13 @@
+{
+  "checks": [
+    "Native wheel scrolling is never blocked at 1440px",
+    "Broadcast persists through forward/reverse fades, with no overlapping headlines at 1440px",
+    "Large wheel movement freely exits both ends at 1440px",
+    "Native wheel scrolling is never blocked at 390px",
+    "Broadcast persists through forward/reverse fades, with no overlapping headlines at 390px",
+    "Large wheel movement freely exits both ends at 390px",
+    "Phone swipes scroll natively through the story"
+  ],
+  "errors": [],
+  "complete": true
+}

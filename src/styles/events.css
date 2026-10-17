@@ -1,67 +1,132 @@
-@layer layout {
-  .event-strip {
-    border-block: 1px solid var(--line);
+@layer components {
+  .outline-word {
+    color: #626958;
   }
-
-  .event-strip-inner {
-    min-height: 82px;
+  .people-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+  }
+  .person {
+    border: 3px solid var(--ink);
+    box-shadow: 6px 6px 0 var(--ink);
+    background: #fffdf6;
     display: flex;
-    gap: 20px;
-    align-items: center;
+    flex-direction: column;
+  }
+  .person-image {
+    position: relative;
+    aspect-ratio: 1.2;
+    overflow: hidden;
+    border-bottom: 1.5px solid var(--ink);
+    background: #ced2c3;
+  }
+  .person-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .person-streamer img {
+    object-position: 60% 47%;
+  }
+  .person-organizer img {
+    object-position: 60% 48%;
+  }
+  .person-club img {
+    object-position: 65% 55%;
+  }
+  .person-index {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    background: var(--paper);
+    color: var(--ink);
+    border: 1.5px solid var(--ink);
+    padding: 7px 10px;
+    font: 0.65rem var(--mono);
+  }
+  .person-copy {
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+  .person h3 {
+    font-size: clamp(1.5rem, 2.35vw, 2.15rem);
+    line-height: 1.12;
+    margin: 13px 0 18px;
+    letter-spacing: -0.055em;
+  }
+  .person-description {
+    font-size: 0.83rem;
+    color: #505449;
+    margin-bottom: 15px;
+    flex: 1;
+  }
+  .person .text-link {
     justify-content: space-between;
+    border-top: 1px solid var(--line);
+    padding-top: 13px;
+    font-size: 0.78rem;
   }
-
-  .event-strip-inner > div {
-    display: flex;
-    gap: 30px;
-    align-items: center;
-    font-size: 0.9rem;
-    letter-spacing: -0.02em;
+  .person-note {
+    font: 0.55rem/1.6 var(--mono);
+    color: #5b6153;
+    margin-top: 8px;
   }
-
-  .strip-star {
-    color: var(--lime);
-    font-size: 1.2rem;
+  .person-streamer .person-copy {
+    background: #e6e0f1;
+  }
+  .person-organizer .person-copy {
+    background: #e6edda;
+  }
+  .person-club .person-copy {
+    background: #f6dfcc;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .person-image img {
+      transition: transform 600ms cubic-bezier(0.2, 0.7, 0.2, 1);
+    }
+    .person:hover .person-image img {
+      transform: scale(1.035);
+    }
   }
 }
-
 @layer responsive {
-  @media (max-width: 1100px) {
-    .event-strip-inner > div {
-      gap: 20px;
-      font-size: 0.8rem;
+  @media (max-width: 1000px) and (min-width: 701px) {
+    .people-grid {
+      gap: 13px;
     }
-  }
-
-  @media (max-width: 850px) {
-    .event-strip-inner {
-      flex-direction: column;
-      align-items: flex-start;
-      justify-content: center;
-      gap: 10px;
-      padding-block: 23px;
+    .person-copy {
+      padding: 17px;
     }
-
-    .event-strip-inner > div {
-      width: 100%;
-      justify-content: space-between;
-      gap: 12px;
-      font-size: 0.9rem;
+    .person h3 {
+      font-size: 1.45rem;
     }
-  }
-
-  @media (max-width: 600px) {
-    .event-strip-inner > div {
-      font-size: 0.7rem;
+    .person .text-link {
+      font-size: 0.69rem;
       gap: 8px;
     }
-
-    .event-strip .tiny-label {
-      font-size: 0.57rem;
+  }
+  @media (max-width: 700px) {
+    .people-grid {
+      grid-template-columns: 1fr;
+      gap: 26px;
     }
-
-    .strip-star {
-      font-size: 0.8rem;
+    .person-image {
+      aspect-ratio: 1.5;
+    }
+    .person h3 {
+      font-size: 2.1rem;
+    }
+    .person-description {
+      font-size: 0.92rem;
+    }
+    .person-copy {
+      padding: 25px;
+    }
+    .person .text-link {
+      font-size: 0.87rem;
     }
   }
 }

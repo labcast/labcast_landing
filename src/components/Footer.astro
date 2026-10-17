@@ -4,13 +4,41 @@ import Mark from './Mark.astro';
 import { site } from '../content';
 ---
 
-<footer class="footer container">
-  <a class="wordmark" href="#top" aria-label="Labcast, back to top">
-    <Mark />
-    <span>
-      labcast<span class="wordmark-dot">.</span>
-    </span>
-  </a>
-  <p>{site.tagline}</p>
-  <span class="tiny-label">© {new Date().getFullYear()} LABCAST</span>
+<footer class="footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-intro">
+        <p>
+          Small crews.
+          <br />
+          Unmissable moments.
+        </p>
+        <a href={`mailto:${site.email}`}>
+          {site.email} <span aria-hidden="true">↗</span>
+        </a>
+      </div>
+      <nav class="footer-links" aria-label="Explore Labcast">
+        <a href="/#workflow">How it works</a>
+        <a href="/#people">Made for you</a>
+        <a href="/#questions">Questions</a>
+        <a href="/#waitlist">
+          Join the waitlist <span aria-hidden="true">↗</span>
+        </a>
+      </nav>
+    </div>
+    <a class="footer-brand" href="/" aria-label="Labcast home">
+      <Mark />
+      <span>
+        labcast<span class="footer-dot">.</span>
+      </span>
+    </a>
+    <div class="footer-bottom">
+      <span>© {new Date().getFullYear()} LABCAST</span>
+      <span>YOUR PHONES. ONE BIG SHOW.</span>
+      <nav aria-label="Footer">
+        <a href="/privacy/">Privacy</a>
+        <a href="/credits/">Credits</a>
+      </nav>
+    </div>
+  </div>
 </footer>

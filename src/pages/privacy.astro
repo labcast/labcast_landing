@@ -1,0 +1,73 @@
+---
+import Page from '../layouts/Page.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { site } from '../content';
+---
+
+<Page
+  title="Privacy — Labcast"
+  description="How Labcast handles information shared through its waitlist."
+>
+  <Header />
+  <main id="main" class="container document">
+    <p class="eyebrow">LAST UPDATED 16 OCTOBER 2026</p>
+    <h1>
+      Your details.
+      <br />
+      Handled with care.
+    </h1>
+    <p>
+      This notice covers the Labcast waitlist at labcast.ai. For questions or to
+      leave the list, contact <a href={`mailto:${site.email}`}>{site.email}</a>.
+    </p>
+    <h2>What you share</h2>
+    <p>
+      Joining gives us your email address and permission to send occasional
+      Labcast product and early-access updates. You can optionally tell us your
+      role, event plans, and whether you want to discuss early access. Please
+      don’t include children’s names or private participant information.
+    </p>
+    <h2>How we use it</h2>
+    <p>
+      We use your details to manage the waitlist, send relevant updates,
+      understand potential uses, and respond to requests. Early-access follow-up
+      is optional. Joining does not create an account, guarantee access, or book
+      an event.
+    </p>
+    <h2>Where it goes</h2>
+    <p>
+      Netlify hosts this website and processes form submissions for Labcast.
+      Hosting and spam protection can also process technical information such as
+      IP addresses and request data. The Labcast team can review and export
+      submissions to manage the list. See{' '}
+      <a href="https://www.netlify.com/privacy/">Netlify’s privacy policy</a>{' '}
+      for its handling of that information.
+    </p>
+    <h2>Browser storage and measurement</h2>
+    <p>
+      This site does not include advertising trackers or third-party analytics.
+      When present, campaign identifiers are included with your signup. After a
+      successful signup, your email and selected audience may be held in this
+      tab’s session storage to fill the optional follow-up form. That handoff is
+      read and removed on the follow-up page, expires for use after 15 minutes,
+      and is not used for tracking.
+    </p>
+    <h2>Leaving the list</h2>
+    <p>
+      Email{' '}
+      <a href={`mailto:${site.email}?subject=Labcast%20waitlist%20removal`}>
+        {site.email}
+      </a>{' '}
+      from the address you used to ask us to stop updates, correct your details,
+      or delete your waitlist information. We retain details while managing the
+      waitlist and related conversations, unless you ask us to remove them.
+      We’ll keep only the information needed to respect a request to stop
+      messages.
+    </p>
+    <a href="/" class="button">
+      Back to Labcast <span aria-hidden="true">↗</span>
+    </a>
+  </main>
+  <Footer />
+</Page>

@@ -1,0 +1,113 @@
+{
+  "checks": [
+    "All seven scenes, reverse scrolling, stationary hold, and pinning at 1440px",
+    "Stopped boundary transitions and rapid direction changes settle to one opaque scene at 1440px",
+    "Changing reduced-motion preference restores every scene at 1440px",
+    "All seven scenes, reverse scrolling, stationary hold, and pinning at 390px",
+    "Stopped boundary transitions and rapid direction changes settle to one opaque scene at 390px",
+    "Changing reduced-motion preference restores every scene at 390px",
+    "Short landscape viewport receives all seven static scenes"
+  ],
+  "frames": [
+    {
+      "width": 1440,
+      "scene": 0,
+      "pinnedTop": 89.21875,
+      "artOpacity": 1,
+      "overflow": false
+    },
+    {
+      "width": 1440,
+      "scene": 1,
+      "pinnedTop": 89.21875,
+      "artOpacity": 1,
+      "overflow": false
+    },
+    {
+      "width": 1440,
+      "scene": 2,
+      "pinnedTop": 89.21875,
+      "artOpacity": 1,
+      "overflow": false
+    },
+    {
+      "width": 1440,
+      "scene": 3,
+      "pinnedTop": 89.21875,
+      "artOpacity": 1,
+      "overflow": false
+    },
+    {
+      "width": 1440,
+      "scene": 4,
+      "pinnedTop": 89.21875,
+      "artOpacity": 1,
+      "overflow": false
+    },
+    {
+      "width": 1440,
+      "scene": 5,
+      "pinnedTop": 89.21875,
+      "artOpacity": 1,
+      "overflow": false
+    },
+    {
+      "width": 1440,
+      "scene": 6,
+      "pinnedTop": 89.21875,
+      "artOpacity": 1,
+      "overflow": false
+    },
+    {
+      "width": 390,
+      "scene": 0,
+      "pinnedTop": 75.0625,
+      "artOpacity": 1,
+      "overflow": false
+    },
+    {
+      "width": 390,
+      "scene": 1,
+      "pinnedTop": 75.0625,
+      "artOpacity": 1,
+      "overflow": false
+    },
+    {
+      "width": 390,
+      "scene": 2,
+      "pinnedTop": 75.0625,
+      "artOpacity": 1,
+      "overflow": false
+    },
+    {
+      "width": 390,
+      "scene": 3,
+      "pinnedTop": 75.0625,
+      "artOpacity": 1,
+      "overflow": false
+    },
+    {
+      "width": 390,
+      "scene": 4,
+      "pinnedTop": 75.0625,
+      "artOpacity": 1,
+      "overflow": false
+    },
+    {
+      "width": 390,
+      "scene": 5,
+      "pinnedTop": 75.0625,
+      "artOpacity": 1,
+      "overflow": false
+    },
+    {
+      "width": 390,
+      "scene": 6,
+      "pinnedTop": 75.0625,
+      "artOpacity": 1,
+      "overflow": false
+    }
+  ],
+  "errors": [],
+  "complete": true
+}

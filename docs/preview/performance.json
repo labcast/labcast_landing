@@ -1,0 +1,322 @@
+[
+  {
+    "device": "desktop",
+    "viewport": {
+      "width": 1440,
+      "height": 1000
+    },
+    "conditions": "Cold browser cache; 150 ms simulated latency; 1.6 Mbps download; 4× CPU slowdown; local Astro preview, responses as served",
+    "lcpMs": 5156,
+    "cls": 0.00441221981095679,
+    "totalInitialTransferBytes": 958211,
+    "resources": [
+      {
+        "name": "/_astro/Footer.DShliSAn.css",
+        "bytes": 5891,
+        "decoded": 11725
+      },
+      {
+        "name": "/_astro/index.Ba-rXBom.css",
+        "bytes": 4816,
+        "decoded": 17905
+      },
+      {
+        "name": "/_astro/crew.CzQVIb6X_Z90sbD.webp",
+        "bytes": 216276,
+        "decoded": 215976
+      },
+      {
+        "name": "/_astro/gaming.CqCMX-MR_13Ydbw.webp",
+        "bytes": 46024,
+        "decoded": 45724
+      },
+      {
+        "name": "/_astro/music.BraWhgWj_Zucxty.webp",
+        "bytes": 61548,
+        "decoded": 61248
+      },
+      {
+        "name": "/_astro/hackathon.DLh0Ekra_18ACjH.webp",
+        "bytes": 44790,
+        "decoded": 44490
+      },
+      {
+        "name": "/_astro/crew.CzQVIb6X_Z25qpsL.webp",
+        "bytes": 49096,
+        "decoded": 48796
+      },
+      {
+        "name": "/_astro/demo.vqRsaUJ4_Z1TDAsB.webp",
+        "bytes": 55678,
+        "decoded": 55378
+      },
+      {
+        "name": "/_astro/Showcase.astro_astro_type_script_index_0_lang.BQYur_EJ.js",
+        "bytes": 1069,
+        "decoded": 1581
+      },
+      {
+        "name": "/_astro/Hero.astro_astro_type_script_index_0_lang.CXe0I5tP.js",
+        "bytes": 1486,
+        "decoded": 2396
+      },
+      {
+        "name": "/_astro/Studio.astro_astro_type_script_index_0_lang.o9KcErKf.js",
+        "bytes": 1625,
+        "decoded": 3327
+      },
+      {
+        "name": "/_astro/gsap.CvDoa17S.js",
+        "bytes": 27265,
+        "decoded": 69582
+      },
+      {
+        "name": "/_astro/manrope-latin-wght-normal.DHIcAJRg.woff2",
+        "bytes": 25136,
+        "decoded": 24836
+      },
+      {
+        "name": "/_astro/ibm-plex-mono-latin-400-normal.DMJ8VG8y.woff2",
+        "bytes": 15008,
+        "decoded": 14708
+      },
+      {
+        "name": "/_astro/crew.CzQVIb6X_Z12k6T8.webp",
+        "bytes": 75792,
+        "decoded": 75492
+      },
+      {
+        "name": "/_astro/action.CPQZqKvp_17hVU0.webp",
+        "bytes": 81376,
+        "decoded": 81076
+      },
+      {
+        "name": "/_astro/forms.DlPI40o7.js",
+        "bytes": 743,
+        "decoded": 443
+      },
+      {
+        "name": "/_astro/ScrollTrigger.C7HwZxAz.js",
+        "bytes": 17672,
+        "decoded": 42717
+      },
+      {
+        "name": "/_astro/crew.CzQVIb6X_10iz9d.webp",
+        "bytes": 14804,
+        "decoded": 14504
+      },
+      {
+        "name": "/_astro/action.CPQZqKvp_22VMFA.webp",
+        "bytes": 15346,
+        "decoded": 15046
+      },
+      {
+        "name": "/_astro/reaction.Bn8PGX5E_Z2absX0.webp",
+        "bytes": 16976,
+        "decoded": 16676
+      },
+      {
+        "name": "/_astro/viewers.COcrE8wA_V4VSB.webp",
+        "bytes": 77546,
+        "decoded": 77246
+      },
+      {
+        "name": "/_astro/reaction.Bn8PGX5E_ZTCV8.webp",
+        "bytes": 94370,
+        "decoded": 94070
+      },
+      {
+        "name": "/favicon.svg",
+        "bytes": 614,
+        "decoded": 314
+      }
+    ],
+    "scriptedInteractionEvents": [
+      {
+        "name": "pointerdown",
+        "duration": 32
+      },
+      {
+        "name": "pointerup",
+        "duration": 32
+      },
+      {
+        "name": "click",
+        "duration": 32
+      },
+      {
+        "name": "pointerdown",
+        "duration": 16
+      },
+      {
+        "name": "pointerup",
+        "duration": 16
+      },
+      {
+        "name": "click",
+        "duration": 16
+      }
+    ],
+    "note": "Laboratory sample only. Event durations are not field INP; no production percentile is established."
+  },
+  {
+    "device": "mobile",
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "conditions": "Cold browser cache; 150 ms simulated latency; 1.6 Mbps download; 4× CPU slowdown; local Astro preview, responses as served",
+    "lcpMs": 2108,
+    "cls": 0.0031061940518994488,
+    "totalInitialTransferBytes": 627797,
+    "resources": [
+      {
+        "name": "/_astro/Footer.DShliSAn.css",
+        "bytes": 5891,
+        "decoded": 11725
+      },
+      {
+        "name": "/_astro/index.Ba-rXBom.css",
+        "bytes": 4816,
+        "decoded": 17905
+      },
+      {
+        "name": "/_astro/crew.CzQVIb6X_Z12k6T8.webp",
+        "bytes": 75792,
+        "decoded": 75492
+      },
+      {
+        "name": "/_astro/gaming.CqCMX-MR_13Ydbw.webp",
+        "bytes": 46024,
+        "decoded": 45724
+      },
+      {
+        "name": "/_astro/music.BraWhgWj_Zucxty.webp",
+        "bytes": 61548,
+        "decoded": 61248
+      },
+      {
+        "name": "/_astro/crew.CzQVIb6X_Z25qpsL.webp",
+        "bytes": 49096,
+        "decoded": 48796
+      },
+      {
+        "name": "/_astro/hackathon.DLh0Ekra_18ACjH.webp",
+        "bytes": 44790,
+        "decoded": 44490
+      },
+      {
+        "name": "/_astro/demo.vqRsaUJ4_Z1TDAsB.webp",
+        "bytes": 55678,
+        "decoded": 55378
+      },
+      {
+        "name": "/_astro/Showcase.astro_astro_type_script_index_0_lang.BQYur_EJ.js",
+        "bytes": 1069,
+        "decoded": 1581
+      },
+      {
+        "name": "/_astro/Hero.astro_astro_type_script_index_0_lang.CXe0I5tP.js",
+        "bytes": 1486,
+        "decoded": 2396
+      },
+      {
+        "name": "/_astro/Studio.astro_astro_type_script_index_0_lang.o9KcErKf.js",
+        "bytes": 1625,
+        "decoded": 3327
+      },
+      {
+        "name": "/_astro/gsap.CvDoa17S.js",
+        "bytes": 27265,
+        "decoded": 69582
+      },
+      {
+        "name": "/_astro/manrope-latin-wght-normal.DHIcAJRg.woff2",
+        "bytes": 25136,
+        "decoded": 24836
+      },
+      {
+        "name": "/_astro/ibm-plex-mono-latin-400-normal.DMJ8VG8y.woff2",
+        "bytes": 15008,
+        "decoded": 14708
+      },
+      {
+        "name": "/_astro/crew.CzQVIb6X_Zbi2Sf.webp",
+        "bytes": 32846,
+        "decoded": 32546
+      },
+      {
+        "name": "/_astro/action.CPQZqKvp_Z1qdiWW.webp",
+        "bytes": 34504,
+        "decoded": 34204
+      },
+      {
+        "name": "/_astro/forms.DlPI40o7.js",
+        "bytes": 743,
+        "decoded": 443
+      },
+      {
+        "name": "/_astro/ScrollTrigger.C7HwZxAz.js",
+        "bytes": 17672,
+        "decoded": 42717
+      },
+      {
+        "name": "/_astro/crew.CzQVIb6X_10iz9d.webp",
+        "bytes": 14804,
+        "decoded": 14504
+      },
+      {
+        "name": "/_astro/action.CPQZqKvp_22VMFA.webp",
+        "bytes": 15346,
+        "decoded": 15046
+      },
+      {
+        "name": "/_astro/reaction.Bn8PGX5E_Z2absX0.webp",
+        "bytes": 16976,
+        "decoded": 16676
+      },
+      {
+        "name": "/_astro/viewers.COcrE8wA_ZNLiCj.webp",
+        "bytes": 32502,
+        "decoded": 32202
+      },
+      {
+        "name": "/_astro/reaction.Bn8PGX5E_Z2sqqlH.webp",
+        "bytes": 39302,
+        "decoded": 39002
+      },
+      {
+        "name": "/favicon.svg",
+        "bytes": 614,
+        "decoded": 314
+      }
+    ],
+    "scriptedInteractionEvents": [
+      {
+        "name": "pointerdown",
+        "duration": 48
+      },
+      {
+        "name": "pointerup",
+        "duration": 48
+      },
+      {
+        "name": "click",
+        "duration": 48
+      },
+      {
+        "name": "pointerdown",
+        "duration": 16
+      },
+      {
+        "name": "pointerup",
+        "duration": 16
+      },
+      {
+        "name": "click",
+        "duration": 16
+      }
+    ],
+    "note": "Laboratory sample only. Event durations are not field INP; no production percentile is established."
+  }
+]

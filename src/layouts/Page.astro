@@ -4,9 +4,18 @@ import '@fontsource/ibm-plex-mono/latin-400.css';
 import '../styles/global.css';
 import '../styles/page.css';
 import { site } from '../content';
-const canonical = Astro.site
-  ? new URL('/', Astro.site).href
-  : site.domain + '/';
+interface Props {
+  title?: string;
+  description?: string;
+  noindex?: boolean;
+}
+const {
+  title = site.title,
+  description = site.description,
+  noindex = false,
+} = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site ?? site.domain).href;
+const social = new URL('/social.png', Astro.site ?? site.domain).href;
 ---
 
 <!doctype html>
@@ -14,34 +23,27 @@ const canonical = Astro.site
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{site.title}</title>
-    <meta name="description" content={site.description} />
-    <meta name="theme-color" content="#10130f" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#f5f3eb" />
+    {noindex && <meta name="robots" content="noindex, follow" />}
+    <link rel="canonical" href={canonical} />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content={site.title} />
-    <meta property="og:description" content={site.description} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
     <meta property="og:site_name" content="Labcast" />
-    {canonical && <meta property="og:url" content={canonical} />}
-    {canonical && <link rel="canonical" href={canonical} />}
-    {Astro.site && (
-      <meta
-        property="og:image"
-        content={new URL('/social.png', Astro.site).href}
-      />
-    )}
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content={site.title} />
-    <meta name="twitter:description" content={site.description} />
-    <meta
-      name="twitter:image"
-      content={new URL('/social.png', canonical).href}
-    />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={social} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta
       property="og:image:alt"
-      content="Labcast. Every angle. One great show."
+      content="Labcast. Your phones. One big show. In development. Join the waitlist."
     />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={social} />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <noscript>
       <style is:inline>

@@ -6,11 +6,9 @@ import { navigation } from '../content';
 
 <header class="header">
   <div class="container header-inner">
-    <a class="wordmark" href="#top" aria-label="Labcast home">
+    <a class="wordmark" href="/" aria-label="Labcast home">
       <Mark />
-      <span>
-        labcast<span class="wordmark-dot">.</span>
-      </span>
+      <span>labcast.</span>
     </a>
     <button
       class="menu-toggle"
@@ -19,14 +17,14 @@ import { navigation } from '../content';
       aria-controls="navigation"
     >
       <span>Menu</span>
-      <span class="menu-lines" aria-hidden="true"></span>
+      <span aria-hidden="true">+</span>
     </button>
     <nav id="navigation" class="navigation" aria-label="Main navigation">
       {navigation.map((link) => (
         <a href={link.href}>{link.label}</a>
       ))}
-      <a href="#contact" class="nav-cta">
-        Let’s talk <span aria-hidden="true">↗</span>
+      <a href="/#waitlist" class="nav-cta">
+        Join the waitlist <span aria-hidden="true">↗</span>
       </a>
     </nav>
   </div>

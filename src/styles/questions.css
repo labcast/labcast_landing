@@ -1,81 +1,75 @@
-@layer layout {
+@layer components {
   .questions-section {
-    padding-block: 12px 104px;
     display: grid;
-    grid-template-columns: 1fr 1.5fr;
-    gap: 100px;
+    grid-template-columns: 0.75fr 1.25fr;
+    gap: 70px;
+    border-top: 2px solid var(--ink);
   }
-
   .questions-section h2 {
+    margin-top: 24px;
+  }
+  .questions-note {
     margin-top: 22px;
-    font-size: 3rem;
+    font-size: 0.88rem;
+    color: var(--muted);
   }
-
   .questions {
-    border-top: 1px solid var(--line);
+    border-top: 1.5px solid var(--ink);
   }
-
-  details {
-    border-bottom: 1px solid var(--line);
+  .questions details {
+    border-bottom: 1.5px solid var(--ink);
   }
-
-  summary {
-    cursor: pointer;
+  .questions summary {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 20px;
-    padding: 23px 0;
-    font-size: 0.9rem;
-    line-height: 1.6;
     list-style: none;
+    gap: 20px;
+    cursor: pointer;
+    padding: 24px 18px;
+    font-size: 0.95rem;
+    font-weight: 750;
   }
-
-  summary::-webkit-details-marker {
+  .questions summary::-webkit-details-marker {
     display: none;
   }
-
-  summary span {
-    font: 1.2rem var(--mono);
-    color: var(--lime);
+  .questions summary > span {
+    font-size: 1.3rem;
+    font-weight: 500;
+    flex: none;
+    width: 30px;
+    height: 30px;
+    line-height: 27px;
+    border: 1.5px solid var(--ink);
+    background: var(--lime);
+    text-align: center;
   }
-
-  details[open] summary span {
+  .questions details[open] {
+    background: #e9eddd;
+  }
+  .questions summary:hover {
+    background: #e9eddd;
+  }
+  .questions details[open] summary > span {
     transform: rotate(45deg);
   }
-
-  details p {
-    padding: 0 30px 25px 0;
+  .questions details > p {
     color: var(--muted);
-    font-size: 0.84rem;
+    font-size: 0.86rem;
+    padding: 0 58px 24px 18px;
   }
 }
-
 @layer responsive {
-  @media (max-width: 850px) {
+  @media (max-width: 700px) {
     .questions-section {
-      gap: 36px;
-      padding-bottom: 72px;
+      grid-template-columns: 1fr;
+      gap: 34px;
     }
-  }
-
-  @media (max-width: 600px) {
-    .questions-section {
-      padding-block: 4px 56px;
-    }
-
-    .questions-section h2 {
-      font-size: 2.6rem;
-      margin-top: 16px;
-    }
-
-    .questions-section h2 br {
+    .questions-note {
       display: none;
     }
-
-    summary {
-      font-size: 0.85rem;
-      padding-block: 21px;
+    .questions summary {
+      font-size: 0.88rem;
     }
   }
 }
