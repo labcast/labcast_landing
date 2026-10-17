@@ -84,3 +84,13 @@ The founder rejected the flask direction. It is superseded by an original geomet
 ### Rounded logo revision — October 16, 2026
 
 Supersedes the angular mark above. Compared four rounded directions and selected a thick rounded L with an oversized live dot. The primary version uses an orange dot, while broadcast badges retain a single-color mark. Updated all shared placements, the favicon, and social artwork. Added `public/logo-mono.svg` alongside the primary `public/logo.svg`. The refreshed `preview/brand.png` includes primary, reversed, monochrome, and 16/24/32/48px samples. Desktop and mobile header/closing/footer checks passed without overflow or browser errors.
+
+### Mobile safe areas and sharing metadata — October 16, 2026
+
+Added `viewport-fit=cover`, safe-area header padding, and an opaque extension above the sticky header to cover content during Safari toolbar movement and elastic scrolling. Header height is shared by the hero, chapter viewport, and anchor spacing; centered containers respect landscape safe areas.
+
+Validation: `pnpm verify` passes across 27 Astro files and five routes. Header position, menu behavior, chapter/header alignment, and overflow were checked in Chrome and WebKit at 390×844, 844×390, and 1440×1000. Additional Chrome checks substituted 47px top and 59px landscape safe-area values in served CSS. These are browser-engine and simulated-inset checks; physical iPhone Safari toolbar behavior still needs device confirmation. The standard browser suite passed all 17 checks, with zero overflow at nine widths and zero violations in six axe scans.
+
+SEO/sharing: refreshed the 1200×630 PNG/SVG card with the current logo and crew illustration; added 48/96px PNG favicons, a 180px Apple touch icon, and a 512px logo. Added homepage `Organization` and `WebSite` JSON-LD, descriptive title/description, complete image metadata and alt text for Open Graph/Twitter cards, and large-image preview permission. Generated HTML for all five routes was parsed: canonical/image URLs agree, JSON-LD parses, and thanks/404 keep `noindex`. PNG signatures and dimensions were verified. Actual Slack unfurling and Google indexing cannot be inferred from local checks.
+
+Production observations during this revision: HTTPS at `labcast.ai` returns the Labcast page, `www.labcast.ai` redirects to it, and the Netlify badge script is no longer injected on either production hostname. The initial GoDaddy response was observed during the DNS transition. The live forms still contained `data-netlify` when checked; automatic form detection must be enabled in the correct Netlify project and a new deploy processed before signup storage is considered available. No live form submissions were sent.

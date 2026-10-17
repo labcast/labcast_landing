@@ -3,9 +3,15 @@ export const site = {
   name: 'Labcast',
   domain: 'https://labcast.ai',
   email: 'hello@labcast.ai',
-  title: 'Labcast — Your phones. One big show.',
+  title: 'Labcast — Live broadcasting from your phones',
   description:
-    'You bring the cameras. Labcast handles the live broadcast—shot selection, replays, commentary, and graphics. Join the waitlist.',
+    'Turn phone cameras into a live broadcast. Labcast handles switching, replays, graphics, and commentary for creators, events, and sports. Join the waitlist.',
+  image: {
+    path: '/social.png',
+    width: 1200,
+    height: 630,
+    alt: 'Labcast logo and an illustrated crew filming a basketball game. Your phones. One big show. Join the waitlist.',
+  },
   signupVersion: '2026-10-16',
 };
 export const navigation = [

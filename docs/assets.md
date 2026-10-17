@@ -37,3 +37,7 @@ Four additional original illustrations show gaming streams, live music, product 
 ### Streaming platform marks
 
 Local SVG path data in `src/platforms.ts`, rendered by `Platform.astro`. Twitch, YouTube, TikTok, and Instagram come from the pinned [Simple Icons 16.0.0 release](https://github.com/simple-icons/simple-icons/tree/16.0.0/icons). Original filenames: `twitch.svg`, `youtube.svg`, `tiktok.svg`, `instagram.svg`. The CC0 license is saved at `public/licenses/simple-icons.txt`; public credits link it. Brand ownership is unchanged. These identify planned destinations, not verified integrations or Labcast social accounts. SVGs inherit the surrounding ink color and have adjacent readable names; decorative paths are hidden from assistive technology.
+
+### Search and sharing assets
+
+`public/social.svg` is a self-contained 1200×630 composition using the existing crew illustration, locally licensed Manrope, and the current logo. `public/social.png` is its browser-rendered sharing version. The card shows the brand, phone-camera broadcast promise, and waitlist CTA. The square brand assets are `favicon-48.png`, `favicon-96.png`, `apple-touch-icon.png` (180px), and `logo.png` (512px); all derive from the current vector mark. `site.image` in `src/content.ts` owns the shared image URL, dimensions, and alt text. Open Graph/Twitter tags reference that image; homepage organization data references the 512px logo. No customer logos, ratings, or unsupported product offers are added to structured data.
