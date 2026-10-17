@@ -141,3 +141,43 @@
     }
   }
 }
+
+@layer layout {
+  .page-scroll {
+    display: contents;
+  }
+  /* Keep the outer page stationary on touch devices. Safari then has a solid
+     paper surface behind its status bar while the content scrolls natively. */
+  @media (hover: none) and (pointer: coarse) {
+    html,
+    body {
+      height: 100%;
+      overflow: hidden;
+      background: var(--paper);
+      overscroll-behavior-y: none;
+    }
+    .page-scroll {
+      display: block;
+      height: 100dvh;
+      padding-top: var(--header-height);
+      overflow-y: auto;
+      overflow-x: clip;
+      overscroll-behavior-y: contain;
+      -webkit-overflow-scrolling: touch;
+      scroll-padding-top: calc(var(--header-height) + 12px);
+    }
+    @media (prefers-reduced-motion: no-preference) {
+      .page-scroll {
+        scroll-behavior: smooth;
+      }
+    }
+  }
+}
+@layer responsive {
+  @media (hover: none) and (pointer: coarse) {
+    .header {
+      position: fixed;
+      inset-inline: 0;
+    }
+  }
+}
