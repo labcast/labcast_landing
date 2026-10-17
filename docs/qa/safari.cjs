@@ -31,24 +31,20 @@ const results = { checks: [], errors: [] };
         1,
         `Animated story at ${height}px`,
       );
-      const root = page.locator('[data-scroll-root]');
-      assert.equal(
-        await root.evaluate((e) => getComputedStyle(e).overflowY),
-        'auto',
-      );
+      const root = page.locator('html');
+      assert.equal(await page.locator('[data-scroll-root]').count(), 0);
       assert.equal(
         await page
           .locator('.header')
           .evaluate((e) => getComputedStyle(e).position),
-        'fixed',
+        'sticky',
       );
       const geometry = await page.locator('[data-story]').evaluate((el) => {
-        const scroll = document.querySelector('[data-scroll-root]');
         const header = document
           .querySelector('.header')
           .getBoundingClientRect().height;
         return {
-          start: el.getBoundingClientRect().top + scroll.scrollTop + 3 - header,
+          start: el.getBoundingClientRect().top + window.scrollY + 3 - header,
           range: innerHeight * 7,
         };
       });
@@ -84,7 +80,7 @@ const results = { checks: [], errors: [] };
               outer: window.scrollY,
             };
           });
-        assert.equal(boxes.outer, 0);
+        assert.ok(boxes.outer > 0);
         assert.equal(boxes.header.top, 0);
         assert.equal(boxes.overflow, false);
         assert.ok(
@@ -118,14 +114,14 @@ const results = { checks: [], errors: [] };
       const header = await page.locator('.header').boundingBox();
       assert.ok(questions.y >= header.height - 1);
       await page
-        .locator('[data-scroll-root]')
+        .locator('html')
         .evaluate((e) => e.scrollTo({ top: 300, behavior: 'instant' }));
       await page.waitForTimeout(200);
       assert.ok((await root.evaluate((e) => e.scrollTop)) > 0);
-      assert.equal(await page.evaluate(() => scrollY), 0);
+      assert.ok((await page.evaluate(() => scrollY)) > 0);
       await page.screenshot({ path: `/tmp/labcast-safari-${height}.png` });
       results.checks.push(
-        `430x${height}: all scenes forward/reverse, no overlap/cutoff, fixed header, inner scroll, menu anchors`,
+        `430x${height}: all scenes forward/reverse, no overlap/cutoff, sticky header, native document scroll, menu anchors`,
       );
       await page.emulateMedia({ reducedMotion: 'reduce' });
       await page.waitForTimeout(200);
@@ -143,9 +139,9 @@ const results = { checks: [], errors: [] };
     await nojs.goto(base, { waitUntil: 'networkidle' });
     assert.equal(
       await nojs
-        .locator('[data-scroll-root]')
-        .evaluate((e) => getComputedStyle(e).display),
-      'contents',
+        .locator('.header')
+        .evaluate((e) => getComputedStyle(e).position),
+      'sticky',
     );
     assert.equal(await nojs.locator('[data-scene]').count(), 7);
     await nojs.close();

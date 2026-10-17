@@ -138,17 +138,14 @@ const out =
       isMobile: true,
     });
     await phone.goto(base, { waitUntil: 'networkidle' });
-    await phone.locator('[data-story]').evaluate((r) => {
-      const page = document.querySelector('[data-scroll-root]');
-      page.scrollTo({
-        top: r.getBoundingClientRect().top + page.scrollTop + 1000,
+    await phone.locator('[data-story]').evaluate((r) =>
+      scrollTo({
+        top: r.getBoundingClientRect().top + scrollY + 1000,
         behavior: 'instant',
-      });
-    });
+      }),
+    );
     await phone.waitForTimeout(300);
-    const before = await phone
-      .locator('[data-scroll-root]')
-      .evaluate((el) => el.scrollTop);
+    const before = await phone.evaluate(() => scrollY);
     const client = await phone.context().newCDPSession(phone);
     await client.send('Input.dispatchTouchEvent', {
       type: 'touchStart',
@@ -166,14 +163,7 @@ const out =
       touchPoints: [],
     });
     await phone.waitForTimeout(400);
-    assert.ok(
-      (await phone
-        .locator('[data-scroll-root]')
-        .evaluate((el) => el.scrollTop)) -
-        before >
-        200,
-    );
-    assert.equal(await phone.evaluate(() => scrollY), 0);
+    assert.ok((await phone.evaluate(() => scrollY)) - before > 200);
     result.checks.push('Phone swipes scroll natively through the story');
     assert.deepEqual(result.errors, []);
     result.complete = true;
