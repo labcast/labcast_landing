@@ -4,6 +4,7 @@ import Page from '../layouts/Page.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { site } from '../content';
+import { shareUrl } from '../scripts/share';
 import '../styles/thanks.css';
 ---
 
@@ -110,19 +111,19 @@ import '../styles/thanks.css';
         <p id="details-error" class="form-message" role="alert"></p>
       </form>
       <p data-details-success hidden tabindex="-1" class="details-success">
-        Thanks. Your details have been received. We’ll get in touch if a early
+        Thanks. Your details have been received. We’ll get in touch if early
         access is available.
       </p>
     </div>
-    <div class="share-panel">
-      <h2>Know who would run this for your crew?</h2>
-      <p>Send them Labcast. Good shows start with good people.</p>
+    <div class="share-panel" data-share-panel>
+      <h2>Know someone who’d love this?</h2>
+      <p>Send them Labcast. Every big show starts with a good crew.</p>
       <button type="button" class="button button-lime" data-share>
-        Copy Labcast link <Icon name="copy" />
+        Share with your crew <Icon name="share" />
       </button>
       <p class="form-note" data-share-status role="status"></p>
       <p class="share-fallback">
-        Or share <a href="https://labcast.ai">labcast.ai</a>.
+        Or share <a href={shareUrl}>labcast.ai</a>.
       </p>
     </div>
     <p class="form-note">

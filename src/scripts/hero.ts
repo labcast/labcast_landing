@@ -6,19 +6,7 @@ const hero = document.querySelector<HTMLElement>('.hero');
 if (hero) {
   const media = gsap.matchMedia();
   media.add('(prefers-reduced-motion: no-preference)', () => {
-    gsap.from(
-      hero.querySelectorAll(
-        '.hero-copy > .eyebrow, .hero-line, .hero-highlight, .hero-description, .waitlist',
-      ),
-      {
-        y: 24,
-        opacity: 0,
-        duration: 0.85,
-        stagger: 0.08,
-        ease: 'power3.out',
-        clearProps: 'transform,opacity',
-      },
-    );
+    // Copy and the signup form render on first paint; only the artwork moves.
     gsap.fromTo(
       hero.querySelector('.hero-art img'),
       { scale: 1.035 },

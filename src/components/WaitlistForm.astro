@@ -1,0 +1,82 @@
+---
+import Icon from './Icon.astro';
+import { site } from '../content';
+import '../styles/waitlist.css';
+interface Props {
+  /** Prefix for element ids; unique per page. */
+  id: string;
+  /** Default placement label, replaced by a utm_source when one is present. */
+  source: string;
+}
+const { id, source } = Astro.props;
+---
+
+<div class="waitlist-form" data-waitlist>
+  <p class="waitlist-stage">
+    <span class="status-dot" aria-hidden="true"></span> In development · Early
+    access soon
+  </p>
+  <form
+    name="waitlist"
+    method="POST"
+    action="/thanks/"
+    data-netlify="true"
+    netlify-honeypot="website"
+    data-form="waitlist"
+  >
+    <input type="hidden" name="form-name" value="waitlist" />
+    <input type="hidden" name="signup-version" value={site.signupVersion} />
+    <input type="hidden" name="source" value={source} />
+    <input type="hidden" name="campaign" value="" />
+    <input type="hidden" name="audience" value="" />
+    <p class="honeypot" aria-hidden="true">
+      <label>
+        Leave empty
+        <input name="website" tabindex="-1" autocomplete="off" />
+      </label>
+    </p>
+    <label for={`${id}-email`} class="email-label">
+      Email address
+    </label>
+    <div class="signup-row">
+      <input
+        id={`${id}-email`}
+        name="email"
+        type="email"
+        required
+        autocomplete="email"
+        maxlength="254"
+        placeholder="you@example.com"
+        aria-describedby={`${id}-note ${id}-error`}
+      />
+      <button class="button" type="submit">
+        <span data-submit-label>Join the waitlist</span>
+        <Icon />
+      </button>
+    </div>
+    <p id={`${id}-error`} class="form-message" role="alert" data-error></p>
+    <p id={`${id}-note`} class="form-note">
+      Free to join. A few Labcast updates, unsubscribe anytime.{' '}
+      <a href="/privacy/">Privacy</a>
+    </p>
+  </form>
+  <div class="signup-success" data-signup-success hidden tabindex="-1">
+    <span class="success-icon" aria-hidden="true">
+      <Icon name="check" />
+    </span>
+    <div>
+      <strong>You’re on the list.</strong>
+      <p>We’ll invite you when early access opens.</p>
+      <div class="success-actions">
+        <a href="/thanks/" class="button button-lime">
+          Tell us about your show <small>(1 min, optional)</small>
+          <Icon />
+        </a>
+        <button type="button" class="button" data-share>
+          Share with your crew <Icon name="share" />
+        </button>
+      </div>
+      <p class="form-note" data-share-status role="status"></p>
+    </div>
+  </div>
+</div>

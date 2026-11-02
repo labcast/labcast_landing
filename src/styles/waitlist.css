@@ -1,0 +1,94 @@
+@layer components {
+  .waitlist-stage {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.69rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+  .waitlist-stage .status-dot {
+    color: var(--coral);
+    width: 8px;
+    height: 8px;
+  }
+  .email-label {
+    font-size: 0.75rem;
+    display: block;
+    margin-bottom: 6px;
+  }
+  .signup-row {
+    display: flex;
+    max-width: 510px;
+    border-radius: var(--radius-button);
+    box-shadow: var(--shadow);
+  }
+  .signup-row input {
+    flex: 1;
+    width: 0;
+    min-height: 54px;
+    border-right: 0;
+    border-radius: var(--radius-button) 0 0 var(--radius-button);
+    font-size: 0.85rem;
+  }
+  .signup-row .button {
+    flex: none;
+    gap: 16px;
+    padding-inline: 16px;
+    background: var(--coral);
+    color: var(--ink);
+    border-color: var(--ink);
+    border-radius: 0 var(--radius-button) var(--radius-button) 0;
+    box-shadow: none;
+  }
+  .signup-row .button:active {
+    transform: none;
+    background: var(--lime);
+  }
+  .waitlist-form .form-note {
+    margin-top: 13px;
+    font-size: 0.67rem;
+  }
+  .signup-success {
+    display: flex;
+    gap: 16px;
+    border: var(--outline) solid var(--ink);
+    background: var(--lime);
+    padding: 20px;
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow);
+  }
+  .signup-success p {
+    font-size: 0.8rem;
+  }
+  .success-icon {
+    font-size: 1.6rem;
+  }
+  .success-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 14px;
+  }
+  .success-actions .button {
+    gap: 12px;
+    min-height: 44px;
+    padding: 10px 14px;
+    font-size: 0.82rem;
+  }
+  .success-actions small {
+    font: 700 0.7rem var(--mono);
+  }
+  .signup-success .form-note:not(:empty) {
+    margin-top: 10px;
+  }
+}
+@layer responsive {
+  @media (max-width: 420px) {
+    .signup-row .button {
+      padding-inline: 12px;
+      font-size: 0.74rem;
+      gap: 8px;
+    }
+  }
+}

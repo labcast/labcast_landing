@@ -11,6 +11,9 @@ import { navigation } from '../content';
       <Mark badge />
       <span>labcast</span>
     </a>
+    <a href="/#waitlist" class="header-join">
+      Join
+    </a>
     <button
       class="menu-toggle"
       type="button"
@@ -19,6 +22,7 @@ import { navigation } from '../content';
       aria-label="Open menu"
     >
       <Icon name="menu" />
+      <Icon name="close" />
     </button>
     <nav id="navigation" class="navigation" aria-label="Main navigation">
       {navigation.map((link, index) => (
