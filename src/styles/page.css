@@ -14,8 +14,8 @@
   .eyebrow,
   .tiny-label,
   .section-number {
-    font: 0.69rem/1.5 var(--mono);
-    letter-spacing: 0.065em;
+    font: 700 0.69rem/1.5 var(--mono);
+    letter-spacing: 0.04em;
     text-transform: uppercase;
   }
   .eyebrow {
@@ -39,12 +39,12 @@
   }
   .section-heading > p {
     max-width: 330px;
-    color: var(--muted);
+    color: var(--text-secondary);
     font-size: 0.95rem;
   }
   .status-dot {
-    width: 7px;
-    height: 7px;
+    width: 8px;
+    height: 8px;
     background: currentColor;
     border-radius: 50%;
     display: inline-block;
@@ -54,47 +54,58 @@
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    font-weight: 850;
-    font-size: 1.8rem;
-    letter-spacing: -0.075em;
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 1.6rem;
+    letter-spacing: -0.035em;
     line-height: 1;
-  }
-  .wordmark .mark-dot,
-  .footer-brand .mark-dot,
-  .closing-seal .mark-dot {
-    fill: var(--orange);
   }
   .wordmark svg {
     flex: none;
   }
+  /* The app's brand tile: ink mark on lime, ink outline and hard shadow. */
+  .brand-badge {
+    display: inline-grid;
+    place-items: center;
+    flex: none;
+    width: 36px;
+    height: 36px;
+    background: var(--lime);
+    color: var(--ink);
+    border: var(--outline) solid var(--ink);
+    border-radius: 9px;
+    box-shadow: 3px 3px 0 var(--brand-shadow, var(--ink));
+  }
+  .brand-badge svg {
+    width: 24px;
+    height: 24px;
+  }
+  /* Black actions: lime text and a white outline, with the ink hard shadow. */
   .button {
     display: inline-flex;
     align-items: center;
     justify-content: space-between;
     gap: 24px;
-    border: 2px solid var(--ink);
+    border: var(--outline) solid var(--white);
+    border-radius: var(--radius-button);
     min-height: 50px;
     padding: 13px 20px;
     background: var(--ink);
-    color: var(--paper);
-    font-size: 0.82rem;
-    font-weight: 750;
-  }
-  .button:hover {
-    background: #32362b;
-    transform: translate(-2px, -2px);
-    box-shadow: 3px 3px 0 var(--orange);
+    color: var(--lime);
+    box-shadow: var(--shadow);
+    font-family: var(--display);
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
   }
   .button:active {
-    transform: translate(1px, 1px);
-    box-shadow: none;
+    transform: var(--press);
+    box-shadow: var(--shadow-pressed);
   }
   .button-lime {
     background: var(--lime);
     color: var(--ink);
-  }
-  .button-lime:hover {
-    background: #edffb8;
+    border-color: var(--ink);
   }
   .text-link {
     display: inline-flex;
@@ -102,7 +113,7 @@
     gap: 18px;
     min-height: 44px;
     font-size: 0.85rem;
-    font-weight: 700;
+    font-weight: 600;
     text-decoration: underline;
   }
   .text-link:hover {
@@ -138,25 +149,25 @@
   }
   .field label {
     font-size: 0.82rem;
-    font-weight: 700;
+    font-weight: 600;
   }
   input,
   select,
   textarea {
-    border: 1.5px solid var(--ink);
-    border-radius: 0;
-    background: #fffefa;
+    border: var(--outline) solid var(--ink);
+    border-radius: var(--radius-button);
+    background: var(--surface);
     padding: 13px 14px;
     color: var(--ink);
     width: 100%;
     font-size: 1rem;
   }
   input[aria-invalid='true'] {
-    border-color: #a02719;
+    border-color: var(--coral);
   }
   .form-note {
     font-size: 0.72rem;
-    color: var(--muted);
+    color: var(--text-secondary);
     line-height: 1.6;
   }
   .form-note a {
@@ -165,7 +176,9 @@
   .form-message {
     font-size: 0.85rem;
     margin-top: 10px;
-    color: #9c2419;
+    padding-left: 10px;
+    border-left: 4px solid var(--coral);
+    color: var(--text);
   }
   .form-message:empty {
     display: none;
@@ -176,7 +189,7 @@
   }
   .document h1 {
     font-size: clamp(2.7rem, 6vw, 4.7rem);
-    letter-spacing: -0.06em;
+    letter-spacing: -0.04em;
     line-height: 1.05;
     margin: 20px 0 30px;
   }
@@ -263,9 +276,9 @@
   input:not([type='checkbox']):not([type='hidden']):focus,
   textarea:focus,
   select:focus {
-    background: #fffefa;
+    background: var(--surface);
     border-color: var(--ink);
-    box-shadow: 3px 3px 0 var(--lime);
+    box-shadow: var(--shadow-sm);
   }
   @media (prefers-reduced-motion: no-preference) {
     .button > .icon,
@@ -279,7 +292,7 @@
         :focus-visible
       )
       > .icon-arrow {
-      transform: translate(2px, -2px);
+      transform: translateX(3px);
     }
     .button:is(:hover, :focus-visible) > .icon-back {
       transform: translateX(-3px);
@@ -294,7 +307,7 @@
         box-shadow 180ms;
     }
     .role-choices label:has(:checked) {
-      box-shadow: 3px 3px 0 var(--ink);
+      box-shadow: var(--shadow-sm);
     }
   }
 }

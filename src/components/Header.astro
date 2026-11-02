@@ -8,8 +8,11 @@ import { navigation } from '../content';
 <header class="header">
   <div class="container header-inner">
     <a class="wordmark" href="/" aria-label="Labcast home">
-      <Mark />
-      <span>labcast.</span>
+      <Mark badge />
+      <span>labcast</span>
+    </a>
+    <a href="/#waitlist" class="header-join">
+      Join
     </a>
     <button
       class="menu-toggle"
@@ -19,6 +22,7 @@ import { navigation } from '../content';
       aria-label="Open menu"
     >
       <Icon name="menu" />
+      <Icon name="close" />
     </button>
     <nav id="navigation" class="navigation" aria-label="Main navigation">
       {navigation.map((link, index) => (

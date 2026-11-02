@@ -1,100 +1,146 @@
-// Shared public copy. Capabilities describe the product in development.
+// Shared public copy. Labcast is in development; the roadmap names what ships when.
 export const site = {
   name: 'Labcast',
   domain: 'https://labcast.ai',
   email: 'hello@labcast.ai',
-  title: 'Labcast — Professional live broadcasts from your phones',
+  title: 'Labcast — Professional live shows from your phones',
   description:
-    'Turn your phone cameras into a professional-looking live show. Labcast handles camera switching, replays, commentary, and graphics for you. Made for streamers, local events, and club sports. Join the waitlist for early-access updates.',
+    'Labcast turns the phones you already have into a professional live show. It switches angles, plays replays and adds graphics for you, so everyone who can’t be there gets the best seat. Join the waitlist for early access.',
   image: {
     path: '/social.png',
     width: 1200,
     height: 630,
-    alt: 'Labcast logo and an illustrated crew filming a basketball game. Your phones. One big show. Join the waitlist.',
+    alt: 'Labcast logo beside an illustrated crew filming a basketball game. Your phones. One big show. Join the waitlist.',
   },
-  signupVersion: '2026-10-16',
+  signupVersion: '2026-11-02',
 };
 export const navigation = [
   { href: '/#workflow', label: 'How it works' },
   { href: '/#people', label: 'Made for you' },
+  { href: '/#coming', label: 'What’s coming' },
   { href: '/#questions', label: 'Questions' },
 ];
 export const audiences = [
   {
     id: 'streamer',
-    label: 'For streamers',
+    label: 'For streamers and creators',
     title: 'More angles.\nMore of your show.',
     image: 'streamer',
     alt: 'A creator records at his desk with a phone and microphone.',
-    text: 'Interviews, demos, IRL adventures. Bring more of your world into the frame, with your personality at the center.',
-    action: 'Join as a streamer',
+    text: 'Interviews, demos, IRL streams. Add your friends’ phones as extra cameras. Labcast cuts between them while you stay in the moment.',
+    action: 'Get early access',
     note: 'Your voice. Your show.',
   },
   {
     id: 'organizer',
     label: 'For event organizers',
-    title: 'The room is only\nthe beginning.',
+    title: 'Bring everyone\ninto the room.',
     image: 'audience',
     alt: 'A small audience listens to a speaker at a creative workshop.',
-    text: 'You bring people together. We’re building a way to bring the moment to the people who can’t be in the room.',
-    action: 'Join as an organizer',
-    note: 'Small event. Bigger possibilities.',
+    text: 'Talks, meetups, hackathons, community nights. Your volunteers film on their phones. Labcast turns it into a live show for everyone who couldn’t make it.',
+    action: 'Get early access',
+    note: 'Every event deserves an audience.',
   },
   {
     id: 'club',
     label: 'For sports clubs',
-    title: 'Bring them\nto the sideline.',
+    title: 'Every fan\ngets a seat.',
     image: 'game',
     alt: 'A young batter swings during a baseball game while a catcher waits.',
-    text: 'For the families and fans who can’t make game day. We’re exploring coordinated phone broadcasts for local clubs.',
-    action: 'Join for my club',
+    text: 'Game day for the families and fans who can’t be there. Parents film from the sideline. Labcast follows the play and brings back the big moments.',
+    action: 'Get early access',
     note: 'For the fans who can’t be there.',
+  },
+];
+export const roadmap = [
+  {
+    id: 'pilot',
+    stage: '01 / Pilot',
+    title: 'Your phones become a broadcast.',
+    items: [
+      'Phone cameras and microphones from your crew',
+      'Every phone recording in sync',
+      'An automated director that cuts to the best angle',
+      'Professional replays, slow motion included',
+      'Titles, graphics and spoken commentary',
+      'A production plan built from your event details',
+      'You approve the crew and start or stop the show',
+      'One streaming destination, set with its URL and key',
+      'Step in and steer whenever you want',
+    ],
+  },
+  {
+    id: 'next',
+    stage: '02 / Next',
+    title: 'Less setup. More you.',
+    items: [
+      'Import events from Luma, Eventbrite and Meetup',
+      'An event assistant that shapes your plan in chat',
+      'Self-serve: buy hours, then start and stop on your own',
+      'Exploring: laptop screens and venue sound desks as direct inputs',
+    ],
+  },
+  {
+    id: 'later',
+    stage: '03 / Later',
+    title: 'Bigger, bolder shows.',
+    items: [
+      'A music catalogue for your broadcasts',
+      '3D scenes and effects',
+      'More camera profiles for every kind of event',
+      'Speaker names and live results in your graphics',
+    ],
   },
 ];
 export const questions = [
   {
-    question: 'Can I use Labcast right now?',
+    question: 'Can I use Labcast today?',
     answer:
-      'Labcast is in development. Join the waitlist for updates and to hear when early access opens. There isn’t a public launch date yet.',
+      'Not yet. Labcast is in development, and early access is coming. Join the waitlist to be among the first in. There’s no launch date yet.',
   },
   {
-    question: 'What would I need?',
+    question: 'What happens after I join?',
     answer:
-      'The plan is to work with phone cameras, people willing to film, and suitable internet at the venue. Audio, power, and camera positions also matter.',
+      'You get a few updates and an invite when early access opens. Nothing to install or pay.',
   },
   {
-    question: 'Does everyone at the event have to film?',
+    question: 'What do I need?',
     answer:
-      'No. Labcast is being built for willing volunteers or your chosen camera crew. Attending and filming are separate choices.',
+      'Phones, people happy to film with them, and a solid internet connection at the venue. No cameras, switchers or editing software to buy.',
   },
   {
-    question: 'Do we have to follow camera directions?',
+    question: 'Does everyone have to film?',
     answer:
-      'No. Labcast is being built to work with the views your crew provides. Camera tips are optional. You can let Labcast handle the production without directing the people filming.',
+      'No. You choose your crew and approve who joins. Watching and filming are separate choices.',
+  },
+  {
+    question: 'Does my crew need training?',
+    answer:
+      'No. Labcast works with the views your crew gives it. It can suggest better framing, but nobody has to follow directions.',
   },
   {
     question: 'Can I stay in control?',
     answer:
-      'Yes. We’re building in the ability to steer the show and take over whenever you want.',
-  },
-  {
-    question: 'Does this replace my current streaming tools?',
-    answer:
-      'Labcast is focused on producing a live show from phone cameras. Supported workflows and connections will be confirmed before early access.',
+      'Yes. Watch the live show, mute a microphone, drop a camera, show a holding screen or stop the broadcast whenever you want.',
   },
   {
     question: 'Where will viewers watch?',
     answer:
-      'We’re building direct streaming to Twitch, YouTube, TikTok, and Instagram. Platform support, simultaneous streaming, and account eligibility will be confirmed before early access.',
+      'Wherever you stream. Each broadcast goes to one destination: paste the stream URL and key from your streaming platform, and Labcast sends the show there.',
   },
   {
-    question: 'Will it work for our sport?',
+    question: 'Do I need a laptop feed or a sound desk?',
     answer:
-      'We’re exploring youth and community sports and will validate specific formats first. Tell us your sport after joining so we can understand what your club needs.',
+      'No. Phones capture the picture and the sound. We’re exploring direct laptop-screen and sound-desk inputs for later.',
+  },
+  {
+    question: 'Will it work for my kind of event?',
+    answer:
+      'Labcast is built for live moments of every kind: streams, talks, meetups, hackathons, games and gigs. Tell us what you’re planning after you join.',
   },
   {
     question: 'What will it cost?',
     answer:
-      'The waitlist is free to join. Product pricing is still being worked out. We’ll share pricing before you commit to anything.',
+      'Joining the waitlist is free. Pricing isn’t set yet, and you’ll see it before you commit to anything.',
   },
 ];

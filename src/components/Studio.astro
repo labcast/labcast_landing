@@ -6,56 +6,54 @@ import action from '../assets/action.png';
 import viewers from '../assets/viewers.png';
 import reaction from '../assets/reaction.png';
 import Mark from './Mark.astro';
-import Platform from './Platform.astro';
-import { platforms } from '../platforms';
 import '../styles/studio.css';
 const scenes = [
   {
     label: 'YOUR EVENT. YOUR CREW.',
     title: 'Good people.\nGreat angles.',
-    text: 'Set up your event. Invite your crew. Their phones become your cameras.',
+    text: 'Create your event and invite your crew. Their phones become your cameras and microphones.',
     image: crew,
     alt: 'Cartoon friends film a community basketball game from different positions.',
   },
   {
     label: 'BROADCASTING, HANDLED',
     title: 'You film.\nLabcast broadcasts.',
-    text: 'Labcast works with your live camera feeds and takes care of the production.',
+    text: 'Every phone records in sync. Labcast takes the live feeds and runs the production for you.',
     image: action,
     alt: 'Labcast follows the action in a camera feed and prepares it for the broadcast.',
   },
   {
     label: 'SHOT SELECTION',
     title: 'The right angle.\nAt the right time.',
-    text: 'Labcast follows the action and switches between your available views to keep the show moving.',
+    text: 'An automated director follows the action and cuts to the best view, so the show keeps moving.',
     image: action,
     alt: 'Three illustrated camera views feed one broadcast, with the action view selected.',
   },
   {
     label: 'REPLAYS',
     title: 'That moment.\nOne more time.',
-    text: 'Labcast spots replay-worthy moments and brings them back into the show.',
+    text: 'Labcast catches the big moments and plays them back as professional replays, slow motion included. Even from angles that weren’t on air.',
     image: action,
     alt: 'The basketball moment returns in a replay with overlapping illustrated frames.',
   },
   {
     label: 'COMMENTARY + GRAPHICS',
     title: 'Give the moment\nthe full treatment.',
-    text: 'Labcast adds titles, graphics, and commentary to help your audience follow along.',
+    text: 'Titles, graphics and spoken commentary help everyone follow along, no editor needed.',
     image: action,
     alt: 'The illustrated broadcast gains a title, score graphic, and commentary.',
   },
   {
     label: 'CONTROL WHEN YOU WANT IT',
     title: 'Your show.\nStill your call.',
-    text: 'Let Labcast run things, or take over. Camera tips are there if your crew wants them.',
+    text: 'Labcast runs the show. Step in any time to mute a mic, drop a camera or stop the broadcast.',
     image: reaction,
     alt: 'Direction switches from Labcast to a person, with a camera view chosen by the crew.',
   },
   {
     label: 'DIRECT TO YOUR AUDIENCE',
     title: 'One broadcast.\nYour whole audience.',
-    text: 'Stream directly to the places people already watch you. Bring everyone into the moment.',
+    text: 'Paste the stream URL and key from your streaming platform. Labcast sends the finished show there, live.',
     image: viewers,
     alt: 'A joyful older couple cheers while watching the same basketball game on a laptop.',
   },
@@ -118,23 +116,8 @@ const scenes = [
             </h2>
             <p class="scene-description">{scene.text}</p>
             {i === 6 && (
-              <div class="destinations">
-                <span>Planned destinations</span>
-                <ul>
-                  {(Object.keys(platforms) as (keyof typeof platforms)[]).map(
-                    (name) => (
-                      <li>
-                        <Platform name={name} />
-                        {name}
-                      </li>
-                    ),
-                  )}
-                </ul>
-              </div>
-            )}
-            {i === 6 && (
               <a class="text-link" href="#waitlist">
-                Be part of it <Icon />
+                Get early access <Icon />
               </a>
             )}
           </div>

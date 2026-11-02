@@ -1,9 +1,8 @@
 ---
-import Icon from './Icon.astro';
 import '../styles/hero.css';
 import { Image } from 'astro:assets';
 import crew from '../assets/crew.png';
-import { site } from '../content';
+import WaitlistForm from './WaitlistForm.astro';
 import Showcase from './Showcase.astro';
 ---
 
@@ -22,7 +21,7 @@ import Showcase from './Showcase.astro';
   </div>
   <div class="hero-copy container">
     <p class="eyebrow">
-      <span class="status-dot"></span> SMALL CREW. BIG POSSIBILITIES.
+      <span class="status-dot"></span> NO CREW TO HIRE. NO GEAR TO RENT.
     </p>
     <h1 id="hero-title">
       <span class="hero-line">Your phones.</span>
@@ -31,72 +30,15 @@ import Showcase from './Showcase.astro';
       </span>
     </h1>
     <p class="hero-description">
-      You bring the cameras. Labcast handles the broadcast—from switching views
-      to replays, commentary, and graphics.
+      Labcast turns the phones you already have into one live broadcast. It
+      switches angles and adds replays and graphics for you.
+    </p>
+    <p class="hero-welcome">
+      For streamers, event organizers, sports clubs, creators and community
+      events.
     </p>
     <div class="waitlist" id="waitlist">
-      <p class="waitlist-stage">
-        <span class="status-dot"></span> In development · Get early-access
-        updates
-      </p>
-      <form
-        name="waitlist"
-        method="POST"
-        action="/thanks/"
-        data-netlify="true"
-        netlify-honeypot="website"
-        data-form="waitlist"
-      >
-        <input type="hidden" name="form-name" value="waitlist" />
-        <input type="hidden" name="signup-version" value={site.signupVersion} />
-        <input type="hidden" name="source" value="website" />
-        <input type="hidden" name="campaign" value="" />
-        <input type="hidden" name="audience" value="" />
-        <p class="honeypot" aria-hidden="true">
-          <label>
-            Leave empty
-            <input name="website" tabindex="-1" autocomplete="off" />
-          </label>
-        </p>
-        <label for="waitlist-email" class="email-label">
-          Email address
-        </label>
-        <div class="signup-row">
-          <input
-            id="waitlist-email"
-            name="email"
-            type="email"
-            required
-            autocomplete="email"
-            maxlength="254"
-            placeholder="you@example.com"
-            aria-describedby="signup-note signup-error"
-          />
-          <button class="button" type="submit">
-            <span data-submit-label>Join the waitlist</span>
-            <Icon />
-          </button>
-        </div>
-        <p id="signup-error" class="form-message" role="alert"></p>
-        <p id="signup-note" class="form-note">
-          Free to join. Occasional updates. Leave anytime.
-          <br />
-          By joining, you agree to receive Labcast updates.{' '}
-          <a href="/privacy/">Privacy</a>
-        </p>
-      </form>
-      <div class="signup-success" data-signup-success hidden tabindex="-1">
-        <span class="success-icon" aria-hidden="true">
-          <Icon name="check" />
-        </span>
-        <div>
-          <strong>You’re on the list.</strong>
-          <p>We’ll be in touch with updates.</p>
-          <a href="/thanks/" class="text-link">
-            What would you broadcast? <Icon />
-          </a>
-        </div>
-      </div>
+      <WaitlistForm id="waitlist" source="website" />
     </div>
   </div>
 </section>

@@ -1,7 +1,7 @@
 @layer components {
   .closing {
-    background: var(--orange);
-    border-block: 3px solid var(--ink);
+    background: var(--coral);
+    border-block: var(--outline) solid var(--ink);
     overflow: hidden;
   }
   .closing-inner {
@@ -19,34 +19,31 @@
     font-size: clamp(4.5rem, 8.5vw, 8rem);
     margin: 28px 0;
     line-height: 0.94;
-    letter-spacing: -0.075em;
+    letter-spacing: -0.04em;
   }
   .closing h2 > span {
-    color: var(--paper);
+    color: var(--white);
   }
   .closing-description {
     font-size: clamp(1.05rem, 1.6vw, 1.4rem);
     font-weight: 600;
     line-height: 1.5;
   }
-  .closing .button {
+  .closing-form {
     margin-top: 30px;
-    min-width: 250px;
-    background: var(--paper);
-    color: var(--ink);
-    border-width: 3px;
-    box-shadow: 5px 5px 0 var(--ink);
-    min-height: 60px;
-    font-size: 0.95rem;
+    max-width: 530px;
   }
-  .closing .button:hover {
+  .closing .signup-row .button {
     background: var(--lime);
-    box-shadow: 8px 8px 0 var(--ink);
   }
-  .closing-note {
-    display: block;
-    font: 0.6rem/1.5 var(--mono);
-    margin-top: 20px;
+  .closing :is(.form-note, .waitlist-stage, .email-label) {
+    color: var(--ink);
+  }
+  .closing .waitlist-stage .status-dot {
+    color: var(--ink);
+  }
+  .closing .form-message {
+    border-left-color: var(--ink);
   }
   .closing-art {
     position: relative;
@@ -57,12 +54,12 @@
   .closing-seal {
     width: 77%;
     aspect-ratio: 1;
-    border: 3px solid var(--ink);
+    border: var(--outline) solid var(--ink);
     background: var(--lime);
     border-radius: 50%;
     display: grid;
     place-items: center;
-    box-shadow: 8px 8px 0 var(--ink);
+    box-shadow: var(--shadow);
     transform: rotate(0deg);
   }
   .closing-seal svg {
@@ -71,7 +68,7 @@
   }
   .closing-orbit {
     position: absolute;
-    border: 1.5px solid var(--ink);
+    border: var(--outline-alt) solid var(--ink);
     border-radius: 50%;
     inset: 0;
   }
@@ -85,10 +82,11 @@
     position: absolute;
     bottom: 4%;
     left: -2%;
-    background: var(--paper);
+    background: var(--canvas);
     padding: 16px 22px;
-    border: 2px solid var(--ink);
-    box-shadow: 4px 4px 0 var(--ink);
+    border: var(--outline) solid var(--ink);
+    border-radius: var(--radius-badge);
+    box-shadow: var(--shadow);
     transform: rotate(-8deg);
     font: 700 clamp(0.65rem, 1vw, 0.9rem)/1.5 var(--mono);
   }

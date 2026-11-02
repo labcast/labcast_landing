@@ -3,7 +3,7 @@
     display: grid;
     grid-template-columns: 0.75fr 1.25fr;
     gap: 70px;
-    border-top: 2px solid var(--ink);
+    border-top: var(--outline) solid var(--ink);
   }
   .questions-section h2 {
     margin-top: 24px;
@@ -11,13 +11,13 @@
   .questions-note {
     margin-top: 22px;
     font-size: 0.88rem;
-    color: var(--muted);
+    color: var(--text-secondary);
   }
   .questions {
-    border-top: 1.5px solid var(--ink);
+    border-top: var(--outline) solid var(--ink);
   }
   .questions details {
-    border-bottom: 1.5px solid var(--ink);
+    border-bottom: var(--outline) solid var(--ink);
   }
   .questions summary {
     display: flex;
@@ -28,33 +28,34 @@
     cursor: pointer;
     padding: 24px 18px;
     font-size: 0.95rem;
-    font-weight: 750;
+    font-weight: 600;
   }
   .questions summary::-webkit-details-marker {
     display: none;
   }
   .questions summary > span {
     font-size: 1.3rem;
-    font-weight: 500;
+    font-weight: 400;
     flex: none;
     width: 30px;
     height: 30px;
     line-height: 27px;
-    border: 1.5px solid var(--ink);
+    border: var(--outline) solid var(--ink);
+    border-radius: var(--radius-badge);
     background: var(--lime);
     text-align: center;
   }
   .questions details[open] {
-    background: #e9eddd;
+    background: var(--surface-alt);
   }
   .questions summary:hover {
-    background: #e9eddd;
+    background: var(--surface-alt);
   }
   .questions details[open] summary > span {
     transform: rotate(45deg);
   }
   .questions details > p {
-    color: var(--muted);
+    color: var(--text-secondary);
     font-size: 0.86rem;
     padding: 0 58px 24px 18px;
   }

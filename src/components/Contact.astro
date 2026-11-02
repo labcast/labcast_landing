@@ -1,7 +1,7 @@
 ---
-import Icon from './Icon.astro';
 import '../styles/contact.css';
 import Mark from './Mark.astro';
+import WaitlistForm from './WaitlistForm.astro';
 ---
 
 <section class="closing" aria-labelledby="closing-title">
@@ -17,14 +17,13 @@ import Mark from './Mark.astro';
         like a pro<span>.</span>
       </h2>
       <p class="closing-description">
-        Bring your cameras.
+        Bring your phones.
         <br />
         Labcast brings the show.
       </p>
-      <a class="button" href="#waitlist">
-        Join the waitlist <Icon />
-      </a>
-      <span class="closing-note">FREE TO JOIN · EARLY-ACCESS UPDATES</span>
+      <div class="closing-form">
+        <WaitlistForm id="closing" source="closing" />
+      </div>
     </div>
     <div class="closing-art" aria-hidden="true">
       <div class="closing-orbit orbit-one"></div>

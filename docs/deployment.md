@@ -23,7 +23,9 @@ The local website is prepared for Netlify. This record does not assert that depl
 | `waitlist` | email, signup-version, source, campaign, audience, honeypot    | Request to receive Labcast product and early-access updates.                                                          |
 | `details`  | email, signup-version, role[], event, access-contact, honeypot | Optional context, with a separate opt-in to early-access follow-up. This does not itself add someone to the waitlist. |
 
-Version `2026-10-16` refers to the signup wording: “By joining, you agree to receive Labcast updates.” The adjacent note promises free signup, occasional updates, and the ability to leave. Keep a record of future wording changes and change the version when that offer changes.
+Version `2026-11-02` refers to the signup wording under the form: “Free to join. A few Labcast updates, unsubscribe anytime.” with a Privacy link. It replaces version `2026-10-16`: “Free to join. Occasional updates. Leave anytime. By joining, you agree to receive Labcast updates.” Keep a record of future wording changes and change the version when that offer changes.
+
+The homepage has two instances of the same `waitlist` form, in the hero and in the closing section. Both carry the same name and fields, so submissions land in one Netlify form. Their `source` default is `website` (hero) or `closing`; a sanitized `utm_source` replaces it. Netlify recommends distinct names for different forms; these are one form placed twice. Check that both instances submit into the single `waitlist` form after deployment.
 
 Both forms use URL-encoded POST requests, with native form definitions available to Netlify. The shared request code rejects non-success HTTP responses and times out after 15 seconds. On uncertain failure, it says acceptance could not be confirmed rather than promising nothing was saved.
 
@@ -47,21 +49,19 @@ Removal requests go to hello@labcast.ai. Stop promotional contact, remove unnece
 
 ## Measurement
 
-The website captures sanitized `utm_source` and `utm_campaign` labels with signup and stores an explicit audience choice when a visitor uses an audience CTA. It does not collect full referrer URLs or add third-party analytics.
+The website captures sanitized `utm_source` and `utm_campaign` labels with signup and stores an explicit audience choice when a visitor uses an audience CTA. It does not collect full referrer URLs or add third-party analytics. The share action shares `https://labcast.ai/?utm_source=share`, so signups from shared links appear with `source=share`.
 
-Netlify exports can support accepted signup counts and optional qualification. Visit-to-signup conversion rates cannot be claimed without a defined visitor measurement source. A copy-link click is not a referred signup; personal referral tracking is intentionally absent from this version.
+Netlify exports can support accepted signup counts and optional qualification. Visit-to-signup conversion rates cannot be claimed without a defined visitor measurement source. A share or copy-link click is not a referred signup; personal referral identifiers, positions and rewards are intentionally absent.
 
 ## Content and media
 
-The scroll-controlled broadcast story uses original device graphics and generated editorial cartoon illustrations. It illustrates the planned workflow, not actual product output. The public page intentionally omits hackathon, prototype, and pilot messaging. Keep development history in internal records. Original event footage and campaign films remain separate work in the graphics brief.
+The scroll-controlled broadcast story uses original device graphics and generated editorial cartoon illustrations. It illustrates the planned workflow, not actual product output. The public page says once, near each signup form and in the first answer, that Labcast is in development. The "What's coming" section lists Pilot, Next and Later capabilities from the server repository's `docs/timeline.md`, without dates. Hackathons appear only as one example event. Keep development history in internal records. Original event footage and campaign films remain separate work in the graphics brief.
 
-Research screenshots are not part of the public bundle. Only selected licensed photo derivatives, original graphics, and licensed fonts are shipped. See `assets.md` and `assets.json`.
+Research screenshots are not part of the public bundle. Only selected licensed photo derivatives, original graphics, licensed fonts and Material Symbols icon paths are shipped. See `assets.md` and `assets.json`.
 
-## Planned broadcast destinations
+## Broadcast destination
 
-The founder added Twitch, YouTube, TikTok, and Instagram to the intended direct-streaming experience. This website implements the positioning and illustration, not those product integrations. The scene labels them planned and the FAQ says platform support, simultaneous streaming, and account eligibility will be confirmed before early access.
-
-YouTube documents [streaming across platforms](https://support.google.com/youtube/answer/16404722?hl=en-GB), including account and encoder setup. Twitch’s [terms](https://www.twitch.tv/p/terms-of-service) make simultaneous broadcasting conditional on its guidelines. TikTok’s [LIVE troubleshooting](https://support.tiktok.com/en/log-in-troubleshoot/troubleshooting/issues-with-tiktok-live) confirms that creator eligibility matters. These sources do not establish a working Labcast integration. Instagram integration access and all four end-to-end product connections remain to be validated by the product team. No universal “every platform, every account” guarantee is published.
+The product plan gives each broadcast one destination, set with the platform's stream URL and key. The website says exactly that. It names no platform and shows no platform logos, because account connections are later product work. No end-to-end destination integration has been verified.
 
 ## Observed production state — October 16, 2026
 

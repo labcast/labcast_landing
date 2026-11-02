@@ -1,5 +1,15 @@
 ---
 import Emblem from '../assets/mark.svg';
+interface Props {
+  badge?: boolean;
+}
+const { badge = false } = Astro.props;
 ---
 
-<Emblem width="32" height="32" aria-hidden="true" focusable="false" />
+{badge ? (
+  <span class="brand-badge" aria-hidden="true">
+    <Emblem width="24" height="24" focusable="false" />
+  </span>
+) : (
+  <Emblem width="32" height="32" aria-hidden="true" focusable="false" />
+)}

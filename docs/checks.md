@@ -44,7 +44,7 @@ Run `node docs/qa/browser.cjs`, `node docs/qa/edges.cjs`, and `node docs/qa/stor
 
 ## Publication checks remaining
 
-See [deployment.md](deployment.md). Before promotion, verify Netlify form detection and a genuine retained submission, spam handling, notifications if enabled, mailbox delivery to `hello@labcast.ai`, DNS, HTTPS, and actual devices. No deployment, DNS changes, outreach, or paid services were performed. Twitch, YouTube, TikTok, and Instagram are presented as planned destinations, not verified product integrations.
+See [deployment.md](deployment.md). Before promotion, verify Netlify form detection and a genuine retained submission, spam handling, notifications if enabled, mailbox delivery to `hello@labcast.ai`, DNS, HTTPS, and actual devices. No deployment, DNS changes, outreach, or paid services were performed. The site describes one streaming destination per broadcast, set by stream URL and key; no destination delivery has been verified.
 
 ## Event marquee and comic treatment revision
 
@@ -130,3 +130,18 @@ The shared head copy now explains the product in four plain-language sentences, 
 The physical iPhone screenshot after the scrolling restoration shows page text in the status-bar area above the sticky header. Phone layouts now fix the header to the viewport and reserve its height with body padding. The existing header pseudo-element explicitly covers the top safe area at the viewport edge. The document still scrolls natively; there is no nested scroller, body scroll lock, GSAP scroller override, or scene motion change. No-JavaScript pages retain their expanded navigation in normal flow with the sticky header. Physical Safari chrome still requires device confirmation.
 
 Validation: build/type checks pass; WebKit passes all chapters, forward/reverse fit, header position, menu anchors, reduced motion, and no-JavaScript checks at 430×739, 699, 659 (simulated 59px safe area), and 580. The 17-check browser suite, nine responsive widths, and six axe scans pass without violations or page errors. These engine checks do not verify Safari's native status-bar tint.
+
+### Labcast app brand, sales copy and waitlist conversion — November 2, 2026
+
+The site adopts the Labcast app's design system (mobile ADR 0021: light tokens, Space Grotesk/Inter/JetBrains Mono, brand tile, Material Symbols) and keeps the existing story, sections, photos and illustrations. Copy is benefit-led for every audience. A "What's coming" section lists Pilot, Next and Later capabilities from the server timeline, without dates. Both signup forms (hero and closing) are one email field and one button. Desktop story chapters use 0.6 of the viewport height of scroll each; phones keep a full screen.
+
+Local results on this revision (Google Chrome through Playwright 1.64.0, local `pnpm preview` build):
+
+- `nix develop -c pnpm verify`: 0 errors, 0 warnings, 0 hints; five routes built. `pnpm format:check` passes.
+- `qa/browser.cjs`: 18 checks pass, including both form instances, `source=closing`, success sharing with `?utm_source=share`, the mobile Join button focusing the email field, and no-JavaScript POST forms. No page errors or third-party requests. **Axe scans were not run**: `@axe-core/playwright` was not available in the QA environment; the script now reports scans as not run instead of failing.
+- `qa/edges.cjs` 6, `qa/story.cjs` 7, `qa/chapters.cjs` 7 and `qa/showcase.cjs` 7 checks pass.
+- `qa/safari.cjs` was not run: Playwright's WebKit build was not installed. `qa/performance.cjs` was not run.
+- No horizontal overflow at 390px and the eight wider widths. At 320px in desktop Chrome with a classic 15px scrollbar, the existing `body { min-width: 320px }` overflows the 305px client area; overlay-scrollbar phones are unaffected.
+- A computed-colour scan on the actual adjacent surfaces of five page/width combinations found one value under its WCAG threshold: the decorative coral full stop on the lime headline badge (2.81:1). All body, label, note and button text passes.
+
+These are local engine checks. They do not verify Netlify storage of either form instance, Safari on a physical phone, or screen-reader speech.

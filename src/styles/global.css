@@ -36,20 +36,40 @@
   }
 }
 @layer base {
+  /* ADR 0021 light tokens and geometry, shared with the Labcast phone app. */
   :root {
     color-scheme: light;
-    --paper: #f5f3eb;
+    --canvas: #f6f4ee;
+    --surface: #ffffff;
+    --surface-alt: #ebe8df;
+    --text: #111111;
+    --text-secondary: #52525b;
+    --text-muted: #71717a;
+    --ink: #111111;
+    --white: #ffffff;
+    --lime: #e2ff66;
+    --coral: #ff5733;
+    --cobalt: #2563eb;
+    --amber: #f59e0b;
+    --hairline: rgba(17, 17, 17, 0.18);
+    --outline: 2.5px;
+    --outline-alt: 2px;
+    --radius-card: 14px;
+    --radius-alt: 10px;
+    --radius-button: 10px;
+    --radius-badge: 6px;
+    --shadow: var(--shadow);
+    --shadow-sm: 2.5px 2.5px 0 var(--ink);
+    --shadow-pressed: 1.5px 1.5px 0 var(--ink);
+    --press: translate(2.5px, 2.5px);
+    --tilt: -2deg;
     --header-height: calc(89px + env(safe-area-inset-top, 0px));
-    --ink: #191b17;
-    --orange: #ff623b;
-    --lime: #dfff7f;
-    --muted: #5c6056;
-    --line: #c9cbbf;
-    --mono: 'IBM Plex Mono', monospace;
-    font-family: 'Manrope Variable', sans-serif;
+    --display: 'Space Grotesk', sans-serif;
+    --mono: 'JetBrains Mono', monospace;
+    font-family: 'Inter', sans-serif;
     font-synthesis: none;
     background: var(--ink);
-    color: var(--ink);
+    color: var(--text);
     scroll-padding-top: calc(var(--header-height) + 12px);
   }
   @media (max-width: 760px) {
@@ -60,54 +80,37 @@
   body {
     min-width: 320px;
     min-height: 100svh;
-    background: var(--paper);
+    background: var(--canvas);
     -webkit-font-smoothing: antialiased;
-  }
-  /* A small repeating ink screen keeps the paper texture crisp at every size.
-     It adds no image request and never intercepts clicks or keyboard focus. */
-  body::after {
-    content: '';
-    position: fixed;
-    inset: 0;
-    z-index: 40;
-    pointer-events: none;
-    opacity: 0.5;
-    background-image:
-      radial-gradient(circle, #191b1724 0.65px, transparent 0.9px),
-      radial-gradient(circle, #191b1715 0.5px, transparent 0.8px);
-    background-size: 5px 5px;
-    background-position:
-      0 0,
-      2.5px 2.5px;
-  }
-  @media (forced-colors: active) {
-    body::after {
-      display: none;
-    }
   }
   ::selection {
     background: var(--lime);
     color: var(--ink);
   }
   :focus-visible {
-    outline: 3px solid var(--ink);
+    outline: var(--outline) solid var(--ink);
     outline-offset: 5px;
   }
   h1,
   h2,
   h3 {
-    font-weight: 800;
+    font-family: var(--display);
+    font-weight: 700;
   }
   h2 {
     font-size: clamp(2.6rem, 5.6vw, 5.2rem);
     line-height: 1.02;
-    letter-spacing: -0.065em;
+    letter-spacing: -0.04em;
   }
   h3 {
     letter-spacing: -0.04em;
   }
   p {
     line-height: 1.65;
+  }
+  b,
+  strong {
+    font-weight: 600;
   }
   a {
     text-decoration: none;
@@ -128,10 +131,10 @@
     a,
     button {
       transition:
-        background-color 160ms,
-        color 160ms,
-        transform 160ms,
-        box-shadow 160ms;
+        background-color 100ms,
+        color 100ms,
+        transform 100ms,
+        box-shadow 100ms;
     }
   }
   @media (prefers-reduced-motion: reduce) {

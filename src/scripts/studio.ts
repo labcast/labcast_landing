@@ -18,16 +18,7 @@ if (story) {
     () => {
       story.classList.add('is-enhanced');
       const sticky = story.querySelector<HTMLElement>('.story-sticky')!;
-      const colors = [
-        '#f4e8d5',
-        '#edf1d8',
-        '#e9eafa',
-        '#f6dfd3',
-        '#edf1d8',
-        '#f4e8d5',
-        '#e9eafa',
-      ];
-      // Solid backdrops keep the page from showing through the crossfade.
+      // The sticky stage keeps its solid CSS backdrop under the crossfade.
       // These initial sets also restore cleanly on revert.
       gsap.set(scenes, {
         opacity: 1,
@@ -36,7 +27,6 @@ if (story) {
         zIndex: 0,
         backgroundColor: 'transparent',
       });
-      gsap.set(sticky, { backgroundColor: colors[0] });
       const copies = scenes.map((scene) => scene.querySelector('.scene-copy')!);
       const artwork = scenes.map((scene) => scene.querySelector('.scene-art')!);
       const broadcasts = [
@@ -196,10 +186,7 @@ if (story) {
         });
         gsap.set(scenes[next], { visibility: 'visible', zIndex: 2 });
         features[next].restart();
-        if (previous < 0) {
-          gsap.set(sticky, { backgroundColor: colors[next] });
-          return;
-        }
+        if (previous < 0) return;
         gsap.set(scenes[previous], { visibility: 'visible', zIndex: 1 });
         transition = gsap.timeline({
           onComplete: () => {
@@ -223,19 +210,18 @@ if (story) {
             { opacity: 0 },
             { opacity: 1, duration: 0.4, ease: 'power2.inOut' },
             0,
-          )
-          .to(
-            sticky,
-            { backgroundColor: colors[next], duration: 0.4, ease: 'none' },
-            0,
           );
       };
       showScene(0);
+      // Phones keep one screen per chapter. Larger screens need less travel:
+      // a full screen per chapter left long stretches of unchanged stage.
+      const phone = matchMedia('(max-width: 700px)');
+      const chapterLength = () => innerHeight * (phone.matches ? 1 : 0.6);
       const trigger = ScrollTrigger.create({
         trigger: sticky,
         start: () =>
           `top ${document.querySelector('.header')!.getBoundingClientRect().height}px`,
-        end: () => `+=${Math.round(innerHeight * scenes.length)}`,
+        end: () => `+=${Math.round(chapterLength() * scenes.length)}`,
         pin: sticky,
         anticipatePin: 1,
         invalidateOnRefresh: true,

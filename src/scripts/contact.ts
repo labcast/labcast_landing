@@ -1,30 +1,35 @@
 import { saveForm } from './forms';
-const form = document.querySelector<HTMLFormElement>('[data-form="waitlist"]');
-if (form) {
-  const email = form.querySelector<HTMLInputElement>('[name="email"]')!;
-  const error = document.querySelector<HTMLElement>('#signup-error')!;
+import { bindShare } from './share';
+
+const params = new URLSearchParams(location.search);
+// Only named campaign identifiers are collected; never store arbitrary URLs.
+const attribution = (key: string) =>
+  (params.get(key) ?? '').replace(/[^a-zA-Z0-9_-]/g, '').slice(0, 80);
+const instances = [
+  ...document.querySelectorAll<HTMLElement>('[data-waitlist]'),
+].flatMap((root) => {
+  const form = root.querySelector<HTMLFormElement>('[data-form="waitlist"]');
+  return form ? [{ root, form }] : [];
+});
+const field = (form: HTMLFormElement, name: string) =>
+  form.elements.namedItem(name) as HTMLInputElement;
+
+instances.forEach(({ root, form }) => {
+  const email = field(form, 'email');
+  const error = form.querySelector<HTMLElement>('[data-error]')!;
   const button = form.querySelector<HTMLButtonElement>(
     'button[type="submit"]',
   )!;
   const label = button.querySelector<HTMLElement>('[data-submit-label]')!;
+  const success = root.querySelector<HTMLElement>('[data-signup-success]')!;
   let busy = false;
-  const params = new URLSearchParams(location.search);
-  // Only named campaign identifiers are collected; never store arbitrary URLs.
-  const attribution = (key: string) =>
-    (params.get(key) ?? '').replace(/[^a-zA-Z0-9_-]/g, '').slice(0, 80);
-  (form.elements.namedItem('source') as HTMLInputElement).value =
-    attribution('utm_source') || 'website';
-  (form.elements.namedItem('campaign') as HTMLInputElement).value =
-    attribution('utm_campaign');
-  document
-    .querySelectorAll<HTMLAnchorElement>('[data-audience]')
-    .forEach((link) =>
-      link.addEventListener('click', () => {
-        (form.elements.namedItem('audience') as HTMLInputElement).value =
-          link.dataset.audience ?? '';
-        if (!form.hidden) email.focus({ preventScroll: true });
-      }),
-    );
+  const source = field(form, 'source');
+  source.value = attribution('utm_source') || source.value;
+  field(form, 'campaign').value = attribution('utm_campaign');
+  bindShare(
+    success.querySelector<HTMLButtonElement>('[data-share]')!,
+    success.querySelector<HTMLElement>('[data-share-status]')!,
+  );
   email.addEventListener('invalid', () => {
     error.textContent = 'Enter a valid email address so we can keep in touch.';
     email.setAttribute('aria-invalid', 'true');
@@ -38,9 +43,7 @@ if (form) {
     if (busy) return;
     if (!form.reportValidity()) return;
     const submittedEmail = email.value.trim();
-    const submittedAudience = (
-      form.elements.namedItem('audience') as HTMLInputElement
-    ).value;
+    const submittedAudience = field(form, 'audience').value;
     busy = true;
     button.disabled = true;
     form.setAttribute('aria-busy', 'true');
@@ -67,9 +70,6 @@ if (form) {
         /* Optional details can ask for the email again. */
       }
       form.hidden = true;
-      const success = document.querySelector<HTMLElement>(
-        '[data-signup-success]',
-      )!;
       success.hidden = false;
       success.focus({ preventScroll: true });
     } catch {
@@ -82,5 +82,22 @@ if (form) {
       label.textContent = 'Join the waitlist';
     }
   });
+});
+
+// Audience and join links lead to the hero form and put the cursor in it.
+const hero = instances.find(({ root }) => root.closest('#waitlist'))?.form;
+if (hero) {
+  const email = field(hero, 'email');
+  document
+    .querySelectorAll<HTMLAnchorElement>('a[href$="#waitlist"]')
+    .forEach((link) =>
+      link.addEventListener('click', () => {
+        if (link.dataset.audience)
+          field(hero, 'audience').value = link.dataset.audience;
+        // Fragment navigation runs after this handler and clears focus.
+        if (!hero.hidden)
+          setTimeout(() => email.focus({ preventScroll: true }), 0);
+      }),
+    );
 }
 export {};

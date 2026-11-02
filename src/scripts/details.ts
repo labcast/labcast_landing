@@ -1,4 +1,5 @@
 import { saveForm } from './forms';
+import { bindShare } from './share';
 const form = document.querySelector<HTMLFormElement>('[data-form="details"]');
 if (form) {
   const email = form.querySelector<HTMLInputElement>('[name="email"]')!;
@@ -22,6 +23,10 @@ if (form) {
         typeof receipt.email === 'string'
       ) {
         email.value = receipt.email;
+        // A new signup sees sharing first; details stay optional below it.
+        const panel = document.querySelector<HTMLElement>('[data-share-panel]');
+        const details = document.querySelector<HTMLElement>('.details-panel');
+        if (panel && details) details.before(panel);
         document.querySelector<HTMLElement>(
           '[data-thanks-title]',
         )!.textContent = 'You’re on the list.';
@@ -87,13 +92,6 @@ if (form) {
   });
 }
 const share = document.querySelector<HTMLButtonElement>('[data-share]');
-share?.addEventListener('click', async () => {
-  const status = document.querySelector<HTMLElement>('[data-share-status]')!;
-  try {
-    await navigator.clipboard.writeText('https://labcast.ai');
-    status.textContent = 'Copied. Send it to your crew.';
-  } catch {
-    status.textContent = 'Copy the link below to share Labcast.';
-  }
-});
+const shareStatus = document.querySelector<HTMLElement>('[data-share-status]');
+if (share && shareStatus) bindShare(share, shareStatus);
 export {};

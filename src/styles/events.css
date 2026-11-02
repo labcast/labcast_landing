@@ -1,6 +1,6 @@
 @layer components {
   .outline-word {
-    color: #626958;
+    color: var(--text-secondary);
   }
   .people-grid {
     display: grid;
@@ -8,9 +8,11 @@
     gap: 22px;
   }
   .person {
-    border: 3px solid var(--ink);
-    box-shadow: 6px 6px 0 var(--ink);
-    background: #fffdf6;
+    border: var(--outline) solid var(--ink);
+    border-radius: var(--radius-card);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    background: var(--surface);
     display: flex;
     flex-direction: column;
   }
@@ -18,8 +20,8 @@
     position: relative;
     aspect-ratio: 1.2;
     overflow: hidden;
-    border-bottom: 1.5px solid var(--ink);
-    background: #ced2c3;
+    border-bottom: var(--outline) solid var(--ink);
+    background: var(--surface-alt);
   }
   .person-image img {
     width: 100%;
@@ -39,11 +41,12 @@
     position: absolute;
     top: 14px;
     left: 14px;
-    background: var(--paper);
+    background: var(--canvas);
     color: var(--ink);
-    border: 1.5px solid var(--ink);
+    border: var(--outline) solid var(--ink);
+    border-radius: var(--radius-badge);
     padding: 7px 10px;
-    font: 0.65rem var(--mono);
+    font: 700 0.65rem var(--mono);
   }
   .person-copy {
     padding: 25px;
@@ -55,33 +58,33 @@
     font-size: clamp(1.5rem, 2.35vw, 2.15rem);
     line-height: 1.12;
     margin: 13px 0 18px;
-    letter-spacing: -0.055em;
+    letter-spacing: -0.035em;
   }
   .person-description {
     font-size: 0.83rem;
-    color: #505449;
+    color: var(--text-secondary);
     margin-bottom: 15px;
     flex: 1;
   }
   .person .text-link {
     justify-content: space-between;
-    border-top: 1px solid var(--line);
+    border-top: 1px solid var(--hairline);
     padding-top: 13px;
     font-size: 0.78rem;
   }
   .person-note {
-    font: 0.55rem/1.6 var(--mono);
-    color: #5b6153;
+    font: 700 0.6rem/1.6 var(--mono);
+    color: var(--text-secondary);
     margin-top: 8px;
   }
-  .person-streamer .person-copy {
-    background: #e6e0f1;
-  }
   .person-organizer .person-copy {
-    background: #e6edda;
+    background: var(--lime);
+  }
+  .person-streamer .person-copy {
+    background: var(--surface);
   }
   .person-club .person-copy {
-    background: #f6dfcc;
+    background: var(--surface-alt);
   }
   @media (prefers-reduced-motion: no-preference) {
     .person-image img {
