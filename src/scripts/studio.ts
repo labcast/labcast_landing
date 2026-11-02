@@ -213,11 +213,15 @@ if (story) {
           );
       };
       showScene(0);
+      // Phones keep one screen per chapter. Larger screens need less travel:
+      // a full screen per chapter left long stretches of unchanged stage.
+      const phone = matchMedia('(max-width: 700px)');
+      const chapterLength = () => innerHeight * (phone.matches ? 1 : 0.6);
       const trigger = ScrollTrigger.create({
         trigger: sticky,
         start: () =>
           `top ${document.querySelector('.header')!.getBoundingClientRect().height}px`,
-        end: () => `+=${Math.round(innerHeight * scenes.length)}`,
+        end: () => `+=${Math.round(chapterLength() * scenes.length)}`,
         pin: sticky,
         anticipatePin: 1,
         invalidateOnRefresh: true,
