@@ -1,0 +1,46 @@
+---
+import Icon from './Icon.astro';
+import { roadmap } from '../content';
+import '../styles/roadmap.css';
+---
+
+<section
+  class="roadmap container section-space"
+  id="coming"
+  aria-labelledby="coming-title"
+>
+  <div class="section-label">
+    <span class="section-number">02 / WHAT’S COMING</span>
+    <span class="tiny-label">IN THE ORDER YOU’LL GET IT.</span>
+  </div>
+  <div class="section-heading">
+    <h2 id="coming-title">
+      Big shows.
+      <br />
+      <span class="outline-word">Coming your way.</span>
+    </h2>
+    <p>
+      Every stage builds on the last. Join the waitlist and hear first when each
+      one lands.
+    </p>
+  </div>
+  <ol class="roadmap-grid">
+    {roadmap.map((stage) => (
+      <li class={`stage stage-${stage.id}`}>
+        <p class="stage-label">{stage.stage}</p>
+        <h3>{stage.title}</h3>
+        <ul>
+          {stage.items.map((item) => (
+            <li>
+              <Icon name="check" />
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+      </li>
+    ))}
+  </ol>
+  <a class="button roadmap-action" href="#waitlist">
+    Get early access <Icon />
+  </a>
+</section>

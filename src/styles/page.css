@@ -43,8 +43,8 @@
     font-size: 0.95rem;
   }
   .status-dot {
-    width: 7px;
-    height: 7px;
+    width: 8px;
+    height: 8px;
     background: currentColor;
     border-radius: 50%;
     display: inline-block;
@@ -292,7 +292,7 @@
         :focus-visible
       )
       > .icon-arrow {
-      transform: translate(2px, -2px);
+      transform: translateX(3px);
     }
     .button:is(:hover, :focus-visible) > .icon-back {
       transform: translateX(-3px);
