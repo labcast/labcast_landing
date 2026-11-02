@@ -17,7 +17,7 @@ pnpm preview
 
 ## Project structure
 
-- `src/content.ts`: shared copy, audience descriptions, FAQ, domain, contact email, and signup wording version.
+- `src/content.ts`: shared copy, audience descriptions, roadmap, FAQ, domain, contact email, and signup wording version.
 - `src/pages`: homepage, optional follow-up, privacy, credits, and 404.
 - `src/components`: page sections and the illustrated scroll story.
 - `src/layouts/Page.astro`: metadata, local fonts, and shared document layout.
@@ -71,4 +71,4 @@ Portrait phones keep the seven animated chapters even below 700px browser height
 
 ### Browser appearance
 
-The shared head supplies the paper theme color, light color scheme, app name, Apple home-screen title, touch icon, and `site.webmanifest`. The manifest uses normal browser display with 192px and 512px icons. This does not add offline caching, a service worker, standalone mode, or an install prompt. Browser toolbar tinting remains browser-controlled.
+The shared head supplies the canvas theme color, light color scheme, app name, Apple home-screen title, touch icon, and `site.webmanifest`. The manifest uses normal browser display with 192px and 512px icons. This does not add offline caching, a service worker, standalone mode, or an install prompt. Browser toolbar tinting remains browser-controlled.
