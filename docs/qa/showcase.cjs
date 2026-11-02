@@ -22,7 +22,7 @@ const base = process.env.LABCAST_BASE_URL || 'http://127.0.0.1:4321';
       return {
         gap:
           document.querySelector('.waitlist').getBoundingClientRect().top -
-          document.querySelector('.hero-description').getBoundingClientRect()
+          document.querySelector('.hero-welcome').getBoundingClientRect()
             .bottom,
         x: show.getBoundingClientRect().x,
         width: show.getBoundingClientRect().width,

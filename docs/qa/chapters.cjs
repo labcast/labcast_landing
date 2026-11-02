@@ -118,8 +118,11 @@ const out =
         `Large wheel movement freely exits both ends at ${width}px`,
       );
       await go(6.5);
-      assert.equal(await page.locator('.destinations li svg').count(), 4);
-      await page.screenshot({ path: `${out}/platforms-${width}.png` });
+      assert.equal(
+        await page.locator('[data-story]').getAttribute('data-active-scene'),
+        '6',
+      );
+      await page.screenshot({ path: `${out}/destination-${width}.png` });
       await page.locator('.closing').scrollIntoViewIfNeeded();
       await page.screenshot({ path: `${out}/closing-${width}.png` });
       await page.locator('.footer').scrollIntoViewIfNeeded();

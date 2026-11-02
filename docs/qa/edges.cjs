@@ -54,21 +54,21 @@ const base = process.env.LABCAST_BASE_URL || 'http://127.0.0.1:4321';
     await page.goto(base, { waitUntil: 'networkidle' });
     await page.clock.install();
     await page
-      .locator('form')
+      .locator('#waitlist form')
       .evaluate((f) => f.removeAttribute('data-netlify'));
     await page.locator('#waitlist-email').fill('timeout@example.com');
     let pending;
     await page.route(base + '/thanks/', (route) => {
       pending = route;
     });
-    await page.locator('form button[type=submit]').click();
+    await page.locator('#waitlist form button[type=submit]').click();
     await page.clock.runFor(16000);
     await page
-      .locator('#signup-error')
+      .locator('#waitlist-error')
       .filter({ hasText: 'couldn’t confirm' })
       .waitFor();
     assert.equal(
-      await page.locator('form button[type=submit]').isEnabled(),
+      await page.locator('#waitlist form button[type=submit]').isEnabled(),
       true,
     );
     assert.equal(
@@ -83,22 +83,22 @@ const base = process.env.LABCAST_BASE_URL || 'http://127.0.0.1:4321';
     await page.clock.resume();
     await page.goto(base, { waitUntil: 'networkidle' });
     await page
-      .locator('form')
+      .locator('#waitlist form')
       .evaluate((f) => f.removeAttribute('data-netlify'));
     await page.locator('#waitlist-email').fill('offline@example.com');
     await page.route(base + '/thanks/', (route) =>
       route.abort('internetdisconnected'),
     );
-    await page.locator('form button[type=submit]').click();
+    await page.locator('#waitlist form button[type=submit]').click();
     await page
-      .locator('#signup-error')
+      .locator('#waitlist-error')
       .filter({ hasText: 'couldn’t confirm' })
       .waitFor();
     results.checks.push('Network failure never displays signup success');
     await page.unrouteAll({ behavior: 'ignoreErrors' });
     await page.goto(base, { waitUntil: 'networkidle' });
     await page.evaluate(() => {
-      document.querySelector('form').removeAttribute('data-netlify');
+      document.querySelector('#waitlist form').removeAttribute('data-netlify');
       Storage.prototype.setItem = () => {
         throw new Error('Storage denied');
       };
@@ -109,9 +109,11 @@ const base = process.env.LABCAST_BASE_URL || 'http://127.0.0.1:4321';
         await route.fulfill({ status: 200, body: 'accepted simulation' });
       else await route.continue();
     });
-    await page.locator('form button[type=submit]').click();
-    await page.locator('[data-signup-success]').waitFor({ state: 'visible' });
-    await page.locator('[data-signup-success] a').click();
+    await page.locator('#waitlist form button[type=submit]').click();
+    await page
+      .locator('#waitlist [data-signup-success]')
+      .waitFor({ state: 'visible' });
+    await page.locator('#waitlist [data-signup-success] a').click();
     assert.equal(await page.locator('#details-email').inputValue(), '');
     results.checks.push(
       'Blocked browser storage does not lose signup and allows email re-entry',
