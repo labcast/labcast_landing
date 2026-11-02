@@ -94,7 +94,9 @@ if (hero) {
       link.addEventListener('click', () => {
         if (link.dataset.audience)
           field(hero, 'audience').value = link.dataset.audience;
-        if (!hero.hidden) email.focus({ preventScroll: true });
+        // Fragment navigation runs after this handler and clears focus.
+        if (!hero.hidden)
+          setTimeout(() => email.focus({ preventScroll: true }), 0);
       }),
     );
 }

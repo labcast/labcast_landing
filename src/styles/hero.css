@@ -111,7 +111,7 @@
       padding-block: 26px 28px;
     }
     .hero h1 {
-      font-size: 13.1vw;
+      font-size: 12vw;
       max-width: 100%;
     }
     .hero-highlight {
@@ -130,8 +130,13 @@
       max-width: 340px;
       margin-top: 18px;
     }
+    /* Phones place the artwork below the copy, so small text never sits on it. */
     .hero-art {
-      inset: 220px 0 0;
+      position: relative;
+      inset: auto;
+      order: 1;
+      height: 320px;
+      margin-top: -72px;
     }
     .hero-art img {
       object-position: 62% center;
@@ -140,10 +145,8 @@
       background: linear-gradient(
         180deg,
         var(--canvas) 0%,
-        #f6f4eef5 38%,
-        #f6f4eebb 54%,
-        #f6f4ee00 70%,
-        #f6f4eedd 100%
+        var(--canvas) calc(100% - 320px),
+        #f6f4ee00 calc(100% - 210px)
       );
     }
     .waitlist {
