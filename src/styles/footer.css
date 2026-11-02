@@ -47,19 +47,25 @@
     color: var(--lime);
     line-height: 0.95;
   }
-  .footer-brand > svg {
+  .footer-brand > .brand-badge {
+    --brand-shadow: var(--white);
     width: 15%;
     height: auto;
-    flex: none;
+    aspect-ratio: 1;
+    border-width: clamp(2.5px, 0.4vw, 6px);
+    border-radius: 25%;
+    box-shadow: clamp(3px, 0.7vw, 10px) clamp(3px, 0.7vw, 10px) 0
+      var(--brand-shadow);
+  }
+  .footer-brand > .brand-badge svg {
+    width: 66%;
+    height: auto;
   }
   .footer-brand > span {
     font-family: var(--display);
     font-size: clamp(4rem, 21.2vw, 20rem);
     font-weight: 700;
     letter-spacing: -0.04em;
-  }
-  .footer-dot {
-    color: var(--coral);
   }
   .footer-bottom {
     display: flex;

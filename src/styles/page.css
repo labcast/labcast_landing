@@ -63,6 +63,23 @@
   .wordmark svg {
     flex: none;
   }
+  /* The app's brand tile: ink mark on lime, ink outline and hard shadow. */
+  .brand-badge {
+    display: inline-grid;
+    place-items: center;
+    flex: none;
+    width: 36px;
+    height: 36px;
+    background: var(--lime);
+    color: var(--ink);
+    border: var(--outline) solid var(--ink);
+    border-radius: 9px;
+    box-shadow: 3px 3px 0 var(--brand-shadow, var(--ink));
+  }
+  .brand-badge svg {
+    width: 24px;
+    height: 24px;
+  }
   /* Black actions: lime text and a white outline, with the ink hard shadow. */
   .button {
     display: inline-flex;
