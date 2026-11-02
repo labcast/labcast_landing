@@ -3,11 +3,12 @@
     max-width: 760px;
   }
   .details-panel {
-    border: 2px solid var(--ink);
+    border: var(--outline) solid var(--ink);
     padding: 30px;
     margin-block: 32px;
-    background: #fffdf6;
-    box-shadow: 6px 6px 0 var(--lime);
+    border-radius: var(--radius-card);
+    background: var(--surface);
+    box-shadow: var(--shadow);
   }
   .details-panel h2 {
     margin: 0 0 8px;
@@ -25,7 +26,7 @@
   }
   .details-panel legend {
     font-size: 0.85rem;
-    font-weight: 750;
+    font-weight: 600;
     margin-bottom: 12px;
   }
   .role-choices {
@@ -37,7 +38,8 @@
     display: flex;
     align-items: center;
     gap: 9px;
-    border: 1px solid var(--ink);
+    border: var(--outline-alt) solid var(--ink);
+    border-radius: var(--radius-alt);
     padding: 12px;
     font-size: 0.8rem;
     cursor: pointer;
@@ -69,12 +71,14 @@
   }
   .details-success {
     background: var(--lime);
+    border: var(--outline) solid var(--ink);
+    border-radius: var(--radius-card);
     padding: 20px;
     margin-top: 20px;
   }
   .share-panel {
     padding-bottom: 28px;
-    border-bottom: 1px solid var(--line);
+    border-bottom: 1px solid var(--hairline);
     margin-bottom: 24px;
   }
   .share-panel h2 {

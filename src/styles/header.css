@@ -3,9 +3,9 @@
     position: sticky;
     top: 0;
     z-index: 30;
-    background: var(--paper);
+    background: var(--canvas);
     padding-top: env(safe-area-inset-top, 0px);
-    border-bottom: 3px solid var(--ink);
+    border-bottom: var(--outline) solid var(--ink);
   }
   /* Extend the opaque header above its box during Safari toolbar movement
      and elastic scrolling, so the artwork cannot show through at the top. */
@@ -15,7 +15,7 @@
     inset-inline: 0;
     bottom: 100%;
     height: max(100px, env(safe-area-inset-top, 0px));
-    background: var(--paper);
+    background: var(--canvas);
     pointer-events: none;
   }
   .header-inner {
@@ -29,8 +29,8 @@
     display: flex;
     align-items: center;
     gap: 32px;
-    font-size: 0.78rem;
-    font-weight: 650;
+    font-size: 0.82rem;
+    font-weight: 600;
   }
   .navigation > a {
     padding-block: 12px;
@@ -39,15 +39,15 @@
     text-decoration: underline;
   }
   .navigation .nav-cta {
-    border: 2px solid var(--ink);
+    border: var(--outline) solid var(--ink);
     padding: 12px 18px;
     background: var(--lime);
     display: flex;
     gap: 20px;
-    box-shadow: 5px 5px 0 var(--ink);
-  }
-  .nav-cta:hover {
-    transform: translate(-1px, -1px);
+    border-radius: var(--radius-button);
+    box-shadow: var(--shadow);
+    font-family: var(--display);
+    font-weight: 700;
   }
   .menu-toggle {
     display: none;
@@ -57,8 +57,8 @@
     display: none;
   }
   .nav-cta:active {
-    transform: translate(3px, 3px);
-    box-shadow: 2px 2px 0 var(--ink);
+    transform: var(--press);
+    box-shadow: var(--shadow-pressed);
   }
 }
 @layer responsive {
@@ -95,9 +95,9 @@
       color: var(--ink);
       -webkit-appearance: none;
       appearance: none;
-      border: 2px solid var(--ink);
-      border-radius: 0;
-      box-shadow: 3px 3px 0 var(--ink);
+      border: var(--outline) solid var(--ink);
+      border-radius: var(--radius-button);
+      box-shadow: var(--shadow-sm);
     }
     .menu-toggle .icon {
       width: 22px;
@@ -105,8 +105,8 @@
     }
     .menu-toggle:active,
     .menu-toggle[aria-expanded='true'] {
-      transform: translate(2px, 2px);
-      box-shadow: 1px 1px 0 var(--ink);
+      transform: var(--press);
+      box-shadow: var(--shadow-pressed);
     }
     .icon-menu path:first-child {
       transform-origin: 12px 8px;
@@ -133,10 +133,11 @@
         100svh - var(--header-height) - 28px - env(safe-area-inset-bottom, 0px)
       );
       overflow-y: auto;
-      background: var(--paper);
+      background: var(--canvas);
       color: var(--ink);
-      border: 2px solid var(--ink);
-      box-shadow: 6px 6px 0 var(--ink);
+      border: var(--outline) solid var(--ink);
+      border-radius: var(--radius-card);
+      box-shadow: var(--shadow);
       opacity: 0;
       visibility: hidden;
       pointer-events: none;
@@ -154,15 +155,16 @@
       align-items: center;
       gap: 14px;
       padding: 18px 12px;
-      border-bottom: 1px solid var(--line);
+      border-bottom: 1px solid var(--hairline);
       font-size: clamp(1.1rem, 5vw, 1.4rem);
-      letter-spacing: -0.04em;
-      font-weight: 750;
+      letter-spacing: -0.03em;
+      font-family: var(--display);
+      font-weight: 700;
     }
     .nav-link .nav-index {
       display: block;
-      font: 0.6rem var(--mono);
-      color: var(--muted);
+      font: 700 0.6rem var(--mono);
+      color: var(--text-secondary);
       letter-spacing: 0;
     }
     .nav-link > .icon {
@@ -180,7 +182,7 @@
       padding: 15px;
       min-height: 50px;
       font-size: 0.84rem;
-      box-shadow: 3px 3px 0 var(--ink);
+      box-shadow: var(--shadow-sm);
     }
     @media (prefers-reduced-motion: no-preference) {
       .navigation {

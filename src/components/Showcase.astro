@@ -12,31 +12,32 @@ const events = [
     image: gaming,
     name: 'Gaming streams',
     bubble: 'Your next stream.',
-    color: '#dfff7f',
+    color: 'var(--lime)',
   },
   {
     image: music,
     name: 'Live music',
     bubble: 'Your next gig.',
-    color: '#ffb79d',
+    color: 'var(--coral)',
   },
   {
     image: crew,
     name: 'Club sports',
     bubble: 'Your next game.',
-    color: '#c5d1ff',
+    color: 'var(--cobalt)',
+    text: 'var(--white)',
   },
   {
     image: demo,
     name: 'Product demos',
     bubble: 'Your next big idea.',
-    color: '#ffe598',
+    color: 'var(--amber)',
   },
   {
     image: hackathon,
     name: 'Hackathons',
     bubble: 'Your next build.',
-    color: '#e9c7fb',
+    color: 'var(--surface)',
   },
 ];
 ---
@@ -58,7 +59,10 @@ const events = [
           aria-hidden={copy === 1 ? 'true' : undefined}
         >
           {events.map((event) => (
-            <li class="event-card" style={`--event-color: ${event.color}`}>
+            <li
+              class="event-card"
+              style={`--event-color: ${event.color}${event.text ? `; --event-text: ${event.text}` : ''}`}
+            >
               <span class="event-bubble" aria-hidden="true">
                 {event.bubble}
               </span>

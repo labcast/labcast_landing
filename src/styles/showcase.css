@@ -4,8 +4,8 @@
     width: 100%;
     margin-top: 0;
     padding-block: 48px 20px;
-    border-top: 2px solid var(--ink);
-    background: var(--paper);
+    border-top: var(--outline) solid var(--ink);
+    background: var(--canvas);
   }
   .showcase-intro h2 {
     font-size: clamp(2rem, 3.5vw, 3.2rem);
@@ -44,9 +44,11 @@
     position: relative;
   }
   .event-frame {
-    border: 3px solid var(--ink);
-    box-shadow: 4px 4px 0 var(--ink);
+    border: var(--outline) solid var(--ink);
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow);
     background: var(--event-color);
+    color: var(--event-text, var(--ink));
     transform: rotate(-0.5deg);
     transition: transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
     overflow: hidden;
@@ -62,15 +64,16 @@
     height: auto;
     aspect-ratio: 1.7;
     object-fit: cover;
-    border-bottom: 2px solid var(--ink);
+    border-bottom: var(--outline) solid var(--ink);
   }
   .event-frame > span {
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 10px 14px;
-    font-size: 0.9rem;
-    font-weight: 800;
+    font-family: var(--display);
+    font-size: 0.95rem;
+    font-weight: 700;
   }
   .event-frame i {
     font-style: normal;
@@ -83,12 +86,14 @@
     left: 50%;
     white-space: nowrap;
     padding: 10px 16px;
-    border: 2px solid var(--ink);
-    border-radius: 12px;
+    border: var(--outline) solid var(--ink);
+    border-radius: var(--radius-alt);
     background: var(--event-color);
-    box-shadow: 3px 3px 0 var(--ink);
-    font-size: 0.9rem;
-    font-weight: 800;
+    color: var(--event-text, var(--ink));
+    box-shadow: var(--shadow-sm);
+    font-family: var(--display);
+    font-size: 0.95rem;
+    font-weight: 700;
     opacity: 0;
     transform: translate(-50%, 10px) scale(0.86);
     transform-origin: bottom center;
@@ -105,8 +110,8 @@
     bottom: -7px;
     left: calc(50% - 5px);
     background: var(--event-color);
-    border-right: 2px solid var(--ink);
-    border-bottom: 2px solid var(--ink);
+    border-right: var(--outline) solid var(--ink);
+    border-bottom: var(--outline) solid var(--ink);
     transform: rotate(45deg);
   }
   .is-moving .event-card.is-featured .event-bubble {

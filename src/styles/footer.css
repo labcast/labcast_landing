@@ -1,7 +1,7 @@
 @layer components {
   .footer {
     background: var(--ink);
-    color: var(--paper);
+    color: var(--canvas);
     padding-block: 64px 24px;
   }
   .footer-top {
@@ -11,6 +11,7 @@
     align-items: start;
   }
   .footer-intro > p {
+    font-family: var(--display);
     font-size: clamp(1.5rem, 2.7vw, 2.6rem);
     line-height: 1.2;
     font-weight: 700;
@@ -52,22 +53,23 @@
     flex: none;
   }
   .footer-brand > span {
+    font-family: var(--display);
     font-size: clamp(4rem, 21.2vw, 20rem);
-    font-weight: 850;
-    letter-spacing: -0.085em;
+    font-weight: 700;
+    letter-spacing: -0.04em;
   }
   .footer-dot {
-    color: var(--orange);
+    color: var(--coral);
   }
   .footer-bottom {
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 24px;
-    border-top: 1px solid #5c6056;
+    border-top: 1px solid rgba(255, 255, 255, 0.16);
     padding-top: 20px;
-    font: 0.6rem/1.5 var(--mono);
-    color: #c9cbbf;
+    font: 700 0.6rem/1.5 var(--mono);
+    color: #9ca3af;
   }
   .footer-bottom nav {
     display: flex;
